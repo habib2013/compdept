@@ -39,12 +39,12 @@
                   <form role="form" method="POST" action="{{ route('register') }}">
                   @csrf
                   <div class="form-group">
-                      <label class="form-control-label">Name</label>
+                      <label class="form-control-label">Full name</label>
                       <div class="input-group input-group-merge">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="far fa-user"></i></span>
                         </div>    
-                        <input id="input-email" placeholder="Your name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input id="input-email" placeholder="Oladosu Tayo" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -54,6 +54,25 @@
 
                       </div>
                     </div>
+
+
+                    <div class="form-group">
+                      <label class="form-control-label">Username</label>
+                      <div class="input-group input-group-merge">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="far fa-user"></i></span>
+                        </div>    
+                        <input id="input-email" placeholder="Habib2020" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                        @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                      </div>
+                    </div>
+
                     <div class="form-group">
                       <label class="form-control-label">Email address</label>
                       <div class="input-group input-group-merge">

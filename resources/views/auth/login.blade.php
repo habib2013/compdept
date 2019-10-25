@@ -22,14 +22,9 @@
 <body>
  
   <!-- Omnisearch -->
-  <div id="omnisearch" class="omnisearch">
-    <div class="container">
-      <!-- Search form -->
-   
-      
-    </div>
+ 
   </div>
-  <div class="main-content">
+  <div class="main-content" style="margin-top:-130px;margin-bottom:-200px;height:100vh">
     <section class="slice slice-lg min-vh-100 d-flex align-items-center bg-section-secondary">
       <!-- SVG background -->
       <div class="bg-absolute-cover bg-size--contain d-none d-lg-block">
