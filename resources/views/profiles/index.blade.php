@@ -233,29 +233,31 @@
                 <ul class="list-inline row justify-content-lg-end mb-0">
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-success"></i>Sales
+                      <i class="bg-success"></i>Followers
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      20.5%
-                      <small class="far fa-angle-up text-success"></small>
+                      20
+                    
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-warning"></i>Tasks
+                      <i class="bg-warning"></i>Following
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      5.7%
-                      <small class="far fa-angle-up text-warning"></small>
+                      5
+                     
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-danger"></i>Sales
+                      <i class="bg-danger"></i>Article(s)
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      -3.24%
-                      <small class="far fa-angle-down text-danger"></small>
+                  
+                     {{count($user->posts) ?? 'N/A'}}
+                     </a>
+                
                     </a>
                   </li>
                 </ul>
@@ -328,7 +330,7 @@
                 </a>
                 <div class="card-body p-3 pt-0 text-center">
                   <h5 class="mb-0">{{$user->name}}</h5>
-                  <span class="d-block text-muted mb-3">{{$user->profile->title}}</span>
+                  <span class="d-block text-muted mb-3">  </span>
                   <div class="avatar-group hover-avatar-ungroup mb-3">
                     <a href="#" class="avatar rounded-circle avatar-sm">
                       <img alt="Image placeholder"  src="{{asset('img/theme/light/team-1-800x800.jpg')}}"  class="">
@@ -391,6 +393,8 @@
               </div>
             </div> -->
             <!-- Timeline -->
+
+           
             <div class="card">
               <div class="card-header pt-4 pb-2">
                 <div class="d-flex align-items-center">
@@ -398,11 +402,12 @@
                     <img alt="Image placeholder"  src="{{asset('img/theme/light/team-1-800x800.jpg')}}">
                   </a>
                   <div class="avatar-content">
-                    <h6 class="mb-0">Bettie Mavis</h6>
+                    <h6 class="mb-0">{{$user->username}} </h6>
                     <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>3 hrs ago</small>
                   </div>
                 </div>
               </div>
+      
               <div class="card-body">
                 <p>Personal profiles are the perfect way for you to grab their attention and persuade recruiters to continue reading your CV because you’re telling them from the off exactly why they should hire you. Of course, you’ll need to know how to write an effective statement first, but we’ll get on to that in a bit.</p>
                 <!-- Badges -->
@@ -458,48 +463,18 @@
                         </div>
                       </div>
                     </div>
-                    <div class="timeline-block">
-                      <span class="timeline-step timeline-step-sm border-warning"></span>
-                      <div class="timeline-content">
-                        <small class="text-muted font-weight-bold">2014 - 2016</small>
-                        <h6>Front Designer at Google</h6>
-                        <p class="text-sm lh-160">When we strive to become better than we are everything around us becomes better too. This is a wider card with supporting text below.</p>
-                        <div>
-                          <span class="badge badge-soft-warning mr-2 mb-2">HTML5</span>
-                          <span class="badge badge-soft-warning mr-2 mb-2">CSS3</span>
-                          <span class="badge badge-soft-warning mr-2 mb-2">Responsive Design</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="timeline-block">
-                      <span class="timeline-step timeline-step-sm border-info"></span>
-                      <div class="timeline-content">
-                        <small class="text-muted font-weight-bold">2013 - 2014</small>
-                        <h6>Internship at Apple</h6>
-                        <p class="text-sm lh-160">When we strive to become better than we are everything around us becomes better too. This is a wider card with supporting text below.</p>
-                        <div>
-                          <span class="badge badge-soft-info mr-2 mb-2">Product Design</span>
-                          <span class="badge badge-soft-info mr-2 mb-2">Development</span>
-                          <span class="badge badge-soft-info mr-2 mb-2">Market Strategy</span>
-                        </div>
-                      </div>
-                    </div>
+                   
                   </div>
                 </div>
                 <div class="pt-5 mt-5 delimiter-top">
                   <!-- Title -->
                   <h6>
-                    <i class="far fa-user-n mr-2 mb-4"></i>Skills
+                    <i class="far fa-user-n mr-2 mb-4"></i>Skills/Position
                   </h6>
                   <!-- Skil badges -->
                   <div>
                     <a href="#" class="badge badge-lg badge-soft-primary d-inline-block mr-2 mb-2">Web Design</a>
-                    <a href="#" class="badge badge-lg badge-soft-primary d-inline-block mr-2 mb-2">Development</a>
-                    <a href="#" class="badge badge-lg badge-soft-primary d-inline-block mr-2 mb-2">UI/UX</a>
-                    <a href="#" class="badge badge-lg badge-soft-primary d-inline-block mr-2 mb-2">Bootstrap 4</a>
-                    <a href="#" class="badge badge-lg badge-soft-primary d-inline-block mr-2 mb-2">User Experience</a>
-                    <a href="#" class="badge badge-lg badge-soft-primary d-inline-block mr-2 mb-2">Psychology</a>
-                    <a href="#" class="badge badge-lg badge-soft-primary d-inline-block mr-2 mb-2">Photoshop</a>
+               
                   </div>
                 </div>
                 <div class="pt-5 mt-5 delimiter-top">
@@ -529,129 +504,50 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="{{asset('img/theme/light/team-2-800x800.jpg')}}" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">Heather Wright</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">John Sullivan</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="../../assets/img/theme/light/team-4-800x800.jpg" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">George Squier</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star"></i>
-                                <i class="star far fa-star"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="../../assets/img/theme/light/team-5-800x800.jpg" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">Jesse Stevens</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="../../assets/img/theme/light/team-6-800x800.jpg" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">Monroe Parker</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
+                  
                 </div>
               </div>
+
             </div>
+
+
             <!-- Post -->
+            @if(count($user->posts) == 0)
+            <div class="card mt-4">
+              <div class="card-header pt-4 pb-2">
+                <div class="d-flex align-items-center">
+              
+               <div class="card-body">
+               <h3 >No Post Updates</h3>
+              
+               <img src="{{asset('img/nopost.png')}}" class="img-fluid rounded"/>
+               <!-- <button type="submit" class="btn btn-sm btn-primary"><a href="/posts/create">ADD NOW</a></button>-->
+               <a href="/posts/create"> <button type="submit" class="btn btn-sm btn-primary" style="border-radius:1000px">+</button></a>
+               
+               </div>
+                </div> 
+                </div>
+                </div>
+          
+@else
+            @foreach($user->posts as $post)
             <div class="card mt-4">
               <div class="card-header pt-4 pb-2">
                 <div class="d-flex align-items-center">
                   <a href="#" class="avatar rounded-circle shadow">
-                    <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg">
+                    <img alt="Image placeholder" src="{{asset('img/theme/light/team-2-800x800.jpg')}}" >
                   </a>
                   <div class="avatar-content">
-                    <h6 class="mb-0">Bettie Mavis</h6>
+                    <h6 class="mb-0">{{$post->user->username}}</h6>
                     <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>3 hrs ago</small>
                   </div>
                 </div>
               </div>
               <div class="card-body">
-                <p>Personal profiles are the perfect way for you to grab their attention and persuade recruiters to continue reading your CV because you’re telling them from the off exactly why they should hire you. Of course, you’ll need to know how to write an effective statement first, but we’ll get on to that in a bit.</p>
-                <a href="../../assets/img/theme/light/img-4-800x600.jpg" data-fancybox>
-                  <img alt="Image placeholder" src="../../assets/img/theme/light/img-4-800x600.jpg" class="img-fluid rounded">
+               <p>{{$post->body}}</p>
+               <a href="" data-fancybox>
+                  <img alt="Image placeholder" src="/storage/{{$post->image}}" class="img-fluid rounded">
                 </a>
                 <div class="row align-items-center my-3 pb-3 border-bottom">
                   <div class="col-sm-6">
@@ -671,13 +567,13 @@
                       <small class="pr-2 font-weight-bold">Seen by</small>
                       <div class="avatar-group">
                         <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexis Ren">
-                          <img alt="Image placeholder" src="../../assets/img/theme/light/thumb-1.jpg" class="rounded-circle">
+                          <img alt="Image placeholder" src="{{asset('img/theme/light/thumb-1.jpg')}}" class="rounded-circle">
                         </a>
                         <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Michael Jhonson">
-                          <img alt="Image placeholder" src="../../assets/img/theme/light/thumb-2.jpg" class="rounded-circle">
+                          <img alt="Image placeholder" src="{{asset('img/theme/light/thumb-2.jpg')}}" class="rounded-circle">
                         </a>
                         <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Daniel Lewis">
-                          <img alt="Image placeholder" src="../../assets/img/theme/light/thumb-3.jpg" class="rounded-circle">
+                          <img alt="Image placeholder" src="{{asset ('img/theme/light/thumb-3.jpg')}}" class="rounded-circle">
                         </a>
                       </div>
                       <small class="pl-2 font-weight-bold">and 30+ more</small>
@@ -685,65 +581,14 @@
                   </div>
                 </div>
                 <!-- Comments -->
-                <div class="mb-3">
-                  <div class="media media-comment">
-                    <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-2-800x800.jpg" style="width: 64px;">
-                    <div class="media-body">
-                      <div class="media-comment-bubble left-top">
-                        <h6 class="mt-0">Alexis Ren</h6>
-                        <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                        <div class="icon-actions">
-                          <a href="#" class="love active">
-                            <i class="far fa-heart"></i>
-                            <span class="text-muted">10 likes</span>
-                          </a>
-                          <a href="#">
-                            <i class="far fa-comment"></i>
-                            <span class="text-muted">1 reply</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="media media-comment">
-                    <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-3-800x800.jpg" style="width: 64px;">
-                    <div class="media-body">
-                      <div class="media-comment-bubble left-top">
-                        <h6 class="mt-0">Tom Cruise</h6>
-                        <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                        <div class="icon-actions">
-                          <a href="#" class="love active">
-                            <i class="far fa-heart"></i>
-                            <span class="text-muted">20 likes</span>
-                          </a>
-                          <a href="#">
-                            <i class="far fa-comment"></i>
-                            <span class="text-muted">3 replies</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="media media-comment align-items-center">
-                    <img alt="Image placeholder" class="avatar rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-1-800x800.jpg">
-                    <div class="media-body">
-                      <form>
-                        <div class="form-group mb-0">
-                          <div class="input-group input-group-merge">
-                            <textarea class="form-control" data-toggle="autosize" placeholder="Write your comment" rows="1"></textarea>
-                            <div class="input-group-append">
-                              <button class="btn btn-primary" type="button">
-                                <span class="far fa-paper-plane"></span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+              
+
+              <!-- end comments -->
               </div>
             </div>
+@endforeach
+@endif
+
           </div>
         </div>
       </div>
