@@ -87,7 +87,7 @@
       <div class="col">
         <div class="row justify-content-center">
           <div class="col-lg-7 text-center">
-            <h6 class="h1 mb-5 font-weight-400 text-white">Page not found</h6>
+            <h6 class="h1 mb-5 font-weight-400 text-white">Page expired!!</h6>
             <a href="/" class="btn btn-white btn-icon rounded-pill hover-translate-y-n3">
               <span class="btn-inner--icon"><i class="far fa-home"></i></span>
               <span class="btn-inner--text">Return home?</span>
@@ -110,8 +110,6 @@
         <!-- Demo JS - remove it when starting your project -->
         <script src="{{asset('js/demo.js')}}"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-    
-</body>
 
 
 <!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/utility/error-404.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:17 GMT -->

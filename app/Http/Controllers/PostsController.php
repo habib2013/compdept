@@ -5,6 +5,7 @@ use App\User;
 use App\Post;
 use Auth;
 
+
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -21,10 +22,11 @@ public function create(){
 return view('posts.index');
 }
 
-public function store(){
+public function store(Request $request){
     $data = request()->validate([
           'title'=>'required',
           'body'=>'required',
+          'slug' => 'required|min:5|max:255|alpha_dash|unique:posts',
           'image'=>['required','image']
 
     ]);
@@ -36,11 +38,19 @@ public function store(){
         auth()->user()->posts()->create([
             'title'=>$data['title'],
             'body' => $data['body'],
+           'slug'=>$data['slug'],
             'image'=>$imagepath
         ]);
-                return redirect('/profile/'.auth()->user()->id);
+
+        return redirect('/'.auth()->user()->username);
+              //  return redirect('/profile/'.auth()->user()->id);
 //dd(request()->all());
 
+}
+
+public function getSingle($slug){
+$post = Post::where('slug','=',$slug)->first();
+return view('posts.single')->withPost($post);
 }
 
 }

@@ -11,6 +11,7 @@
         <meta name="author" content="Webpixels">
         <title>Kick.com</title><!-- Favicon -->
         <!-- Favicon -->
+        @laravelPWA
         <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
         <!-- Font Awesome 5 -->
         <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->

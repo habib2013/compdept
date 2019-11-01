@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,15 +12,22 @@
         <meta name="author" content="Webpixels">
         <title>Kick.com</title><!-- Favicon -->
         <!-- Favicon -->
+        @laravelPWA
+
+        <!--  -->
+
         <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
         <!-- Font Awesome 5 -->
         <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
         <link rel="stylesheet"  href="{{asset('libs/swiper/dist/css/swiper.min.css')}}">
         <!-- Purpose CSS -->
         <link rel="stylesheet" href="{{asset('css/purpose.css')}}" id="stylesheet">
+     
+      <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     </head>
 
     <body>
+   
         <!-- <div class="alert alert-danger bg-gradient-danger text-white fixed-top alert-flush alert-dismissible border-0 shadow-lg fade show mb-0" role="alert">
             <div class="container">
                 The heat of the summer comes with a <strong>35% discount</strong>. Use the <strong>SUMMER35</strong> code until June 15h and get started with this UI Kit to build your next amazing website.
@@ -68,7 +76,7 @@
                                    
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                         <h6 class="dropdown-header">{{ Auth::user()->username}}</h6>
-                                        <a class="dropdown-item" href="/profile/{{Auth::user()->id}}">
+                                        <a class="dropdown-item" href="/{{Auth::user()->username}}">
                                             <i class="far fa-user"></i>Account
                                         </a>
                                         <a class="dropdown-item" href="#">
@@ -179,7 +187,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="far fa-search"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Type and hit enter ...">
+                            <input type="text" name="country_name" id="country_name"  class="form-control" value="Type and hit enter ...">
                         </div>
                     </div>
                 </form>
@@ -187,40 +195,13 @@
                     <h6 class="heading">Search Suggestions</h6>
                     <div class="row">
                         <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a class="list-link" href="#">
-                                        <i class="far fa-search"></i>
-                                        <span>macbook pro</span> in Laptops
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="list-link" href="#">
-                                        <i class="far fa-search"></i>
-                                        <span>iphone 8</span> in Smartphones
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="list-link" href="#">
-                                        <i class="far fa-search"></i>
-                                        <span>macbook pro</span> in Laptops
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="list-link" href="#">
-                                        <i class="far fa-search"></i>
-                                        <span>beats pro solo 3</span> in Headphones
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="list-link" href="#">
-                                        <i class="far fa-search"></i>
-                                        <span>smasung galaxy 10</span> in Phones
-                                    </a>
-                                </li>
-                            </ul>
+                        <div id="countryList">
+    </div>
+
                         </div>
+
                     </div>
+                    {{ csrf_field() }}
                 </div>
             </div>
         </div>
@@ -277,8 +258,8 @@
                                 </div>
                                 <div class="px-4 pb-5">
                                     <h5>Footballers</h5>
-                                    <p class="text-muted">Impress with these beautiful landing pages.</p>
-                                </div>
+                                
+                                     </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -782,27 +763,43 @@
         </footer>
     
         <!-- Customizer modal -->
-       
+        <script src="{{ asset('js/app.js') }}"></script>
         <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-        <script  src="{{asset('js/purpose.core.js')}}"></script>
-        <!-- Page JS -->
+      <script  src="{{asset('js/purpose.core.js')}}"></script>
+      
         <script src="{{asset('libs/swiper/dist/js/swiper.min.js')}}"></script>
-        <!-- Purpose JS -->
+      
         <script src="{{asset('js/purpose.js')}}"></script>
-        <!-- Demo JS - remove it when starting your project -->
+       
         <script src="{{asset('js/demo.js')}}"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104437451-1"></script>
+       
         <script>
-            window.dataLayer = window.dataLayer || [];
+$(document).ready(function(){
 
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
+ $('#country_name').keyup(function(){ 
+        var query = $(this).val();
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+         $.ajax({
+          url:"{{ route('autocomplete.fetch') }}",
+          method:"POST",
+          data:{query:query, _token:_token},
+          success:function(data){
+           $('#countryList').fadeIn();  
+                    $('#countryList').html(data);
+          }
+         });
+        }
+    });
 
-            gtag('config', 'UA-104437451-1');
-        </script>
+    $(document).on('click', 'li', function(){  
+        $('#country_name').val($(this).text());  
+        $('#countryList').fadeOut();  
+    });  
+
+});
+</script>
     </body>
 
 

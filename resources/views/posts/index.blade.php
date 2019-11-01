@@ -331,12 +331,21 @@
                     <input class="form-control" type="text" name="title" id="title" required>
                   </div>
                 </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Post Slug</label>
+                    <input class="form-control" type="text" name="slug" id="title" required>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-control-label">Post Body</label>
                     <textarea class="form-control" type="text" id="body" name="body" style="max-height:100px" required></textarea>
+                  
+                  
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -350,6 +359,11 @@
                   </div>
                 </div>
               </div>
+              
+   
+
+
+              
               <div class="mt-4">
                 <button type="submit" class="btn btn-sm btn-primary">POST AN UPDATE</button>
                 <a href="recover.html" class="btn btn-sm btn-secondary">Clear all</a>

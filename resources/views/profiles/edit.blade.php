@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile-public.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:10 GMT -->
+<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:08 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8">
@@ -10,19 +10,19 @@
   <meta name="description" content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
   <meta name="author" content="Webpixels">
  <title>Kick.com</title>
- <!-- Favicon -->
- @laravelPWA
+  <!-- Favicon -->
+  @laravelPWA
   <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">
   <!-- Font Awesome 5 -->
-  <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
-        <link rel="stylesheet"  href="{{asset('libs/swiper/dist/css/swiper.min.css')}}">
-        <!-- Purpose CSS -->
-        <link rel="stylesheet" href="{{asset('css/purpose.css')}}" id="stylesheet">
-
+  <link rel="stylesheet" href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
+  <link type="text/css" href="{{asset('libs/select2/dist/css/select2.min.css')}}" rel="stylesheet">
+  <link type="text/css" href="{{asset('libs/flatpickr/dist/flatpickr.min.css')}}" rel="stylesheet">
+  <!-- Purpose CSS -->
+  <link rel="stylesheet" href="{{asset('css/purpose.css')}}" id="stylesheet">
 </head>
 
 <body>
-  <header class="header header-transparent" id="header-main">
+<header class="header header-transparent" id="header-main">
     <!-- Topbar -->
     <div id="navbar-top-main" class="navbar-top  navbar-dark bg-dark border-bottom">
                 <div class="container px-0">
@@ -69,7 +69,7 @@
                                             <span class="float-right badge badge-primary">4</span>
                                             <i class="far fa-envelope"></i>Messages
                                         </a>
-                                        <a class="dropdown-item" href="/settings/{{Auth::user()->username}}">
+                                        <a class="dropdown-item" href="#">
                                             <i class="far fa-cog"></i>Settings
                                         </a>
                                         <div class="dropdown-divider" role="presentation"></div>
@@ -119,7 +119,7 @@
                         </ul>
                         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                             <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg dropdown-menu-arrow p-0">
                                     <ul class="list-group list-group-flush">
                                         <li>
@@ -131,7 +131,7 @@
                                                     </figure>
                                                     <!-- Media body -->
                                                     <div class="media-body ml-3">
-                                                        <h6 class="mb-1">General posts</h6>
+                                                        <h6 class="mb-1">Documentation</h6>
                                                         <p class="mb-0">Awesome section examples for any scenario.</p>
                                                     </div>
                                                 </div>
@@ -146,7 +146,7 @@
                                                     </figure>
                                                     <!-- Media body -->
                                                     <div class="media-body ml-3">
-                                                        <h6 class="mb-1">From who i follow</h6>
+                                                        <h6 class="mb-1">Components</h6>
                                                         <p class="mb-0">Awesome section examples for any scenario.</p>
                                                     </div>
                                                 </div>
@@ -223,13 +223,12 @@
     <section class="header-account-page bg-primary d-flex align-items-end" data-offset-top="#header-main">
       <!-- Header container -->
       <div class="container pt-4 pt-lg-0">
-        <div class="row justify-content-end">
-          <div class=" col-lg-8">
+        <div class="row">
+          <div class=" col-lg-12">
             <!-- Salute + Small stats -->
             <div class="row align-items-center mb-4">
-              <div class="col-lg-8 col-xl-5 mb-4 mb-md-0">
-           
-                <span class="h2 mb-0 text-white d-block">{{$user->username}}&nbsp; 
+              <div class="col-md-5 mb-4 mb-md-0">
+                <span class="h2 mb-0 text-white d-block">Welcome,{{$user->username}}&nbsp; 
                 @if(($user->profile->description)== "verified")
             <img src="{{asset('img/appro.png')}}" style="height:25px;width:25px"/>
             @else
@@ -237,36 +236,35 @@
            
                 @endif
                 </span>
+                <span class="text-white"></span>
               </div>
               <div class="col-auto flex-fill d-none d-xl-block">
                 <ul class="list-inline row justify-content-lg-end mb-0">
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-success"></i>Followers
+                      <i class="bg-success"></i>Sales
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                     {{count($user->profile->followers)}}
-                    
+                      20.5%
+                      <small class="far fa-angle-up text-success"></small>
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-warning"></i>Following
+                      <i class="bg-warning"></i>Tasks
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                    {{count($user->following)}}
-                     
+                      5.7%
+                      <small class="far fa-angle-up text-warning"></small>
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-danger"></i>Article(s)
+                      <i class="bg-danger"></i>Sales
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                  
-                     {{count($user->posts) ?? 'N/A'}}
-                     </a>
-                
+                      -3.24%
+                      <small class="far fa-angle-down text-danger"></small>
                     </a>
                   </li>
                 </ul>
@@ -289,7 +287,7 @@
                     <a class="dropdown-item" href="account-profile-public.html">Public profile</a>
                     <span class="dropdown-header">Account</span>
                     <a class="dropdown-item" href="account-profile.html">Profile</a>
-                    <a class="dropdown-item" href="/settings/{{Auth::user()->id}}">Settings</a>
+                    <a class="dropdown-item" href="account-settings.html">Settings</a>
                     <a class="dropdown-item" href="account-billing.html">Billing</a>
                     <a class="dropdown-item" href="account-notifications.html">Notifications</a>
                   </div>
@@ -325,290 +323,218 @@
         </div>
       </div>
     </section>
-    <section class="pt-5 pt-lg-0">
+    <section class="slice">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-              <div class="card card-profile border-0">
-                <div class="card-profile-cover">
-                  <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" style="height:200px;width:350px; -webkit-filter: blur(5px);filter: blur(2px);"class="card-img-top">
-                </div>
-                <a href="#" class="mx-auto">
-                  <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" class="card-profile-image avatar rounded-circle shadow hover-shadow-lg">
-                </a>
-                <div class="card-body p-3 pt-0 text-center">
-                  <h5 class="mb-0">{{$user->name}}</h5>
-                  <span class="d-block text-muted mb-3">  </span>
-                  <div class="avatar-group hover-avatar-ungroup mb-3">
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder"  src="{{asset('img/theme/light/team-1-800x800.jpg')}}"  class="">
-                    </a>
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder" src="{{asset('img/theme/light/team-2-800x800.jpg')}}"  class="">
-                    </a>
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder" src="{{asset('img/theme/light/team-3-800x800.jpg')}}" class="">
-                    </a>
-                  </div>
-                  <div class="actions d-flex justify-content-between mt-3 pt-3 px-5 delimiter-top">
-                    <a href="#" class="action-item">
-                      <i class="far fa-envelope"></i>
-                    </a>
-                    <a href="#" class="action-item">
-                      <i class="far fa-user"></i>
-                    </a>
-                    <a href="#" class="action-item">
-                      <i class="far fa-chart-pie"></i>
-                    </a>
-                    <a href="#" class="action-item text-danger">
-                      <i class="far fa-trash-alt"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-8 mt-lg-5">
+        <div class="row row-grid">
+          <div class="col-lg-9 order-lg-2">
             <!-- Change avatar -->
-            <!-- <div class="card bg-gradient-warning hover-shadow-lg">
-              <div class="card-body py-3">
-                <div class="row row-grid align-items-center">
-                  <div class="col-lg-8">
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="text-white mb-0">Heather Wright</h5>
-                        <div>
-                          <form>
-                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
-                            <label for="file-1">
-                              <span class="text-white">Change avatar</span>
-                            </label>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
-                      <span class="btn-inner--icon"><i class="far fa-fire"></i></span>
-                      <span class="btn-inner--text">Upgrade to Pro</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- Timeline -->
-
            
-            <div class="card">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                  <a href="#" class="avatar rounded-circle shadow">
-                    <img alt="Image placeholder"  src="{{$user->profile->profileimage()}}" style="height:47px">
-                  </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">{{$user->username}} </h6>
-                    <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>3 hrs ago</small>
+            <!-- General information form -->
+            <div class="actions-toolbar py-2 mb-4">
+              <h5 class="mb-1">General information</h5>
+              <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p>
+            </div>
+            <form action="/profile/{{$user->id}}" method="post" enctype="multipart/form-data" >
+            @csrf
+            @method('PATCH')
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label"> Username</label>
+                    <input class="form-control"  type="text" value="{{$user->username}}" disabled>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Full name</label>
+                    <input class="form-control" type="text" value="{{$user->name}}" disabled>
                   </div>
                 </div>
               </div>
-      
-              <div class="card-body">
-              <p>{{$user->profile->bio ?? 'No bio Available'}}</p>
-               <!-- Badges -->
-                <div class="d-lg-flex mt-4">
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                      <div class="icon icon-sm bg-gradient-success text-white rounded-circle icon-shape">
-                        <i class="far fa-user-ninja"></i>
-                      </div>
-                    </div>
-                    <div class="pl-3">
-                      <span class="h6">10 Skills</span>
-                    </div>
-                  </a>
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                      <div class="icon icon-sm bg-gradient-warning text-white rounded-circle icon-shape">
-                        <i class="far fa-user-friends"></i>
-                      </div>
-                    </div>
-                    <div class="pl-3">
-                      <span class="h6">57 Endorsements</span>
-                    </div>
-                  </a>
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                   
-                    </div>
-                    <div class="pl-3">
-                @if(Auth::user()->id == $user->id)
-
-@else
-                <section id="app">
-                                     <follow-button user-id="{{$user->id}}"></follow-button>
-                                    </section>
-@endif
-                    </div>
-
-                    
-                  </a>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6 class="mb-4">
-                    <i class="far fa-file-signature mr-2"></i>Experience
-                  </h6>
-                  <!-- Timeline -->
-                  <div class="timeline timeline-one-side" data-timeline-content="axis">
-                    <div class="timeline-block">
-                      <span class="timeline-step border-primary"></span>
-                      <div class="timeline-content">
-                        <small class="text-muted font-weight-bold">2016 - present</small>
-                        <h6>Web Developer at Webpixels</h6>
-                        <p class="text-sm lh-160">When we strive to become better than we are everything around us becomes better too. This is a wider card with supporting text below.</p>
-                        <div>
-                          <span class="badge badge-soft-primary mr-2 mb-2">Bootstrap</span>
-                          <span class="badge badge-soft-primary mr-2 mb-2">UI/UX</span>
-                          <span class="badge badge-soft-primary mr-2 mb-2">Market Strategy</span>
-                        </div>
-                      </div>
-                    </div>
-                   
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Birthday</label>
+                    <input type="text" name="birthday" class="form-control" data-toggle="date" value="{{$user->profile->birthday}}">
                   </div>
                 </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6>
-                    <i class="far fa-user-n mr-2 mb-4"></i>Skills/Position
-                  </h6>
-                  <!-- Skil badges -->
-                  <div>
-                  <div class="row">
-                  
-
-                  <div class="pt-5 mt-5 delimiter-top">
-          
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Gender</label>
+                    <select name="gender" class="form-control" data-toggle="select">
+                      <option value="1">Female</option>
+                      <option value="2">Male</option>
+                      <option value="2">Rather not say</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Email</label>
+                    <input class="form-control" type="email" value="{{$user->email}}" disabled>
+                    <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage you notifications</a> in order to receive only the thing that matter to you most.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Phone</label>
+                    <input class="form-control" name="phone" type="text" value="{{$user->profile->phone}}">
+                  </div>
+                </div>
+              </div>
+              <!-- Address -->
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">Address details</h5>
+                  <p class="text-sm text-muted mb-0"></p>
+                </div>
                 <div class="row">
                   <div class="col">
-                   
+                    <div class="form-group">
+                      <label class="form-control-label">Address</label>
+                      <input class="form-control" name="address" type="text" value="{{$user->profile->address}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">City</label>
+                      <input class="form-control" name="city" type="text" value="{{$user->profile->city}}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Country</label>
+                      <select name="country" class="form-control" data-toggle="select" title="Country" data-live-search="true" data-live-search-placeholder="Country">
+                        <option>Romania</option>
+                        <option>United Stated</option>
+                        <option>France</option>
+                        <option>Greece</option>
+                        <option>Italy</option>
+                        <option>Norway</option>
+                        <option>Nigeria</option>
+                        <option>Niger</option>
+                        <option>Ghana</option>
+                        <option>Togo</option>
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Skills -->
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">Skills</h5>
+                  <p class="text-sm text-muted mb-0">Show off you skills using our tags input control.</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="sr-only">Skills</label>
+                      <input type="text" class="form-control" name="skills" data-toggle="tags" value="{{$user->profile->skills}}"/>
+                    </div>
                   </div>
                 </div>
               </div>
 
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">Upload Image</h5>
+                  <p class="text-sm text-muted mb-0">Use these fields to upload a good image of yourself.</p>
                 </div>
-                  </div>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6 class="mb-4">
-                    <i class="far fa-user-friends mr-2"></i>Followers
-                  </h6>
-                  <!-- Rating cards -->
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="{{asset('img/theme/light/team-1-800x800.jpg')}}" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">{{$user->name}}</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star"></i></span>
-                            </div>
-                          </div>
-                        </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label class="form-control-label">Cover Image</label>
+                        <button type="button" class="btn btn-sm btn-primary" >
+                    <input class="form-control" type="file" name="coverimage" id="coverimage">
+                    </button>
+                    <br><br>
                       </div>
                     </div>
-                  
-                  
+                  </div>
+                </div>
+              </div>
+              <!-- Description -->
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">About me</h5>
+                  <p class="text-sm text-muted mb-0">Use this field to let others know you better.</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label class="form-control-label">Bio</label>
+                        <textarea class="form-control" name="bio" placeholder="Tell us a few words about yourself" rows="3"></textarea>
+                        <small class="form-text text-muted mt-2">You can @mention other users and organizations to link to them.</small>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-            </div>
-
-
-            <!-- Post -->
-            @if(count($user->posts) == 0)
-            <div class="card mt-4">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
               
-               <div class="card-body">
-               <h3 >No Post Updates</h3>
-              
-               <img src="{{asset('img/nopost.png')}}" class="img-fluid rounded"/>
-               <!-- <button type="submit" class="btn btn-sm btn-primary"><a href="/posts/create">ADD NOW</a></button>-->
-               <a href="/posts/create"> <button type="submit" class="btn btn-sm btn-primary" style="border-radius:1000px">+</button></a>
-               
-               </div>
-                </div> 
+              <!-- Save changes buttons -->
+              <div class="pt-5 mt-5 delimiter-top text-center">
+                <button type="submit" class="btn btn-sm btn-primary">Save changes</button>
+                <button type="button" class="btn btn-link text-muted">Cancel</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-3 order-lg-1">
+            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
+              <div class="card">
+                <div class="card-header py-3">
+                  <span class="h6">Settings</span>
                 </div>
-                </div>
-          
-@else
-            @foreach($user->posts as $post)
-            <div class="card mt-4">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                  <a href="#" class="avatar rounded-circle shadow">
-                    <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" style="height:47px">
+                <div class="list-group list-group-sm list-group-flush">
+                  <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <div>
+                      <i class="far fa-user-circle mr-2"></i>
+                      <span>User Settings</span>
+                    </div>
+                    <div>
+                      <i class="far fa-angle-right"></i>
+                    </div>
                   </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">{{$post->user->username}}</h6>
-                    <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>{{date('M j, Y h:ia',strtotime($post->created_at))}}</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-              <h4 style="bold">{{$post->title}}</h4>
-               <p>{{$post->body}}</p>
-               <a href="" data-fancybox>
-                  <img alt="Image placeholder" src="/storage/{{$post->image}}" class="img-fluid rounded">
-                </a>
-                <div class="row align-items-center my-3 pb-3 border-bottom">
-                  <div class="col-sm-6">
-                    <div class="icon-actions">
-                      <a href="#" class="love active">
-                        <i class="far fa-heart"></i>
-                        <span class="text-muted">150 likes</span>
-                      </a>
-                      <a href="#">
-                        <i class="far fa-comment"></i>
-                        <span class="text-muted">20 comments</span>
-                      </a>
+                  <a href="/settings/{{$user->id}}" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <div>
+                      <i class="far fa-cog mr-2"></i>
+                      <span>Profile Settings</span>
                     </div>
-                  </div>
-                  <div class="col-sm-6 d-none d-sm-block">
-                 
-                     
+                    <div>
+                      <i class="far fa-angle-right"></i>
                     </div>
-
-                      
-                    <a href="/posts/create"> <button type="submit" class="btn btn-sm btn-primary" style="border-radius:1000px">+</button></a>
-              
-                     
-                  </div>
+                  </a>
+                  <a href="account-billing.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <div>
+                      <i class="far fa-credit-card mr-2"></i>
+                      <span>Billing</span>
+                    </div>
+                    <div>
+                      <i class="far fa-angle-right"></i>
+                    </div>
+                  </a>
+                  <a href="account-notifications.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <div>
+                      <i class="far fa-bell mr-2"></i>
+                      <span>Notifications</span>
+                    </div>
+                    <div>
+                      <i class="far fa-angle-right"></i>
+                    </div>
+                  </a>
                 </div>
-                <!-- Comments -->
-              
-
-              <!-- end comments -->
               </div>
             </div>
-@endforeach
-@endif
-
           </div>
         </div>
       </div>
@@ -664,22 +590,105 @@
       </div>
     </div>
   </footer>
+  <div class="customizer">
+    <a href="#modal-customizer" class="btn btn-warning btn-lg btn-icon-only rounded-circle text-white hover-scale-110 shadow-lg mr-3" data-toggle="modal">
+      <span class="btn-inner--icon"><i class="far fa-palette"></i></span>
+    </a>
+    <a href="../../docs/support.html" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 shadow-lg mr-3 d-none d-lg-inline-block">
+      <span class="btn-inner--icon"><i class="far fa-question"></i></span>
+    </a>
+    <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 shadow-lg d-none d-lg-inline-block">
+      <span class="btn-inner--icon"><i class="far fa-shopping-basket"></i></span>
+    </a>
+  </div>
+  <!-- Customizer modal -->
+  <div class="modal fade fixed-right" id="modal-customizer" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-vertical" role="document">
+      <form class="modal-content" id="form-customizer">
+        <div class="modal-body">
+          <!-- Close -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-placement="left" title="Close Customizer">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-center mx-auto mt-4 mb-5" style="width: 80px;">
+            <img alt="Image placeholder" src="../../assets/img/icons/essential/detailed/Click.svg" class="svg-inject img-fluid">
+          </div>
+          <h5 class="text-center mb-2">Choose (your) Purpose</h5>
+          <p class="text-center mb-4">
+            Customize your preview experience by selecting skin colors and modes.
+          </p>
+          <hr class="mb-4">
+          <!-- Skin color -->
+          <h6 class="mb-1">Skin color</h6>
+          <p class="small text-muted mb-3">
+            Set a new theme color palette.
+          </p>
+          <div class="btn-group-toggle row mx-0 mb-5" data-toggle="buttons">
+            <label class="btn btn-sm btn-neutral active col mb-2">
+              <input type="radio" name="skin" value="default" checked>
+              Default
+            </label>
+            <label class="btn btn-sm btn-neutral col-6 mb-2 mr-0">
+              <input type="radio" name="skin" value="blue">
+              Blue
+            </label>
+            <!-- <label class="btn btn-sm btn-neutral col mb-2">
+                        <input type="radio" name="skin" value="blue">
+                        Blue
+                    </label>
+                    <label class="btn btn-sm btn-neutral col-6 mb-2 mr-0">
+                        <input type="radio" name="skin" value="red">
+                        Red
+                    </label> -->
+          </div>
+          <!-- Skin mode -->
+          <h6 class="mb-1">Skin mode</h6>
+          <p class="small text-muted mb-3">
+            Set the theme's mode: light or dark.
+          </p>
+          <div class="btn-group-toggle row mx-0 mb-4" data-toggle="buttons">
+            <label class="btn btn-sm btn-neutral active flex-fill mb-2 mr-2">
+              <input type="radio" name="mode" value="light" checked>
+              <i class="far fa-sun mr-2"></i> Light
+            </label>
+            <label class="btn btn-sm btn-neutral flex-fill mb-2 mr-2">
+              <input type="radio" name="mode" value="dark">
+              <i class="far fa-moon mr-2"></i> Dark
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="submit" class="btn btn-block btn-primary mt-auto">
+            Preview
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+  <script src="{{asset('js/purpose.core.js')}}"></script>
+  <!-- Page JS -->
+  <script src="{{asset('libs/select2/dist/js/select2.min.js')}}"></script>
+  <script src="{{asset('libs/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js')}}"></script>
+  <script  src="{{asset('libs/flatpickr/dist/flatpickr.min.js')}}"></script>
+  <!-- Purpose JS -->
+  <script src="{{asset('js/purpose.js')}}"></script>
+  <!-- Demo JS - remove it when starting your project -->
+  <script src="{{asset('js/demo.js')}}"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104437451-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  <script src="{{ asset('js/app.js') }}"></script>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  <script  src="{{asset('js/purpose.core.js')}}"></script>
-        <!-- Page JS -->
-        <script src="{{asset('libs/swiper/dist/js/swiper.min.js')}}"></script>
-        <!-- Purpose JS -->
-        <script src="{{asset('js/purpose.js')}}"></script>
-        <!-- Demo JS - remove it when starting your project -->
-        <script src="{{asset('js/demo.js')}}"></script>
-     
-     
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-     
+    gtag('config', 'UA-104437451-1');
+  </script>
 </body>
 
 
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile-public.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:11 GMT -->
+<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:10 GMT -->
 </html>

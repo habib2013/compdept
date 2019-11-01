@@ -5,20 +5,21 @@
 <!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:11 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
   <meta name="author" content="Webpixels">
  <title>Kick.com</title>
  <!-- Favicon -->
+ @laravelPWA
   <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">
   <!-- Font Awesome 5 -->
   <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
         <link rel="stylesheet"  href="{{asset('libs/swiper/dist/css/swiper.min.css')}}">
         <!-- Purpose CSS -->
         <link rel="stylesheet" href="{{asset('css/purpose.css')}}" id="stylesheet">
-</head>
 
+</head>
 <body>
 <header class="header header-transparent" id="header-main">
     <!-- Topbar -->
@@ -67,7 +68,7 @@
                                             <span class="float-right badge badge-primary">4</span>
                                             <i class="far fa-envelope"></i>Messages
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="/settings/{{Auth::user()->id}}">
                                             <i class="far fa-cog"></i>Settings
                                         </a>
                                         <div class="dropdown-divider" role="presentation"></div>
@@ -117,7 +118,7 @@
                         </ul>
                         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                             <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg dropdown-menu-arrow p-0">
                                     <ul class="list-group list-group-flush">
                                         <li>
@@ -129,7 +130,7 @@
                                                     </figure>
                                                     <!-- Media body -->
                                                     <div class="media-body ml-3">
-                                                        <h6 class="mb-1">Documentation</h6>
+                                                        <h6 class="mb-1">General posts</h6>
                                                         <p class="mb-0">Awesome section examples for any scenario.</p>
                                                     </div>
                                                 </div>
@@ -144,7 +145,7 @@
                                                     </figure>
                                                     <!-- Media body -->
                                                     <div class="media-body ml-3">
-                                                        <h6 class="mb-1">Components</h6>
+                                                        <h6 class="mb-1">From who i follow</h6>
                                                         <p class="mb-0">Awesome section examples for any scenario.</p>
                                                     </div>
                                                 </div>
@@ -227,34 +228,34 @@
             <div class="row align-items-center mb-4">
               <div class="col-md-5 mb-4 mb-md-0">
                 <span class="h2 mb-0 text-white d-block">Morning, {{$user->username}}</span>
-                <span class="text-white">Have a nice day!</span>
+           
               </div>
               <div class="col-auto flex-fill d-none d-xl-block">
                 <ul class="list-inline row justify-content-lg-end mb-0">
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-success"></i>Sales
+                      <i class="bg-success"></i>Followers
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      20.5%
+                    {{count($user->profile->followers)}}
                       <small class="far fa-angle-up text-success"></small>
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-warning"></i>Tasks
+                      <i class="bg-warning"></i>Following
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      5.7%
+                    {{count($user->following)}}
                       <small class="far fa-angle-up text-warning"></small>
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-danger"></i>Sales
+                      <i class="bg-danger"></i>Article(s)
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      -3.24%
+                    {{count($user->posts) ?? 'N/A'}}
                       <small class="far fa-angle-down text-danger"></small>
                     </a>
                   </li>
@@ -318,7 +319,9 @@
       <div class="container">
         <div class="row row-grid">
           <div class="col-lg-9 order-lg-2">
-            <form>
+            <form action="/user/{{$user->id}}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PATCH')
               <!-- Password -->
               <div class="actions-toolbar py-2 mb-4">
                 <h5 class="mb-1">Change password</h5>
@@ -328,7 +331,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">Old password</label>
-                    <input class="form-control" type="password">
+                    <input class="form-control" type="password" name="password">
                   </div>
                 </div>
               </div>
@@ -336,13 +339,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">New password</label>
-                    <input class="form-control" type="password">
+                    <input class="form-control" type="password" name="newpassword">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">Confirm password</label>
-                    <input class="form-control" type="password">
+                    <input class="form-control" type="confirmpassword">
                   </div>
                 </div>
               </div>
@@ -458,7 +461,7 @@
                   <a href="account-profile.html" class="list-group-item list-group-item-action d-flex justify-content-between">
                     <div>
                       <i class="far fa-user-circle mr-2"></i>
-                      <span>Profile</span>
+                      <span>User Profile</span>
                     </div>
                     <div>
                       <i class="far fa-angle-right"></i>
@@ -467,7 +470,7 @@
                   <a href="account-settings.html" class="list-group-item list-group-item-action d-flex justify-content-between">
                     <div>
                       <i class="far fa-cog mr-2"></i>
-                      <span>Settings</span>
+                      <span>Profile Settings</span>
                     </div>
                     <div>
                       <i class="far fa-angle-right"></i>
@@ -549,27 +552,90 @@
       </div>
     </div>
   </footer>
-  
- 
-  <script  src="{{asset('js/purpose.core.js')}}"></script>
-        <!-- Page JS -->
-        <script src="{{asset('libs/swiper/dist/js/swiper.min.js')}}"></script>
-        <!-- Purpose JS -->
-        <script src="{{asset('js/purpose.js')}}"></script>
-        <!-- Demo JS - remove it when starting your project -->
-        <script src="{{asset('js/demo.js')}}"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104437451-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+  <div class="customizer">
+    <a href="#modal-customizer" class="btn btn-warning btn-lg btn-icon-only rounded-circle text-white hover-scale-110 shadow-lg mr-3" data-toggle="modal">
+      <span class="btn-inner--icon"><i class="far fa-palette"></i></span>
+    </a>
+    <a href="../../docs/support.html" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 shadow-lg mr-3 d-none d-lg-inline-block">
+      <span class="btn-inner--icon"><i class="far fa-question"></i></span>
+    </a>
+    <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 shadow-lg d-none d-lg-inline-block">
+      <span class="btn-inner--icon"><i class="far fa-shopping-basket"></i></span>
+    </a>
+  </div>
+  <!-- Customizer modal -->
+  <div class="modal fade fixed-right" id="modal-customizer" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-vertical" role="document">
+      <form class="modal-content" id="form-customizer">
+        <div class="modal-body">
+          <!-- Close -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-placement="left" title="Close Customizer">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-center mx-auto mt-4 mb-5" style="width: 80px;">
+            <img alt="Image placeholder" src="../../assets/img/icons/essential/detailed/Click.svg" class="svg-inject img-fluid">
+          </div>
+          <h5 class="text-center mb-2">Choose (your) Purpose</h5>
+          <p class="text-center mb-4">
+            Customize your preview experience by selecting skin colors and modes.
+          </p>
+          <hr class="mb-4">
+          <!-- Skin color -->
+          <h6 class="mb-1">Skin color</h6>
+          <p class="small text-muted mb-3">
+            Set a new theme color palette.
+          </p>
+          <div class="btn-group-toggle row mx-0 mb-5" data-toggle="buttons">
+            <label class="btn btn-sm btn-neutral active col mb-2">
+              <input type="radio" name="skin" value="default" checked>
+              Default
+            </label>
+            <label class="btn btn-sm btn-neutral col-6 mb-2 mr-0">
+              <input type="radio" name="skin" value="blue">
+              Blue
+            </label>
+            <!-- <label class="btn btn-sm btn-neutral col mb-2">
+                        <input type="radio" name="skin" value="blue">
+                        Blue
+                    </label>
+                    <label class="btn btn-sm btn-neutral col-6 mb-2 mr-0">
+                        <input type="radio" name="skin" value="red">
+                        Red
+                    </label> -->
+          </div>
+          <!-- Skin mode -->
+          <h6 class="mb-1">Skin mode</h6>
+          <p class="small text-muted mb-3">
+            Set the theme's mode: light or dark.
+          </p>
+          <div class="btn-group-toggle row mx-0 mb-4" data-toggle="buttons">
+            <label class="btn btn-sm btn-neutral active flex-fill mb-2 mr-2">
+              <input type="radio" name="mode" value="light" checked>
+              <i class="far fa-sun mr-2"></i> Light
+            </label>
+            <label class="btn btn-sm btn-neutral flex-fill mb-2 mr-2">
+              <input type="radio" name="mode" value="dark">
+              <i class="far fa-moon mr-2"></i> Dark
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="submit" class="btn btn-block btn-primary mt-auto">
+            Preview
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{{ asset('js/app.js') }}"></script>
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-104437451-1');
-  </script>
+<script  src="{{asset('js/purpose.core.js')}}"></script>
+      <!-- Page JS -->
+      <script src="{{asset('libs/swiper/dist/js/swiper.min.js')}}"></script>
+      <!-- Purpose JS -->
+      <script src="{{asset('js/purpose.js')}}"></script>
+      <!-- Demo JS - remove it when starting your project -->
+      <script src="{{asset('js/demo.js')}}"></script>
 </body>
 
 
