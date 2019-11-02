@@ -120,20 +120,26 @@
                     <div class="collapse navbar-collapse" id="navbar-main-collapse">
                         <ul class="navbar-nav align-items-lg-center">
                             <!-- Home - Overview  -->
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index-2.html">Overview</a>
-                            </li>
+                           
                             <!-- Pages menu -->
-                        
+                            <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                                <a class="nav-link " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us</a>
+                               
+                            </li>
                             <!-- Sections menu -->
                             <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sections</a>
-                               
+                                <a class="nav-link " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News and Articles</a>
+                             
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                                <a class="nav-link" href="/faqs" >FAQs</a>
+                             
                             </li>
                         </ul>
                         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                             <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our blog</a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg dropdown-menu-arrow p-0">
                                     <ul class="list-group list-group-flush">
                                         <li>
@@ -151,23 +157,24 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="docs/components/index.html" class="list-group-item list-group-item-action" role="button">
-                                                <div class="media d-flex align-items-center">
-                                                    <!-- SVG icon -->
-                                                    <figure style="width: 50px;">
-                                                        <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Mobile_UI.svg" class="svg-inject img-fluid" style="height: 50px;">
-                                                    </figure>
-                                                    <!-- Media body -->
-                                                    <div class="media-body ml-3">
-                                                        <h6 class="mb-1">Components</h6>
-                                                        <p class="mb-0">Awesome section examples for any scenario.</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
+                                    
                                     </ul>
-                                   
+                                    <div class="dropdown-menu-links rounded-bottom delimiter-top p-4">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="docs/getting-started/installation.html" class="dropdown-item">Installation</a>
+                                                <a href="docs/getting-started/file-structure.html" class="dropdown-item">File structure</a>
+                                                <a href="docs/getting-started/build-tools.html" class="dropdown-item">Build tools</a>
+                                                <a href="docs/getting-started/customization.html" class="dropdown-item">Customization</a>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <a href="docs/getting-started/plugins.html" class="dropdown-item">Using plugins</a>
+                                                <a href="docs/components/index.html" class="dropdown-item">Components</a>
+                                                <a href="docs/plugins/animate.html" class="dropdown-item">Plugins</a>
+                                                <a href="docs/support.html" class="dropdown-item">Support</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
                           
@@ -233,12 +240,12 @@
                                     <p class="lead text-white">A unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.</p>
                                     <div class="mt-5">
                                         <a href="#sct-page-examples" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me">
-                                            <span class="btn-inner--text">Page Examples</span>
+                                            <span class="btn-inner--text">Our Mission</span>
                                             <span class="btn-inner--icon"><i class="far fa-angle-right"></i></span>
                                         </a>
                                         <a href="#sct-features" class="btn btn-outline-white rounded-pill hover-translate-y-n3 btn-icon d-none d-xl-inline-block scroll-me">
                                             <span class="btn-inner--icon"><i class="far fa-file-alt"></i></span>
-                                            <span class="btn-inner--text">More Features</span>
+                                            <span class="btn-inner--text">Our Vision</span>
                                         </a>
                                     </div>
                                 </div>
@@ -253,12 +260,13 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-6">
                             <div class="card text-center hover-shadow-lg hover-translate-y-n10">
+                      
                                 <div class="px-4 py-5">
                                     <img alt="Image placeholder" src="{{asset('img/footballer.png')}}"  class="svg-inject" style="height: 70px;">
                                 </div>
                                 <div class="px-4 pb-5">
                                     <h5>Footballers</h5>
-                                
+                                    <p class="text-muted">Awesome collection of pages for any scenario.</p>
                                      </div>
                             </div>
                         </div>
@@ -332,8 +340,7 @@
                         <div class="col-lg-5 order-lg-2">
                             <div class=" pr-lg-4">
                                 <h5 class=" h3">Change the way you build wesites. Forever.</h5>
-                                <p class="lead mt-4 mb-5">With Purpose you get components and examples, including tons of variables that will help you customize this theme with ease.</p><a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/"
-                                    class="link link-underline-primary">Purchase now</a>
+                                <p class="lead mt-4 mb-5">With Purpose you get components and examples, including tons of variables that will help you customize this theme with ease.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 order-lg-1">
@@ -348,15 +355,15 @@
             <section class="slice slice-lg bg-section-secondary overflow-hidden">
                 <div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
                     <figure class="w-100">
-                        <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-2.svg" class="svg-inject" style="height: 1000px;">
+                        <img alt="Image placeholder" src="{{asset('img/svg/backgrounds/bg-2.svg')}}" class="svg-inject" style="height: 1000px;">
                     </figure>
                 </div>
                 <div class="container position-relative zindex-100">
                     <div class="mb-5 px-3 text-center">
                         <span class="badge badge-soft-success badge-pill badge-lg">
-                            Build tools
+                          Our Goal
                         </span>
-                        <h3 class=" mt-4">Built for awesomeness</h3>
+                        <h3 class=" mt-4">KIck.com is here for you!!</h3>
                         <div class="fluid-paragraph mt-3">
                             <p class="lead lh-180">We use the latest technologies and tools in order to create a better code that not only works great, but it is easy easy to work with too.</p>
                         </div>
@@ -370,7 +377,7 @@
                                             <i class="fab fa-html5"></i>
                                         </div>
                                         <div class="icon-text pl-4">
-                                            <h5 class="mb-0">Created with the latest technologies</h5>
+                                            <h5 class="mb-0">Our Mission</h5>
                                         </div>
                                     </div>
                                     <p class="mt-4 mb-0">We use the latest technologies and tools in order to create a better code that not only works great, but it is easy easy to work with too.</p>
@@ -476,7 +483,7 @@
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
                                                         <div>
-                                                            <img alt="Image placeholder" src="assets/img/theme/light/team-1-800x800.jpg" class="avatar  rounded-circle">
+                                                            <img alt="Image placeholder" src="{{asset('img/theme/light/team-1-800x800.jpg')}}" class="avatar  rounded-circle">
                                                         </div>
                                                         <div class="pl-3">
                                                             <h5 class="h6 mb-0">Heather Wright</h5>
@@ -484,13 +491,7 @@
                                                         </div>
                                                     </div>
                                                     <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                                                    <span class="static-rating static-rating-sm">
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                    </span>
+                                                 
                                                 </div>
                                             </div>
                                         </div>
@@ -499,7 +500,7 @@
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
                                                         <div>
-                                                            <img alt="Image placeholder" src="assets/img/theme/light/team-2-800x800.jpg" class="avatar  rounded-circle">
+                                                            <img alt="Image placeholder" src="{{asset('img/theme/light/team-2-800x800.jpg')}}" class="avatar  rounded-circle">
                                                         </div>
                                                         <div class="pl-3">
                                                             <h5 class="h6 mb-0">Monroe Parker</h5>
@@ -507,13 +508,7 @@
                                                         </div>
                                                     </div>
                                                     <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                                                    <span class="static-rating static-rating-sm">
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                    </span>
+                                         
                                                 </div>
                                             </div>
                                         </div>
@@ -522,7 +517,7 @@
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
                                                         <div>
-                                                            <img alt="Image placeholder" src="assets/img/theme/light/team-3-800x800.jpg" class="avatar  rounded-circle">
+                                                            <img alt="Image placeholder" src="{{asset('img/theme/light/team-3-800x800.jpg')}}" class="avatar  rounded-circle">
                                                         </div>
                                                         <div class="pl-3">
                                                             <h5 class="h6 mb-0">John Sullivan</h5>
@@ -530,13 +525,7 @@
                                                         </div>
                                                     </div>
                                                     <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                                                    <span class="static-rating static-rating-sm">
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                        <i class="star fas fa-star voted"></i>
-                                                    </span>
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -697,7 +686,7 @@
                     <div class="row pt-md">
                         <div class="col-lg-4 mb-5 mb-lg-0">
                             <a href="index-2.html">
-                                <img src="assets/img/brand/white.png" alt="Footer logo" style="height: 70px;">
+                                <img src="{{asset('img/brand/white.png')}}" alt="Footer logo" style="height: 70px;">
                             </a>
                             <p>Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.</p>
                         </div>

@@ -15,8 +15,15 @@ class ProfilesController extends Controller
                 }
 
         public function user($username){
+                     
+                            
                 $user = User::where('username','=',$username)->firstorFail();
-                return view('profiles.index')->withUser($user);
+               
+                $follows =(auth()->user())? auth()->user()->following->contains($user->id):false;
+               // dd($follows);
+
+              //  return view('profiles.index')->withUser($user,$follows);
+                return view('profiles.index',compact('user','follows'));
 
                // $user = User::where('username','=','$username')->first();
         // $user = User::findOrFail($user);

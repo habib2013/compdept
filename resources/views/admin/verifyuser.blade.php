@@ -1,25 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile-public.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:10 GMT -->
+<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/listing-users.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:13 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
-  <meta name="author" content="Webpixels">
- <title>Kick.com</title>
- <!-- Favicon -->
- @laravelPWA
-  <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">
-  <!-- Font Awesome 5 -->
-  <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
+        <meta name="author" content="Webpixels">
+        <title>Kick.com</title><!-- Favicon -->
+        <!-- Favicon -->
+        @laravelPWA
+        <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+        <!-- Font Awesome 5 -->
+        <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
         <link rel="stylesheet"  href="{{asset('libs/swiper/dist/css/swiper.min.css')}}">
         <!-- Purpose CSS -->
         <link rel="stylesheet" href="{{asset('css/purpose.css')}}" id="stylesheet">
-
-</head>
+    </head>
 
 <body>
   <header class="header header-transparent" id="header-main">
@@ -69,7 +69,7 @@
                                             <span class="float-right badge badge-primary">4</span>
                                             <i class="far fa-envelope"></i>Messages
                                         </a>
-                                        <a class="dropdown-item" href="/settings/{{Auth::user()->username}}">
+                                        <a class="dropdown-item" href="/settings/{{Auth::user()->id}}">
                                             <i class="far fa-cog"></i>Settings
                                         </a>
                                         <div class="dropdown-divider" role="presentation"></div>
@@ -162,111 +162,79 @@
                     </div>
                 </div>
             </nav>
+  
   </header>
   <!-- Omnisearch -->
-  <div id="omnisearch" class="omnisearch">
-    <div class="container">
-      <!-- Search form -->
-      <form class="omnisearch-form">
-        <div class="form-group">
-          <div class="input-group input-group-merge input-group-flush">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="far fa-search"></i></span>
-            </div>
-            <input type="text" class="form-control" placeholder="Type and hit enter ...">
-          </div>
-        </div>
-      </form>
-      <div class="omnisearch-suggestions">
-        <h6 class="heading">Search Suggestions</h6>
-        <div class="row">
-          <div class="col-sm-6">
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>macbook pro</span> in Laptops
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>iphone 8</span> in Smartphones
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>macbook pro</span> in Laptops
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>beats pro solo 3</span> in Headphones
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>smasung galaxy 10</span> in Phones
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  
+
+ <div id="omnisearch" class="omnisearch">
+            <div class="container">
+                <!-- Search form -->
+                <form class="omnisearch-form">
+                    <div class="form-group">
+                        <div class="input-group input-group-merge input-group-flush">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-search"></i></span>
+                            </div>
+                            <input type="text" name="country_name" id="country_name"  class="form-control" value="Type and hit enter ...">
+                        </div>
+                    </div>
+                </form>
+                <div class="omnisearch-suggestions">
+                    <h6 class="heading">Search Suggestions</h6>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        <div id="countryList">
     </div>
-  </div>
+
+                        </div>
+
+                    </div>
+                    {{ csrf_field() }}
+                </div>
+            </div>
+        </div>
+
   <div class="main-content">
     <!-- Header (account) -->
     <section class="header-account-page bg-primary d-flex align-items-end" data-offset-top="#header-main">
       <!-- Header container -->
       <div class="container pt-4 pt-lg-0">
-        <div class="row justify-content-end">
-          <div class=" col-lg-8">
+        <div class="row">
+          <div class=" col-lg-12">
             <!-- Salute + Small stats -->
             <div class="row align-items-center mb-4">
-              <div class="col-lg-8 col-xl-5 mb-4 mb-md-0">
-           
-                <span class="h2 mb-0 text-white d-block">{{$user->username}}&nbsp; 
-                @if(($user->profile->description)== "verified")
-            <img src="{{asset('img/appro.png')}}" style="height:25px;width:25px"/>
-            @else
-            <img src="{{asset('img/waiting.png')}}" style="height:25px;width:25px" title="Not a verified account"/>
-           
-                @endif
-                </span>
+              <div class="col-md-5 mb-4 mb-md-0">
+                <span class="h2 mb-0 text-white d-block">Morning, Heather</span>
+                <span class="text-white">Have a nice day!</span>
               </div>
               <div class="col-auto flex-fill d-none d-xl-block">
                 <ul class="list-inline row justify-content-lg-end mb-0">
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-success"></i>Followers
+                      <i class="bg-success"></i>Sales
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                     {{count($user->profile->followers)}}
-                    
+                      20.5%
+                      <small class="far fa-angle-up text-success"></small>
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-warning"></i>Following
+                      <i class="bg-warning"></i>Tasks
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                    {{count($user->following)}}
-                     
+                      5.7%
+                      <small class="far fa-angle-up text-warning"></small>
                     </a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
                     <span class="badge badge-dot text-white">
-                      <i class="bg-danger"></i>Article(s)
+                      <i class="bg-danger"></i>Sales
                     </span>
                     <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                  
-                     {{count($user->posts) ?? 'N/A'}}
-                     </a>
-                
+                      -3.24%
+                      <small class="far fa-angle-down text-danger"></small>
                     </a>
                   </li>
                 </ul>
@@ -289,7 +257,7 @@
                     <a class="dropdown-item" href="account-profile-public.html">Public profile</a>
                     <span class="dropdown-header">Account</span>
                     <a class="dropdown-item" href="account-profile.html">Profile</a>
-                    <a class="dropdown-item" href="/settings/{{Auth::user()->id}}">Settings</a>
+                    <a class="dropdown-item" href="account-settings.html">Settings</a>
                     <a class="dropdown-item" href="account-billing.html">Billing</a>
                     <a class="dropdown-item" href="account-notifications.html">Notifications</a>
                   </div>
@@ -325,293 +293,170 @@
         </div>
       </div>
     </section>
-    <section class="pt-5 pt-lg-0">
+    <section class="slice bg-section-secondary">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-              <div class="card card-profile border-0">
-                <div class="card-profile-cover">
-                  <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" style="height:200px;width:350px; -webkit-filter: blur(5px);filter: blur(2px);"class="card-img-top">
-                </div>
-                <a href="#" class="mx-auto">
-                  <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" class="card-profile-image avatar rounded-circle shadow hover-shadow-lg">
-                </a>
-                <div class="card-body p-3 pt-0 text-center">
-                  <h5 class="mb-0">{{$user->name}}</h5>
-                  <span class="d-block text-muted mb-3">  </span>
-                  <div class="avatar-group hover-avatar-ungroup mb-3">
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder"  src="{{asset('img/theme/light/team-1-800x800.jpg')}}"  class="">
-                    </a>
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder" src="{{asset('img/theme/light/team-2-800x800.jpg')}}"  class="">
-                    </a>
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder" src="{{asset('img/theme/light/team-3-800x800.jpg')}}" class="">
-                    </a>
-                  </div>
-                  <div class="actions d-flex justify-content-between mt-3 pt-3 px-5 delimiter-top">
-                    <a href="#" class="action-item">
-                      <i class="far fa-envelope"></i>
-                    </a>
-                    <a href="#" class="action-item">
-                      <i class="far fa-user"></i>
-                    </a>
-                    <a href="#" class="action-item">
-                      <i class="far fa-chart-pie"></i>
-                    </a>
-                    <a href="#" class="action-item text-danger">
-                      <i class="far fa-trash-alt"></i>
-                    </a>
-                  </div>
-                </div>
+        <!-- Section title -->
+        <div class="actions-toolbar py-2 mb-4">
+          <div class="actions-search" id="actions-search">
+            <div class="input-group input-group-merge input-group-flush">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-transparent"><i class="far fa-search"></i></span>
+              </div>
+              <input type="text" class="form-control form-control-flush" placeholder="Type and hit enter ...">
+              <div class="input-group-append">
+                <a href="#" class="input-group-text bg-transparent" data-action="search-close" data-target="#actions-search"><i class="far fa-times"></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-8 mt-lg-5">
-            <!-- Change avatar -->
-            <!-- <div class="card bg-gradient-warning hover-shadow-lg">
-              <div class="card-body py-3">
-                <div class="row row-grid align-items-center">
-                  <div class="col-lg-8">
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="text-white mb-0">Heather Wright</h5>
-                        <div>
-                          <form>
-                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
-                            <label for="file-1">
-                              <span class="text-white">Change avatar</span>
-                            </label>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
-                      <span class="btn-inner--icon"><i class="far fa-fire"></i></span>
-                      <span class="btn-inner--text">Upgrade to Pro</span>
+          <div class="row justify-content-between align-items-center">
+            <div class="col">
+              <h5 class="mb-1">Users</h5>
+              <p class="text-sm text-muted mb-0 d-none d-md-block">Add you credit card for faster checkout process.</p>
+            </div>
+            <div class="col text-right">
+              <div class="actions"><a href="#" class="action-item mr-2" data-action="search-open" data-target="#actions-search"><i class="far fa-search"></i></a>
+                <div class="dropdown mr-2">
+                  <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-filter"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">
+                      <i class="far fa-sort-amount-down"></i>Newest
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="far fa-sort-alpha-down"></i>From A-Z
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="far fa-sort-alpha-up"></i>From Z-A
                     </a>
                   </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- Timeline -->
-
-           
-            <div class="card">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                  <a href="#" class="avatar rounded-circle shadow">
-                    <img alt="Image placeholder"  src="{{$user->profile->profileimage()}}" style="height:47px">
+                </div><a href="#" class="action-item mr-2"><i class="far fa-sync"></i></a>
+                <div class="dropdown" data-toggle="dropdown">
+                  <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-ellipsis-h"></i>
                   </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">{{$user->username}} </h6>
-                    <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>3 hrs ago</small>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item">Refresh</a>
+                    <a href="#" class="dropdown-item">Manage Widgets</a>
+                    <a href="#" class="dropdown-item">Settings</a>
                   </div>
                 </div>
-              </div>
-      
-              <div class="card-body">
-              <p>{{$user->profile->bio ?? 'No bio Available'}}</p>
-               <!-- Badges -->
-                <div class="d-lg-flex mt-4">
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                      <div class="icon icon-sm bg-gradient-success text-white rounded-circle icon-shape">
-                        <i class="far fa-user-ninja"></i>
-                      </div>
-                    </div>
-                    <div class="pl-3">
-                      <span class="h6">10 Skills</span>
-                    </div>
-                  </a>
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                      <div class="icon icon-sm bg-gradient-warning text-white rounded-circle icon-shape">
-                        <i class="far fa-user-friends"></i>
-                      </div>
-                    </div>
-                    <div class="pl-3">
-                      <span class="h6">57 Endorsements</span>
-                    </div>
-                  </a>
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                   
-                    </div>
-                    <div class="pl-3">
-                @if(Auth::user()->id == $user->id)
-
-@else
-                <section id="app">
-                                     <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
-                                    </section>
-@endif
-                    </div>
-
-                    
-                  </a>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6 class="mb-4">
-                    <i class="far fa-file-signature mr-2"></i>Experience
-                  </h6>
-                  <!-- Timeline -->
-                  <div class="timeline timeline-one-side" data-timeline-content="axis">
-                    <div class="timeline-block">
-                      <span class="timeline-step border-primary"></span>
-                      <div class="timeline-content">
-                        <small class="text-muted font-weight-bold">2016 - present</small>
-                        <h6>Web Developer at Webpixels</h6>
-                        <p class="text-sm lh-160">When we strive to become better than we are everything around us becomes better too. This is a wider card with supporting text below.</p>
-                        <div>
-                          <span class="badge badge-soft-primary mr-2 mb-2">Bootstrap</span>
-                          <span class="badge badge-soft-primary mr-2 mb-2">UI/UX</span>
-                          <span class="badge badge-soft-primary mr-2 mb-2">Market Strategy</span>
-                        </div>
-                      </div>
-                    </div>
-                   
-                  </div>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6>
-                    <i class="far fa-user-n mr-2 mb-4"></i>Skills/Position
-                  </h6>
-                  <!-- Skil badges -->
-                  <div>
-                  <div class="row">
-                  
-
-                  <div class="pt-5 mt-5 delimiter-top">
-          
-                <div class="row">
-                  <div class="col">
-                   
-                  </div>
-                </div>
-              </div>
-
-                </div>
-                  </div>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6 class="mb-4">
-                    <i class="far fa-user-friends mr-2"></i>Followers
-                  </h6>
-                  <!-- Rating cards -->
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="{{asset('img/theme/light/team-1-800x800.jpg')}}" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">{{$user->fresh()->following}}</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  
-                  
-                </div>
-              </div>
-
-            </div>
-
-
-            <!-- Post -->
-            @if(count($user->posts) == 0)
-            <div class="card mt-4">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-              
-               <div class="card-body">
-               <h3 >No Post Updates</h3>
-              
-               <img src="{{asset('img/nopost.png')}}" class="img-fluid rounded"/>
-               <!-- <button type="submit" class="btn btn-sm btn-primary"><a href="/posts/create">ADD NOW</a></button>-->
-               <a href="/posts/create"> <button type="submit" class="btn btn-sm btn-primary" style="border-radius:1000px">+</button></a>
-               
-               </div>
-                </div> 
-                </div>
-                </div>
-          
-@else
-            @foreach($user->posts as $post)
-            <div class="card mt-4">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                  <a href="#" class="avatar rounded-circle shadow">
-                    <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" style="height:47px">
-                  </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">{{$post->user->username}}</h6>
-                    <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>{{date('M j, Y h:ia',strtotime($post->created_at))}}</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-              <h4 style="bold">{{$post->title}}</h4>
-               <p>{{$post->body}}</p>
-               <a href="" data-fancybox>
-                  <img alt="Image placeholder" src="/storage/{{$post->image}}" class="img-fluid rounded">
-                </a>
-                <div class="row align-items-center my-3 pb-3 border-bottom">
-                  <div class="col-sm-6">
-                    <div class="icon-actions">
-                      <a href="#" class="love active">
-                        <i class="far fa-heart"></i>
-                        <span class="text-muted">150 likes</span>
-                      </a>
-                      <a href="#">
-                        <i class="far fa-comment"></i>
-                        <span class="text-muted">20 comments</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 d-none d-sm-block">
-                 
-                     
-                    </div>
-
-                      
-                    <a href="/posts/create"> <button type="submit" class="btn btn-sm btn-primary" style="border-radius:1000px">+</button></a>
-              
-                     
-                  </div>
-                </div>
-                <!-- Comments -->
-              
-
-              <!-- end comments -->
               </div>
             </div>
-@endforeach
-@endif
-
           </div>
         </div>
+      
+    @foreach($userall as $user)
+        <div class="card mb-3">
+          <div class="card-body py-3">
+            <div class="row flex-column flex-md-row align-items-center">
+              <div class="col-auto">
+                <!-- Avatar -->
+                <a href="#" class="avatar rounded-circle">
+                  <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" style="height:47px" class="">
+                </a>
+              </div>
+              <div class="col ml-md-n2 text-center text-md-left">
+                <a href="#!" class="h6 text-sm mb-0">{{$user->name}}</a>
+                <p class="card-text text-sm text-muted mb-0">
+                 {{$user->profile->description}}
+                </p>
+                <div>
+                  <span class="text-success">●</span>
+                  <small>Online</small>
+                </div>
+              </div>
+              <hr class="divider divider-fade my-3 d-md-none" />
+              <div class="col-12 col-md-auto d-flex justify-content-between align-items-center">
+                <!-- Dropdown -->
+                <div class="dropdown ml-2">
+                  <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false">
+                    <i class="far fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item open-modal" data-toggle="modal" data-target="#modal-change-username">
+                      View profile <input type="hidden" value="{{$user->id}}"/>
+               
+                      
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Delete User
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                  Verify user
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+@endforeach
+
+      
+        <!-- Load more -->
+        <div class="mt-4 text-center">
+          <a href="#" class="btn btn-sm btn-neutral rounded-pill shadow hover-translate-y-n3">Load more ...</a>
+        </div>
       </div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="modal-change-username" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
+                        <div>
+                            <div class="icon icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                                <i class="far fa-user"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="mb-0">View Profile</h6>
+                        </div>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Username</label>
+                                <input class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Full name</label>
+                                <input class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Email</label>
+                                <input class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Change my username</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
     </section>
   </div>
   <footer class="footer p-0 footer-light bg-section-secondary" id="footer-main">
@@ -664,22 +509,51 @@
       </div>
     </div>
   </footer>
-
-  <script src="{{ asset('js/app.js') }}"></script>
-
-  <script  src="{{asset('js/purpose.core.js')}}"></script>
-        <!-- Page JS -->
+     <script  src="{{asset('js/purpose.core.js')}}"></script>
+     
         <script src="{{asset('libs/swiper/dist/js/swiper.min.js')}}"></script>
-        <!-- Purpose JS -->
+  
         <script src="{{asset('js/purpose.js')}}"></script>
-        <!-- Demo JS - remove it when starting your project -->
+
         <script src="{{asset('js/demo.js')}}"></script>
+        <script src="{{asset('js/crudadmin.js')}}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"></script>
+
      
-     
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script>
+$(document).ready(function(){
+
+ $('#country_name').keyup(function(){ 
+        var query = $(this).val();
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+         $.ajax({
+          url:"{{ route('autocomplete.fetch') }}",
+          method:"POST",
+          data:{query:query, _token:_token},
+          success:function(data){
+           $('#countryList').fadeIn();  
+                    $('#countryList').html(data);
+          }
+         });
+        }
+    });
+
+    $(document).on('click', 'li', function(){  
+        $('#country_name').val($(this).text());  
+        $('#countryList').fadeOut();  
+    });  
+
+});
+</script>
      
 </body>
 
 
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile-public.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:11 GMT -->
+
+
 </html>
