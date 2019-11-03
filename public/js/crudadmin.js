@@ -2,17 +2,30 @@ jQuery(document).ready(function($){
     ////----- Open the modal to CREATE a link -----////
     jQuery('#btn-add').click(function () {
         jQuery('#btn-save').val("add");
-        jQuery('#modalFormData').trigger("reset");
+        jQuery('#modal-change-username').trigger("reset");
         jQuery('#linkEditorModal').modal('show');
     });
  
     ////----- Open the modal to UPDATE a link -----////
+    // jQuery('body').on('click', '.open-modal', function () {
+    //     var link_id = $(this).val();
+    //     $.get('links/' + link_id, function (data) {
+    //         jQuery('#link_id').val(data.id);
+    //         jQuery('#link').val(data.url);
+    //         jQuery('#description').val(data.description);
+    //         jQuery('#btn-save').val("update");
+    //         jQuery('#linkEditorModal').modal('show');
+    //     })
+    // });
+
+
     jQuery('body').on('click', '.open-modal', function () {
-        var link_id = $(this).val();
-        $.get('links/' + link_id, function (data) {
-            jQuery('#link_id').val(data.id);
-            jQuery('#link').val(data.url);
-            jQuery('#description').val(data.description);
+        var user_id = $(this).val();
+        $.get('users/' + user_id, function (data) {
+            jQuery('#user_id').val(data.id);
+            jQuery('#username').val(data.username);
+            jQuery('#name').val(data.name);
+            jQuery('#email').val(data.email);
             jQuery('#btn-save').val("update");
             jQuery('#linkEditorModal').modal('show');
         })
@@ -27,16 +40,18 @@ jQuery(document).ready(function($){
         });
         e.preventDefault();
         var formData = {
-            url: jQuery('#link').val(),
-            description: jQuery('#description').val(),
+            name: jQuery('#name').val(),
+            username: jQuery('#username').val(),
+            email: jQuery('#email').val(),
+            password:'p1sqoessddsds'
         };
         var state = jQuery('#btn-save').val();
         var type = "POST";
-        var link_id = jQuery('#link_id').val();
-        var ajaxurl = 'links';
+        var user_id = jQuery('#user_id').val();
+        var ajaxurl = 'users';
         if (state == "update") {
             type = "PUT";
-            ajaxurl = 'links/' + link_id;
+            ajaxurl = 'users/' + user_id;
         }
         $.ajax({
             type: type,
@@ -44,7 +59,7 @@ jQuery(document).ready(function($){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                var link = '<tr id="link' + data.id + '"><td>' + data.id + '</td><td>' + data.url + '</td><td>' + data.description + '</td>';
+                var link = '<tr id="link' + data.id + '"><td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.usernmae + '</td>';
                 link += '<td><button class="btn btn-info open-modal" value="' + data.id + '">Edit</button>&nbsp;';
                 link += '<button class="btn btn-danger delete-link" value="' + data.id + '">Delete</button></td></tr>';
                 if (state == "add") {
@@ -71,10 +86,10 @@ jQuery(document).ready(function($){
         });
         $.ajax({
             type: "DELETE",
-            url: 'links/' + link_id,
+            url: 'users/' + user_id,
             success: function (data) {
                 console.log(data);
-                $("#link" + link_id).remove();
+                $("#user" + user_id).remove();
             },
             error: function (data) {
                 console.log('Error:', data);

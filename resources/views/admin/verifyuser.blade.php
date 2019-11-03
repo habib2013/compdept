@@ -11,6 +11,7 @@
         <meta name="description" content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
         <meta name="author" content="Webpixels">
         <title>Kick.com</title><!-- Favicon -->
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <!-- Favicon -->
         @laravelPWA
         <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
@@ -336,7 +337,9 @@
                     <i class="far fa-ellipsis-h"></i>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item">Refresh</a>
+                    <a href="#" class="dropdown-item">
+                    <button id="btn-add" name="btn-add" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-change-username" >Add New User</button>
+                    </a>
                     <a href="#" class="dropdown-item">Manage Widgets</a>
                     <a href="#" class="dropdown-item">Settings</a>
                   </div>
@@ -374,16 +377,21 @@
                     <i class="far fa-ellipsis-v"></i>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item open-modal" data-toggle="modal" data-target="#modal-change-username">
-                      View profile <input type="hidden" value="{{$user->id}}"/>
+                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-change-username">
+                    <button class="btn btn-primary open-modal" value="{{$user->id}}">View User
+                            </button>   
+                       
                
                       
                     </a>
                     <a href="#!" class="dropdown-item">
-                      Delete User
+                    <button class="btn btn-warning" >View Profile
+                            </button>
                     </a>
                     <a href="#!" class="dropdown-item">
-                  Verify user
+                    <button class="btn btn-info" >Verify user
+                            </button>
+                
                     </a>
 
                   </div>
@@ -406,7 +414,8 @@
 <!-- Modal -->
 <div class="modal fade" id="modal-change-username" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form>
+        <form id="modalFormData" name="modalFormData" class="form-horizontal" novalidate="">
+        @csrf
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
@@ -416,7 +425,7 @@
                             </div>
                         </div>
                         <div>
-                            <h6 class="mb-0">View Profile</h6>
+                            <h6 class="mb-0">View User</h6>
                         </div>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -428,28 +437,29 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label">Username</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" name="username" id="username">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label">Full name</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" name="name" id="name">
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-control-label">Email</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" name="email" id="email">
                             </div>
                         </div>
                     </div>
                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Change my username</button>
-                </div>
+                    <button type="button" class="btn btn-sm btn-secondary"  id="btn-save" value="add">Update User</button>
+                    <input type="hidden" id="user_id" name="user_id" value="0">
+                  </div>
             </div>
         </form>
     </div>

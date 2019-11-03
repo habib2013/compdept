@@ -1,5 +1,5 @@
 <?php
-use App\Link;
+use App\User;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -26,30 +26,38 @@ Route::get('/testmodal', function () {
 
 
 //--CREATE a link--//
-Route::post('/links', function (Request $request) {
-    $link = Link::create($request->all());
-    return Response::json($link);
+Route::post('/users', function (Request $request) {
+    $user = User::create($request->all());
+    return Response::json($user);
 });
  
-//--GET LINK TO EDIT--//
-Route::get('/links/{link_id?}', function ($link_id) {
-    $link = Link::find($link_id);
-    return Response::json($link);
+
+Route::get('/users/{user_id?}', function ($user_id) {
+    $user = User::find($user_id);
+    return Response::json($user);
 });
+
+//--GET LINK TO EDIT--//
+// Route::get('/links/{link_id?}', function ($link_id) {
+//     $link = Link::find($link_id);
+//     return Response::json($link);
+// });
  
 //--UPDATE a link--//
-Route::put('/links/{link_id?}', function (Request $request, $link_id) {
-    $link = Link::find($link_id);
-    $link->url = $request->url;
-    $link->description = $request->description;
-    $link->save();
-    return Response::json($link);
+Route::put('/users/{user_id?}', function (Request $request,User $user_id) {
+    $user = User::find($user_id);
+    $user->name = $request->name;
+    $user->username = $request->username;
+    $user->email = $request->email;
+  
+    $user->save();
+    return Response::json($user);
 });
  
 //--DELETE a link--//
-Route::delete('/links/{link_id?}', function ($link_id) {
-    $link = Link::destroy($link_id);
-    return Response::json($link);
+Route::delete('/users/{user_id?}', function (User $user_id) {
+    $user = User::destroy($user_id);
+    return Response::json($user);
 });
 
 
