@@ -1,158 +1,166 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/authentication/basic-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:06 GMT -->
+  
+<!-- Mirrored from dashkit.goodthemes.co/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 13:14:12 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-<meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
-        <meta name="author" content="Webpixels">
-       <title>Kick.com</title><!-- Favicon -->
-        <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
-        <!-- Font Awesome 5 -->
-        <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
-        <link rel="stylesheet"  href="{{asset('libs/swiper/dist/css/swiper.min.css')}}">
-        <!-- Purpose CSS -->
-        <link rel="stylesheet" href="{{asset('css/purpose.css')}}" id="stylesheet">
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
 
-<body>
- 
-  <!-- Omnisearch -->
- 
-  </div>
-  <div class="main-content" style="margin-top:-130px;margin-bottom:-200px;height:100vh">
-    <section class="slice slice-lg min-vh-100 d-flex align-items-center bg-section-secondary">
-      <!-- SVG background -->
-      <div class="bg-absolute-cover bg-size--contain d-none d-lg-block">
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/fonts/feather/feather.min.css">
+    <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/libs/quill/dist/quill.core.css">
+    <link rel="stylesheet" href="assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="assets/libs/highlight.js/styles/vs2015.css">
+
+    <!-- Map -->
+    <link href='../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Theme CSS -->
+      
+    <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
+
+    <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
+
+    <style>body { display: none; }</style>
     
-      </div>
-      <div class="container py-5 px-md-0 d-flex align-items-center">
-        <div class="w-100">
-          <div class="row row-grid justify-content-center justify-content-lg-between align-items-center">
-            <div class="col-sm-8 col-lg-6 col-xl-5 order-lg-2">
-              <div class="card shadow zindex-100 mb-0">
-                <div class="card-body px-md-5 py-5">
-                  <div class="mb-5">
-                    <h6 class="h3">Login</h6>
-                    <p class="text-muted mb-0">Sign in to your account to continue.</p>
-                  </div>
-                  <span class="clearfix"></span>
-                  <form role="form" method="POST" action="{{ route('login') }}">
-                  @csrf
-                    <div class="form-group">
-                      <label class="form-control-label">Email address</label>
-                      <div class="input-group input-group-merge">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="far fa-user"></i></span>
-                        </div>
-                    
-                        <input id="input-email" type="email" placeholder="name@example.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+    <title>Dashkit</title>
+  </head>
+  <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
+  <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
+
+          <!-- Image -->
+          <div class="text-center">
+            <img src="assets/img/illustrations/happiness.svg" alt="..." class="img-fluid">
+          </div>
+
+        </div>
+        <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
+          
+          <!-- Heading -->
+          <h1 class="display-4 text-center mb-3">
+            Sign in
+          </h1>
+          
+          <!-- Subheading -->
+          <p class="text-muted text-center mb-5">
+            Free access to our dashboard.
+          </p>
+          
+          <!-- Form -->
+          <form role="form" method="POST" action="{{ route('login') }}">
+                    @csrf
+            <!-- Email address -->
+            <div class="form-group">
+
+              <!-- Label -->
+              <label>Email Address</label>
+
+              <!-- Input -->
+              <input  id="input-email" type="email" placeholder="name@example.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
 
-                        @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                      </div>
-                    </div>
-                    <div class="form-group mb-4">
-                      <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                          <label class="form-control-label">Password</label>
-                        </div>
-                        <div class="mb-2">
-                        @if (Route::has('password.request'))
-                          <a  href="{{ route('password.request') }}" class="small text-muted text-underline--dashed border-primary">Lost password?</a>
-                          @endif
-                        </div>
+@error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+            </div>
 
+            <!-- Password -->
+            <div class="form-group">
 
-                      </div>
-                      <div class="input-group input-group-merge">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="far fa-key"></i></span>
-                        </div>
-         
-                       <input placeholder="Password" id="input-password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-  
-                        <div class="input-group-append">
-                          <span class="input-group-text">
-                            <i class="far fa-eye"></i>
-                          </span>
-                        </div>
-                        @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+              <div class="row">
+                <div class="col">
+                      
+                  <!-- Label -->
+                  <label>Password</label>
 
-                      </div>
-                      <br>  
-                      <div class="input-group input-group-merge">
-                 
-         
-                        <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-
-                      </div>
-
-                    </div>
-                    <div class="mt-4">
-                    <button type="submit" class="btn btn-sm btn-primary btn-icon rounded-pill">
-                        <span class="btn-inner--text">Sign in</span>
-                        <span class="btn-inner--icon"><i class="far fa-long-arrow-alt-right"></i></span>
-                      </button></div>
-                  </form>
                 </div>
-                <div class="card-footer px-md-5"><small>Not registered?</small>
-                  <a href="/register" class="small font-weight-bold">Create account</a></div>
+                <div class="col-auto">
+                  
+                  <!-- Help text -->
+                  @if (Route::has('password.request'))
+                                 
+                  <a href="{{ route('password.request') }}" class="form-text small text-muted">
+                    Forgot password?
+                  </a>
+                  @endif
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Input group -->
+              <div class="input-group input-group-merge">
+
+                <!-- Input -->
+                <input placeholder="Password" id="input-password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                <!-- Icon -->
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fe fe-eye"></i>
+                  </span>
+                </div>
+
               </div>
             </div>
-            <div class="col-lg-5 order-lg-1 d-none d-lg-block">
-              <blockquote>
-                <h3 class="h2 mb-4">Keep your face always toward the sunshine - and shadows will fall behind you.</h3>
-                <footer>— <cite class="text-lg">John Sulivan</cite></footer>
-              </blockquote>
+
+            <div class="form-check" style="float:right">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <p class="form-text small text-muted">
+                   Remember me
+</p>
+                                </div>
+            <!-- Submit -->
+            <button type="submit" class="btn btn-lg btn-block btn-primary mb-3">
+              Sign in
+            </button>
+
+            <!-- Link -->
+            <div class="text-center">
+              <small class="text-muted text-center">
+                Don't have an account yet? <a href="/register">Sign up</a>.
+              </small>
             </div>
-          </div>
+            
+          </form>
+
         </div>
-      </div>
-    </section>
-  </div>
- 
-  <!-- Customizer modal -->
- 
-  <script  src="{{asset('js/purpose.core.js')}}"></script>
-        <!-- Page JS -->
-        <script src="{{asset('libs/swiper/dist/js/swiper.min.js')}}"></script>
-        <!-- Purpose JS -->
-        <script src="{{asset('js/purpose.js')}}"></script>
-        <!-- Demo JS - remove it when starting your project -->
-        <script src="{{asset('js/demo.js')}}"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104437451-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
 
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/%40shopify/draggable/lib/es5/draggable.bundle.legacy.js"></script>
+    <script src="assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="assets/libs/highlightjs/highlight.pack.min.js"></script>
+    <script src="assets/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="assets/libs/list.js/dist/list.min.js"></script>
+    <script src="assets/libs/quill/dist/quill.min.js"></script>
+    <script src="assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="assets/libs/chart.js/Chart.extension.min.js"></script>
 
-            gtag('config', 'UA-104437451-1');
-        </script>
-</body>
+    <!-- Map -->
+    <script src='../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
+    <!-- Theme JS -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
 
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/authentication/basic-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:06 GMT -->
+<!-- Mirrored from dashkit.goodthemes.co/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 13:14:12 GMT -->
 </html>

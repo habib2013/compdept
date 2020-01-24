@@ -1,685 +1,3303 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile-public.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:10 GMT -->
+  
+<!-- Mirrored from dashkit.goodthemes.co/profile-posts.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 13:14:08 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
-  <meta name="author" content="Webpixels">
- <title>Kick.com</title>
- <!-- Favicon -->
- @laravelPWA
-  <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png">
-  <!-- Font Awesome 5 -->
-  <link rel="stylesheet"  href="{{asset('libs/@fortawesome/fontawesome-pro/css/all.min.css')}}"><!-- Page CSS -->
-        <link rel="stylesheet"  href="{{asset('libs/swiper/dist/css/swiper.min.css')}}">
-        <!-- Purpose CSS -->
-        <link rel="stylesheet" href="{{asset('css/purpose.css')}}" id="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/fonts/feather/feather.min.css">
+    <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/libs/quill/dist/quill.core.css">
+    <link rel="stylesheet" href="assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="assets/libs/highlight.js/styles/vs2015.css">
 
-</head>
+    <!-- Map -->
+    <link href='../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 
-<body>
-  <header class="header header-transparent" id="header-main">
-    <!-- Topbar -->
-    <div id="navbar-top-main" class="navbar-top  navbar-dark bg-dark border-bottom">
-                <div class="container px-0">
-                    <div class="navbar-nav align-items-center">
-                        <div class="d-none d-lg-inline-block">
-                    
-                        </div>
-                   
-                        <div class="ml-auto">
-                            <ul class="nav">
-                                <li class="nav-item">
-                                    
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link" data-action="omnisearch-open" data-target="#omnisearch"><i class="far fa-search"></i></a>
-                                </li>
-                               
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link pr-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="far fa-user-circle"></i>
-                                    </a>
+    <!-- Theme CSS -->
+      
+    <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
 
-                                    @guest
-                             
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                        <h6 class="dropdown-header">User menu</h6>
-                                        <a class="dropdown-item" href="/login">
-                                            <i class="far fa-user"></i>Login
-                                        </a>
-                                        @if (Route::has('register'))
-                                        <a class="dropdown-item" href="/register">
-                                            <i class="far fa-user"></i>Register
-                                        </a>
-                                        @endif
-                                    </div>
-                                @else
-                                   
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                        <h6 class="dropdown-header">{{ Auth::user()->username}}</h6>
-                                        <a class="dropdown-item" href="/profile/{{Auth::user()->id}}">
-                                            <i class="far fa-user"></i>Account
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <span class="float-right badge badge-primary">4</span>
-                                            <i class="far fa-envelope"></i>Messages
-                                        </a>
-                                        <a class="dropdown-item" href="/settings/{{Auth::user()->username}}">
-                                            <i class="far fa-cog"></i>Settings
-                                        </a>
-                                        <div class="dropdown-divider" role="presentation"></div>
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                   
-                                      
-                                            <i class="far fa-sign-out-alt"></i>Sign out
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                    </div>
-                                    @endguest
+    <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <style>body { display: none; }</style>
+    
+
+    <title>Dashkit</title>
+  </head>
+  <body id="app">
+
+    <!-- MODALS
+    ================================================== -->
+    <!-- Modal: Demo -->
+    <div class="modal fade fixed-right" id="modalDemo" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-vertical" role="document">
+        <form class="modal-content" id="demoForm">
+          <div class="modal-body">
+        
+            <!-- Close -->
+            <a class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+
+            <div class="text-center">
+              <img src="assets/img/illustrations/designer-life.svg" alt="..." class="img-fluid mb-3">
             </div>
-    <!-- Main navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
-                <div class="container px-lg-0">
-                    <!-- Logo -->
-                    <a class="navbar-brand mr-lg-5" href="index-2.html">
-                        <img alt="Image placeholder" src="{{asset('img/brand/white.png')}}" id="navbar-logo" style="height: 50px;">
-                    </a>
-                    <!-- Navbar collapse trigger -->
-                    <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!-- Navbar nav -->
-                    <div class="collapse navbar-collapse" id="navbar-main-collapse">
-                        <ul class="navbar-nav align-items-lg-center">
-                            <!-- Home - Overview  -->
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index-2.html">Overview</a>
-                            </li>
-                            <!-- Pages menu -->
-                        
-                            <!-- Sections menu -->
-                            <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sections</a>
-                               
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                            <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg dropdown-menu-arrow p-0">
-                                    <ul class="list-group list-group-flush">
-                                        <li>
-                                            <a href="docs/index.html" class="list-group-item list-group-item-action" role="button">
-                                                <div class="media d-flex align-items-center">
-                                                    <!-- SVG icon -->
-                                                    <figure style="width: 50px;">
-                                                        <img alt="Image placeholder" src="{{asset('img/icons/essential/detailed/DOC_File.svg')}}"  class="svg-inject img-fluid" style="height: 50px;">
-                                                    </figure>
-                                                    <!-- Media body -->
-                                                    <div class="media-body ml-3">
-                                                        <h6 class="mb-1">General posts</h6>
-                                                        <p class="mb-0">Awesome section examples for any scenario.</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="docs/components/index.html" class="list-group-item list-group-item-action" role="button">
-                                                <div class="media d-flex align-items-center">
-                                                    <!-- SVG icon -->
-                                                    <figure style="width: 50px;">
-                                                        <img alt="Image placeholder" src="{{asset('img/icons/essential/detailed/Mobile_UI.svg')}}"  class="svg-inject img-fluid" style="height: 50px;">
-                                                    </figure>
-                                                    <!-- Media body -->
-                                                    <div class="media-body ml-3">
-                                                        <h6 class="mb-1">From who i follow</h6>
-                                                        <p class="mb-0">Awesome section examples for any scenario.</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                   
-                                </div>
-                            </li>
-                          
-                         
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-  </header>
-  <!-- Omnisearch -->
-  <div id="omnisearch" class="omnisearch">
-    <div class="container">
-      <!-- Search form -->
-      <form class="omnisearch-form">
-        <div class="form-group">
-          <div class="input-group input-group-merge input-group-flush">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="far fa-search"></i></span>
+
+            <h2 class="text-center mb-2">
+              Make CS_dept your oown
+            </h2>
+
+            <p class="text-center mb-4">
+              Set preferences that will be cookied for your live preview demonstration.
+            </p>
+
+            <hr class="mb-4">
+
+            <h4 class="mb-1">
+              Color Scheme
+            </h4>
+
+            <p class="small text-muted mb-3">
+              Overall light or dark presentation.
+            </p>
+
+            <div class="btn-group-toggle d-flex mb-4" data-toggle="buttons">
+              <label class="btn btn-white active col">
+                <input type="radio" name="colorScheme" id="colorSchemeLight" value="light" checked> <i class="fe fe-sun mr-2"></i> Light Mode
+              </label>
+              <label class="btn btn-white col ml-2">
+                <input type="radio" name="colorScheme" id="colorSchemeDark" value="dark"> <i class="fe fe-moon mr-2"></i> Dark Mode
+              </label>
             </div>
-            <input type="text" class="form-control" placeholder="Type and hit enter ...">
+
+            <h4 class="mb-1">
+              Navigation Position
+            </h4>
+
+            <p class="small text-muted mb-3">
+              Select the primary navigation paradigm for your app.
+            </p>
+
+            <div class="btn-group-toggle d-flex mb-4" data-toggle="buttons">
+              <label class="btn btn-white active col">
+                <input type="radio" name="navPosition" id="navPositionSidenav" value="sidenav" checked> Sidenav
+              </label>
+              <label class="btn btn-white col ml-2">
+                <input type="radio" name="navPosition" id="navPositionTopnav" value="topnav"> Topnav
+              </label>
+              <label class="btn btn-white col ml-2">
+                <input type="radio" name="navPosition" id="navPositionCombo" value="combo"> Combo
+              </label>
+            </div>
+
+            <div class="collapse show" id="sidebarSizeContainer">
+
+              <h4 class="mb-1">
+                Sidenav Sizing <span class="badge badge-soft-primary">New</span>
+              </h4>
+
+              <p class="small text-muted mb-3">
+                Standard navigation sizing or minified icons with dropdowns.
+              </p>
+
+              <div class="btn-group-toggle d-flex mb-4" data-toggle="buttons">
+                <label class="btn btn-white active col">
+                  <input type="radio" name="sidebarSize" id="sidebarSizeBase" value="base" checked> Fullsize
+                </label>
+                <label class="btn btn-white col ml-2">
+                  <input type="radio" name="sidebarSize" id="sidebarSizeSmall" value="small"> Icons
+                </label>
+              </div>
+
+            </div>
+
+            <h4 class="mb-1">
+              Navigation Color <span class="badge badge-soft-primary">New</span>
+            </h4>
+
+            <p class="small text-muted mb-3">
+              Usually dictated by the color scheme, but can be overriden.  
+            </p>
+
+            <div class="btn-group-toggle d-flex" data-toggle="buttons">
+              <label class="btn btn-white active col">
+                <input type="radio" name="navColor" id="navColorDefault" value="default" checked> Default
+              </label>
+              <label class="btn btn-white col ml-2">
+                <input type="radio" name="navColor" id="navColorInverted" value="inverted"> Inverted
+              </label>
+              <label class="btn btn-white col ml-2">
+                <input type="radio" name="navColor" id="navColorVibrant" value="vibrant"> Vibrant
+              </label>
+            </div>
+      
           </div>
-        </div>
-      </form>
-      <div class="omnisearch-suggestions">
-        <h6 class="heading">Search Suggestions</h6>
-        <div class="row">
-          <div class="col-sm-6">
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>macbook pro</span> in Laptops
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>iphone 8</span> in Smartphones
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>macbook pro</span> in Laptops
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>beats pro solo 3</span> in Headphones
-                </a>
-              </li>
-              <li>
-                <a class="list-link" href="#">
-                  <i class="far fa-search"></i>
-                  <span>smasung galaxy 10</span> in Phones
-                </a>
-              </li>
-            </ul>
+          <div class="modal-footer border-0">
+        
+            <button type="submit" class="btn btn-block btn-primary mt-auto">
+              Preview
+            </button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Members -->
+    <div class="modal fade" id="modalMembers" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-card card" data-toggle="lists" data-options='{"valueNames": ["name"]}'>
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col">
+
+                  <!-- Title -->
+                  <h4 class="card-header-title" id="exampleModalCenterTitle">
+                    Add a member
+                  </h4>
+              
+                </div>
+                <div class="col-auto">
+
+                  <!-- Close -->
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              
+                </div>
+              </div> <!-- / .row -->
+            </div>
+            <div class="card-header">
+          
+              <!-- Form -->
+              <form>
+                <div class="input-group input-group-flush input-group-merge">
+                  <input type="search" class="form-control form-control-prepended search" placeholder="Search">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <span class="fe fe-search"></span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <div class="card-body">
+
+              <!-- List group -->
+              <ul class="list-group list-group-flush list my-n3">
+                <li class="list-group-item px-0">
+              
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <a href="profile-posts.html" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="mb-1 name">
+                        <a href="profile-posts.html">Miyah Myles</a>
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small mb-0">
+                        <span class="text-success">●</span> Online
+                      </p>
+                  
+                    </div>
+                    <div class="col-auto">
+                  
+                      <!-- Button -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                </li>
+                <li class="list-group-item px-0">
+              
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <a href="profile-posts.html" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-6.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="mb-1 name">
+                        <a href="profile-posts.html">Ryu Duke</a>
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small mb-0">
+                        <span class="text-success">●</span> Online
+                      </p>
+                  
+                    </div>
+                    <div class="col-auto">
+                  
+                      <!-- Button -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                </li>
+                <li class="list-group-item px-0">
+              
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <a href="profile-posts.html" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-7.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="mb-1 name">
+                        <a href="profile-posts.html">Glen Rouse</a>
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small mb-0">
+                        <span class="text-warning">●</span> Busy
+                      </p>
+                  
+                    </div>
+                    <div class="col-auto">
+                  
+                      <!-- Button -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                </li>
+                <li class="list-group-item px-0">
+              
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <a href="profile-posts.html" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-8.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="mb-1 name">
+                        <a href="profile-posts.html">Grace Gross</a>
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small mb-0">
+                        <span class="text-danger">●</span> Offline
+                      </p>
+                  
+                    </div>
+                    <div class="col-auto">
+                  
+                      <!-- Button -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                </li>
+              </ul>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="main-content">
-    <!-- Header (account) -->
-    <section class="header-account-page bg-primary d-flex align-items-end" data-offset-top="#header-main">
-      <!-- Header container -->
-      <div class="container pt-4 pt-lg-0">
-        <div class="row justify-content-end">
-          <div class=" col-lg-8">
-            <!-- Salute + Small stats -->
-            <div class="row align-items-center mb-4">
-              <div class="col-lg-8 col-xl-5 mb-4 mb-md-0">
-           
-                <span class="h2 mb-0 text-white d-block">{{$user->username}}&nbsp; 
-                @if(($user->profile->description)== "verified")
-            <img src="{{asset('img/appro.png')}}" style="height:25px;width:25px"/>
-            @else
-            <img src="{{asset('img/waiting.png')}}" style="height:25px;width:25px" title="Not a verified account"/>
-           
-                @endif
-                </span>
+
+    <!-- Modal: Search -->
+    <div class="modal fade" id="sidebarModalSearch" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-vertical" role="document">
+        <div class="modal-content">
+          <div class="modal-body" data-toggle="lists" data-options='{"valueNames": ["name"]}'>
+     
+            <!-- Form -->
+            <form class="mb-4">
+              <div class="input-group input-group-merge input-group-rounded">
+                <input type="search" class="form-control form-control-prepended search" placeholder="Search">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fe fe-search"></span>
+                  </div>
+                </div>
               </div>
-              <div class="col-auto flex-fill d-none d-xl-block">
-                <ul class="list-inline row justify-content-lg-end mb-0">
-                  <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                    <span class="badge badge-dot text-white">
-                      <i class="bg-success"></i>Followers
-                    </span>
-                    <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                     {{count($user->profile->followers)}}
-                    
-                    </a>
-                  </li>
-                  <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                    <span class="badge badge-dot text-white">
-                      <i class="bg-warning"></i>Following
-                    </span>
-                    <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                    {{count($user->following)}}
-                     
-                    </a>
-                  </li>
-                  <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                    <span class="badge badge-dot text-white">
-                      <i class="bg-danger"></i>Article(s)
-                    </span>
-                    <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
+            </form>
+
+            <!-- List group -->
+            <div class="my-n3">
+              <div class="list-group list-group-flush list">
+                <a href="team-overview.html" class="list-group-item px-0">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
                   
-                     {{count($user->posts) ?? 'N/A'}}
-                     </a>
-                
-                    </a>
-                  </li>
-                </ul>
+                      <!-- Avatar -->
+                      <div class="avatar">
+                        <img src="assets/img/avatars/teams/team-logo-1.jpg" alt="..." class="avatar-img rounded">
+                      </div>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="text-body mb-1 name">
+                        Airbnb
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small text-muted mb-0">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                      </p>
+                  
+                    </div>
+                  </div> <!-- / .row -->
+                </a>
+                <a href="team-overview.html" class="list-group-item px-0">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <div class="avatar">
+                        <img src="assets/img/avatars/teams/team-logo-2.jpg" alt="..." class="avatar-img rounded">
+                      </div>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="text-body mb-1 name">
+                        Medium Corporation
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small text-muted mb-0">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                      </p>
+                  
+                    </div>
+                  </div> <!-- / .row -->
+                </a>
+                <a href="project-overview.html" class="list-group-item px-0">
+
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <div class="avatar avatar-4by3">
+                        <img src="assets/img/avatars/projects/project-1.jpg" alt="..." class="avatar-img rounded">
+                      </div>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="text-body mb-1 name">
+                        Homepage Redesign
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small text-muted mb-0">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                      </p>
+                  
+                    </div>
+                  </div> <!-- / .row -->
+
+                </a>
+                <a href="project-overview.html" class="list-group-item px-0">
+
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <div class="avatar avatar-4by3">
+                        <img src="assets/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
+                      </div>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="text-body mb-1 name">
+                        Travels & Time
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small text-muted mb-0">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                      </p>
+                  
+                    </div>
+                  </div> <!-- / .row -->
+
+                </a>
+                <a href="project-overview.html" class="list-group-item px-0">
+
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <div class="avatar avatar-4by3">
+                        <img src="assets/img/avatars/projects/project-3.jpg" alt="..." class="avatar-img rounded">
+                      </div>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="text-body mb-1 name">
+                        Safari Exploration
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="small text-muted mb-0">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                      </p>
+                  
+                    </div>
+                  </div> <!-- / .row -->
+            
+                </a>
+                <a href="profile-posts.html" class="list-group-item px-0">
+            
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <div class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                      </div>
+
+                    </div>
+                    <div class="col ml-n2">
+                  
+                      <!-- Title -->
+                      <h4 class="text-body mb-1 name">
+                        Dianna Smiley
+                      </h4>
+
+                      <!-- Status -->
+                      <p class="text-body small mb-0">
+                        <span class="text-success">●</span> Online
+                      </p>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                </a>
+                <a href="profile-posts.html" class="list-group-item px-0">
+
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                  
+                      <!-- Avatar -->
+                      <div class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                      </div>
+
+                    </div>
+                    <div class="col ml-n2">
+                  
+                      <!-- Title -->
+                      <h4 class="text-body mb-1 name">
+                        Ab Hadley
+                      </h4>
+
+                      <!-- Status -->
+                      <p class="text-body small mb-0">
+                        <span class="text-danger">●</span> Offline
+                      </p>
+
+                    </div>
+                  </div> <!-- / .row -->
+            
+                </a>
               </div>
             </div>
-            <!-- Account navigation -->
-            <div class="d-flex">
-              <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral">
-                <span class="btn-inner--icon"><i class="far fa-user"></i></span>
-                <span class="btn-inner--text d-none d-md-inline-block">My Profile</span>
-              </a>
-              <div class="btn-group btn-group-nav shadow ml-auto" role="group" aria-label="Basic example">
-                <div class="btn-group" role="group">
-                  <button id="btn-group-settings" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
-                    <span class="btn-inner--icon"><i class="far fa-sliders-h"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Account</span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span class="dropdown-header">Profile</span>
-                    <a class="dropdown-item" href="account-profile-public.html">Public profile</a>
-                    <span class="dropdown-header">Account</span>
-                    <a class="dropdown-item" href="account-profile.html">Profile</a>
-                    <a class="dropdown-item" href="/settings/{{Auth::user()->id}}">Settings</a>
-                    <a class="dropdown-item" href="account-billing.html">Billing</a>
-                    <a class="dropdown-item" href="account-notifications.html">Notifications</a>
-                  </div>
-                </div>
-                <div class="btn-group" role="group">
-                  <button id="btn-group-boards" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
-                    <span class="btn-inner--icon"><i class="far fa-chart-line"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Board</span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-boards">
-                    <a class="dropdown-item" href="board-overview.html">Overview</a>
-                    <a class="dropdown-item" href="board-projects.html">Projects</a>
-                    <a class="dropdown-item" href="board-tasks.html">Tasks</a>
-                    <a class="dropdown-item" href="board-connections.html">Connections</a>
-                  </div>
-                </div>
-                <div class="btn-group" role="group">
-                  <button id="btn-group-listing" type="button" class="btn btn-neutral btn-icon rounded-right" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
-                    <span class="btn-inner--icon"><i class="far fa-list-ul"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Listing</span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span class="dropdown-header">Tables</span>
-                    <a class="dropdown-item" href="listing-orders.html">Orders</a>
-                    <a class="dropdown-item" href="listing-projects.html">Projects</a>
-                    <span class="dropdown-header">Flex</span>
-                    <a class="dropdown-item" href="listing-users.html">Users</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+      
           </div>
         </div>
       </div>
-    </section>
-    <section class="pt-5 pt-lg-0">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-              <div class="card card-profile border-0">
-                <div class="card-profile-cover">
-                  <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" style="height:200px;width:350px; -webkit-filter: blur(5px);filter: blur(2px);"class="card-img-top">
-                </div>
-                <a href="#" class="mx-auto">
-                  <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" class="card-profile-image avatar rounded-circle shadow hover-shadow-lg">
-                </a>
-                <div class="card-body p-3 pt-0 text-center">
-                  <h5 class="mb-0">{{$user->name}}</h5>
-                  <span class="d-block text-muted mb-3">  </span>
-                  <div class="avatar-group hover-avatar-ungroup mb-3">
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder"  src="{{asset('img/theme/light/team-1-800x800.jpg')}}"  class="">
-                    </a>
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder" src="{{asset('img/theme/light/team-2-800x800.jpg')}}"  class="">
-                    </a>
-                    <a href="#" class="avatar rounded-circle avatar-sm">
-                      <img alt="Image placeholder" src="{{asset('img/theme/light/team-3-800x800.jpg')}}" class="">
-                    </a>
-                  </div>
-                  <div class="actions d-flex justify-content-between mt-3 pt-3 px-5 delimiter-top">
-                    <a href="#" class="action-item">
-                      <i class="far fa-envelope"></i>
-                    </a>
-                    <a href="#" class="action-item">
-                      <i class="far fa-user"></i>
-                    </a>
-                    <a href="#" class="action-item">
-                      <i class="far fa-chart-pie"></i>
-                    </a>
-                    <a href="#" class="action-item text-danger">
-                      <i class="far fa-trash-alt"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+    </div>
+
+    <!-- Modal: Activity -->
+    <div class="modal fade" id="sidebarModalActivity" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-vertical" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <!-- Title -->
+            <h4 class="modal-title">
+              Notifications
+            </h4>
+
+            <!-- Link -->
+            <a href="#!">
+              Mark all as read
+            </a>
+        
           </div>
-          <div class="col-lg-8 mt-lg-5">
-            <!-- Change avatar -->
-            <!-- <div class="card bg-gradient-warning hover-shadow-lg">
-              <div class="card-body py-3">
-                <div class="row row-grid align-items-center">
-                  <div class="col-lg-8">
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="text-white mb-0">Heather Wright</h5>
-                        <div>
-                          <form>
-                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
-                            <label for="file-1">
-                              <span class="text-white">Change avatar</span>
-                            </label>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
-                      <span class="btn-inner--icon"><i class="far fa-fire"></i></span>
-                      <span class="btn-inner--text">Upgrade to Pro</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- Timeline -->
+          <div class="modal-body">
 
-           
-            <div class="card">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                  <a href="#" class="avatar rounded-circle shadow">
-                    <img alt="Image placeholder"  src="{{$user->profile->profileimage()}}" style="height:47px">
-                  </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">{{$user->username}} </h6>
-                    <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>3 hrs ago</small>
-                  </div>
-                </div>
-              </div>
-      
-              <div class="card-body">
-              <p>{{$user->profile->bio ?? 'No bio Available'}}</p>
-               <!-- Badges -->
-                <div class="d-lg-flex mt-4">
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                      <div class="icon icon-sm bg-gradient-success text-white rounded-circle icon-shape">
-                        <i class="far fa-user-ninja"></i>
-                      </div>
-                    </div>
-                    <div class="pl-3">
-                      <span class="h6">10 Skills</span>
-                    </div>
-                  </a>
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                      <div class="icon icon-sm bg-gradient-warning text-white rounded-circle icon-shape">
-                        <i class="far fa-user-friends"></i>
-                      </div>
-                    </div>
-                    <div class="pl-3">
-                      <span class="h6">57 Endorsements</span>
-                    </div>
-                  </a>
-                  <a href="#" class="d-flex align-items-center mr-lg-5 mb-3 mb-lg-0">
-                    <div>
-                   
-                    </div>
-                    <div class="pl-3">
-                @if(Auth::user()->id == $user->id)
-
-@else
-                <section id="app">
-                                     <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
-                                    </section>
-@endif
-                    </div>
-
-                    
-                  </a>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6 class="mb-4">
-                    <i class="far fa-file-signature mr-2"></i>Experience
-                  </h6>
-                  <!-- Timeline -->
-                  <div class="timeline timeline-one-side" data-timeline-content="axis">
-                    <div class="timeline-block">
-                      <span class="timeline-step border-primary"></span>
-                      <div class="timeline-content">
-                        <small class="text-muted font-weight-bold">2016 - present</small>
-                        <h6>Web Developer at Webpixels</h6>
-                        <p class="text-sm lh-160">When we strive to become better than we are everything around us becomes better too. This is a wider card with supporting text below.</p>
-                        <div>
-                          <span class="badge badge-soft-primary mr-2 mb-2">Bootstrap</span>
-                          <span class="badge badge-soft-primary mr-2 mb-2">UI/UX</span>
-                          <span class="badge badge-soft-primary mr-2 mb-2">Market Strategy</span>
-                        </div>
-                      </div>
-                    </div>
-                   
-                  </div>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6>
-                    <i class="far fa-user-n mr-2 mb-4"></i>Skills/Position
-                  </h6>
-                  <!-- Skil badges -->
-                  <div>
-                  <div class="row">
-                  
-
-                  <div class="pt-5 mt-5 delimiter-top">
+            <!-- List group -->
+            <div class="list-group list-group-flush my-n3">
+              <a class="list-group-item text-reset px-0" href="#!">
           
                 <div class="row">
-                  <div class="col">
-                   
-                  </div>
-                </div>
-              </div>
-
-                </div>
-                  </div>
-                </div>
-                <div class="pt-5 mt-5 delimiter-top">
-                  <!-- Title -->
-                  <h6 class="mb-4">
-                    <i class="far fa-user-friends mr-2"></i>Followers
-                  </h6>
-                  <!-- Rating cards -->
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <div class="card bg-secondary">
-                        <div class="p-3">
-                          <div class="d-flex align-items-center">
-                            <div>
-                              <a href="#" class="avatar rounded-circle d-inline-block">
-                                <img alt="Image placeholder" src="{{asset('img/theme/light/team-1-800x800.jpg')}}" class="">
-                              </a>
-                            </div>
-                            <div class="pl-3">
-                              <a href="#" class="h6 text-sm">{{$user->fresh()->following}}</a><span class="static-rating static-rating-sm d-block"><i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star voted"></i>
-                                <i class="star far fa-star"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  
-                  
-                </div>
-              </div>
-
-            </div>
-
-
-            <!-- Post -->
-            @if(count($user->posts) == 0)
-            <div class="card mt-4">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-              
-               <div class="card-body">
-               <h3 >No Post Updates</h3>
-              
-               <img src="{{asset('img/nopost.png')}}" class="img-fluid rounded"/>
-               <!-- <button type="submit" class="btn btn-sm btn-primary"><a href="/posts/create">ADD NOW</a></button>-->
-               <a href="/posts/create"> <button type="submit" class="btn btn-sm btn-primary" style="border-radius:1000px">+</button></a>
-               
-               </div>
-                </div> 
-                </div>
-                </div>
-          
-@else
-            @foreach($user->posts as $post)
-            <div class="card mt-4">
-              <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                  <a href="#" class="avatar rounded-circle shadow">
-                    <img alt="Image placeholder" src="{{$user->profile->profileimage()}}" style="height:47px">
-                  </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">{{$post->user->username}}</h6>
-                    <small class="d-block text-muted"><i class="far fa-clock mr-2"></i>{{date('M j, Y h:ia',strtotime($post->created_at))}}</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-              <h4 style="bold">{{$post->title}}</h4>
-               <p>{{$post->body}}</p>
-               <a href="" data-fancybox>
-                  <img alt="Image placeholder" src="/storage/{{$post->image}}" class="img-fluid rounded">
-                </a>
-                <div class="row align-items-center my-3 pb-3 border-bottom">
-                  <div class="col-sm-6">
-                    <div class="icon-actions">
-                      <a href="#" class="love active">
-                        <i class="far fa-heart"></i>
-                        <span class="text-muted">150 likes</span>
-                      </a>
-                      <a href="#">
-                        <i class="far fa-comment"></i>
-                        <span class="text-muted">20 comments</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 d-none d-sm-block">
-                 
-                     
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
                     </div>
 
-                      
-                    <a href="/posts/create"> <button type="submit" class="btn btn-sm btn-primary" style="border-radius:1000px">+</button></a>
-              
-                     
                   </div>
-                </div>
-                <!-- Comments -->
-              
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Dianna Smiley</strong> shared your post with Ab Hadley, Adolfo Hess, and 3 others.
+                    </div>
 
-              <!-- end comments -->
-              </div>
-            </div>
-@endforeach
-@endif
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
 
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-  <footer class="footer p-0 footer-light bg-section-secondary" id="footer-main">
-    <div class="container">
-      <div class="py-4">
-        <div class="row align-items-md-center">
-          <div class="col-md-4 mb-4 mb-md-0">
-            <div class="d-flex align-items-center">
-              <p class="text-sm mb-0">&copy; Purpose. 2019 <a href="https://webpixels.io/" target="_blank">Webpixels</a>. All rights reserved.</p>
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
+              <a class="list-group-item text-reset px-0" href="#!">
+
+                <div class="row">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Ab Hadley</strong> reacted to your post with a 😍
+                    </div>
+                
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
+              <a class="list-group-item text-reset px-0" href="#!">
+
+                <div class="row">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Adolfo Hess</strong> commented <blockquote class="mb-0">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                    </div>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
+              <a class="list-group-item text-reset px-0" href="#!">
+
+                <div class="row">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Daniela Dewitt</strong> subscribed to you.
+                    </div>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
+              <a class="list-group-item text-reset px-0" href="#!">
+
+                <div class="row">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Miyah Myles</strong> shared your post with Ryu Duke, Glen Rouse, and 3 others.
+                    </div>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
+              <a class="list-group-item text-reset px-0" href="#!">
+
+                <div class="row">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-6.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Ryu Duke</strong> reacted to your post with a 😍
+                    </div>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
+              <a class="list-group-item text-reset px-0" href="#!">
+
+                <div class="row">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-7.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Glen Rouse</strong> commented <blockquote class="mb-0">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                    </div>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
+              <a class="list-group-item text-reset px-0" href="#!">
+
+                <div class="row">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-8.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+                
+                    <!-- Content -->
+                    <div class="small">
+                      <strong>Grace Gross</strong> subscribed to you.
+                    </div>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </a>
             </div>
-          </div>
-          <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
-            <ul class="nav justify-content-center">
-              <li class="nav-item">
-                <a class="nav-link" href="../utility/support.html">Support</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../utility/terms.html">Terms</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../utility/privacy.html">Privacy</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
-              <li class="nav-item">
-                <a class="nav-link" href="https://dribbble.com/webpixels" target="_blank">
-                  <i class="fab fa-dribbble"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.instagram.com/webpixelsofficial" target="_blank">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://github.com/webpixels" target="_blank">
-                  <i class="fab fa-github"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.facebook.com/webpixels" target="_blank">
-                  <i class="fab fa-facebook"></i>
-                </a>
-              </li>
-            </ul>
+
           </div>
         </div>
       </div>
     </div>
-  </footer>
 
-  <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Modal: Kanban task -->
+    <div class="modal fade" id="modalKanbanTask" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content bg-lighter">
+          <div class="modal-body">
 
-  <script  src="{{asset('js/purpose.core.js')}}"></script>
-        <!-- Page JS -->
-        <script src="{{asset('libs/swiper/dist/js/swiper.min.js')}}"></script>
-        <!-- Purpose JS -->
-        <script src="{{asset('js/purpose.js')}}"></script>
-        <!-- Demo JS - remove it when starting your project -->
-        <script src="{{asset('js/demo.js')}}"></script>
-     
-     
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-     
-</body>
+            <!-- Header -->
+            <div class="row">
+              <div class="col">
+
+                <!-- Prettitle -->
+                <h6 class="text-uppercase text-muted mb-3">
+                  <a href="#!" class="text-reset">How to Use Kanban</a>
+                </h6>
+
+                <!-- Title -->
+                <h2 class="mb-2">
+                  Update Dashkit to include new components!
+                </h2>
+
+                <!-- Subtitle -->
+                <p class="text-muted mb-0">
+                  This is a description of this task. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum magna nisi, ultrices ut pharetra eget.
+                </p>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Close -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">
+                    &times;
+                  </span>
+                </button>
+          
+              </div>
+            </div> <!-- / .row -->
+
+            <!-- Divider -->
+            <hr class="my-4">
+
+            <!-- Buttons -->
+            <div class="mb-4">
+              <div class="row">
+                <div class="col">
+
+                  <a href="#!" class="btn btn-sm btn-white">
+                    😬 1
+                  </a>
+                  <a href="#!" class="btn btn-sm btn-white">
+                    👍 2
+                  </a>
+                  <a href="#!" class="btn btn-sm btn-white">
+                    Add Reaction
+                  </a>
+
+                </div>
+                <div class="col-auto mr-n3">
+
+                  <div class="avatar-group d-none d-sm-flex">
+                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Ab Hadley">
+                      <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Adolfo Hess">
+                      <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Daniela Dewitt">
+                      <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Miyah Myles">
+                      <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+
+                </div>
+                <div class="col-auto">
+
+                  <a href="#!" class="btn btn-sm btn-white">
+                    Share
+                  </a>
+
+                </div>
+              </div> <!-- / .row -->
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Files
+                    </h4>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Button -->
+                    <a href="#!" class="btn btn-sm btn-white">
+                      Add files
+                    </a>
+                
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              <div class="card-body">
+
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <a href="project-overview.html" class="avatar">
+                      <img src="assets/img/files/file-1.jpg" alt="..." class="avatar-img rounded">
+                    </a>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Title -->
+                    <h4 class="card-title mb-1">
+                      <a href="project-overview.html">Launchday logo</a>
+                    </h4>
+
+                    <!-- Time -->
+                    <p class="card-text small text-muted">
+                      1.5mb PNG Dave
+                    </p>
+                
+                  </div>
+                  <div class="col-auto">
+                
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="/addpost" class="dropdown-item">
+                        Add new
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                         Delete Post
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                         Update Post
+                        </a>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div> <!-- / .row -->
+
+                <!-- Divider -->
+                <hr>
+
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                
+                    <!-- Avatar -->
+                    <a href="project-overview.html" class="avatar">
+                      <img src="assets/img/files/file-1.jpg" alt="..." class="avatar-img rounded">
+                    </a>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Title -->
+                    <h4 class="card-title mb-1">
+                      <a href="project-overview.html">Launchday logo</a>
+                    </h4>
+
+                    <!-- Time -->
+                    <p class="card-text small text-muted">
+                      1.5mb PNG Dave
+                    </p>
+                
+                  </div>
+                  <div class="col-auto">
+                
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Form -->
+                    <form class="mt-1">
+                      <textarea class="form-control form-control-flush form-control" data-toggle="autosize" rows="1" placeholder="Leave a comment"></textarea>
+                    </form>
+
+                  </div>
+                  <div class="col-auto align-self-end">
+
+                    <!-- Icons -->
+                    <div class="text-muted mb-2">
+                      <a href="#!" class="text-reset mr-3">
+                        <i class="fe fe-camera"></i>
+                      </a>
+                      <a href="#!" class="text-reset mr-3">
+                        <i class="fe fe-paperclip"></i>
+                      </a>
+                      <a href="#!" class="text-reset">
+                        <i class="fe fe-mic"></i>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+
+                <!-- Comments -->
+                <div class="comment mb-3">
+                  <div class="row">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a class="avatar avatar-sm" href="profile-posts.html">
+                        <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+                  
+                      <!-- Body -->
+                      <div class="comment-body">
+
+                        <div class="row">
+                          <div class="col">
+
+                            <!-- Title -->
+                            <h5 class="comment-title">
+                              Ab Hadley
+                            </h5>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <!-- Time -->
+                            <time class="comment-time">
+                              11:12
+                            </time>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Text -->
+                        <p class="comment-text">
+                          Looking good Dianna! I like the image grid on the left, but it feels like a lot to process and doesn't really <em>show</em> me what the product does? I think using a short looping video or something similar demo'ing the product might be better?
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+                <div class="comment">
+                  <div class="row">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a class="avatar avatar-sm" href="profile-posts.html">
+                        <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+                  
+                      <!-- Body -->
+                      <div class="comment-body">
+
+                        <div class="row">
+                          <div class="col">
+
+                            <!-- Title -->
+                            <h5 class="comment-title">
+                              Adolfo Hess
+                            </h5>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <!-- Time -->
+                            <time class="comment-time">
+                              11:12
+                            </time>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Text -->
+                        <p class="comment-text">
+                          Any chance you're going to link the grid up to a public gallery of sites built with Launchday?
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card mb-0">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Activity
+                </h4>
+
+              </div>
+              <div class="card-body">
+
+                <div class="row align-items-center">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Heading -->
+                    <p class="small mb-0">
+                      <strong>Johathan Goldstein</strong> reacted to you post with 😊
+                    </p>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+                
+                  </div>
+                </div> <!-- / .row -->
+
+                <!-- Divider -->
+                <hr>
+
+                <div class="row align-items-center">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Heading -->
+                    <p class="small mb-0">
+                      <strong>Johnathan Goldstein</strong> uploaded the files “Launchday Logo” and “Revisiting the Past”.
+                    </p>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+                
+                  </div>
+                </div> <!-- / .row -->
+
+                <!-- Divider -->
+                <hr>
+
+                <div class="row align-items-center">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Heading -->
+                    <p class="small mb-0">
+                      <strong>Kimmy Schmitt</strong> shared this task with Donnie Calvin, Casey Fyfe, Jimmy Smits, and 16 others.
+                    </p>
+
+                    <!-- Time -->
+                    <small class="text-muted">
+                      2m ago
+                    </small>
+                
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Kanban task -->
+    <div class="modal fade" id="modalKanbanTaskEmpty" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content bg-lighter">
+          <div class="modal-body">
+
+            <!-- Header -->
+            <div class="row">
+              <div class="col">
+
+                <!-- Prettitle -->
+                <h6 class="text-uppercase text-muted mb-3">
+                  <a href="#!" class="text-reset">How to Use Kanban</a>
+                </h6>
+
+                <!-- Title -->
+                <h2 class="mb-2">
+                  Update Dashkit to include new components!
+                </h2>
+
+                <!-- Subtitle -->
+                <textarea class="form-control form-control-flush form-control-auto" data-toggle="autosize" rows="1" placeholder="Add a description..."></textarea>
+
+              </div>
+              <div class="col-auto">
+
+                <!-- Close -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">
+                    &times;
+                  </span>
+                </button>
+          
+              </div>
+            </div> <!-- / .row -->
+
+            <!-- Divider -->
+            <hr class="my-4">
+
+            <!-- Buttons -->
+            <div class="mb-4">
+              <div class="row">
+                <div class="col">
+
+                  <a href="#!" class="btn btn-sm btn-white">
+                    Add Reaction
+                  </a>
+
+                </div>
+                <div class="col-auto">
+
+                  <a href="#!" class="btn btn-sm btn-white">
+                    Share
+                  </a>
+
+                </div>
+              </div> <!-- / .row -->
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+                <div class="dropzone dropzone-multiple" data-toggle="dropzone" data-options='{"url": "https://"}'>
+
+                  <div class="fallback">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFileUpload" multiple>
+                      <label class="custom-file-label" for="customFileUpload">Choose file</label>
+                    </div>
+                  </div>
+
+                  <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush">
+                    <li class="list-group-item px-0">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <div class="avatar">
+                            <img class="avatar-img rounded" src="...html" alt="..." data-dz-thumbnail>
+                          </div>
+                        </div>
+                        <div class="col ml-n3">
+                          <h4 class="mb-1" data-dz-name>...</h4>
+                          <p class="small text-muted mb-0" data-dz-size></p>
+                        </div>
+                        <div class="col-auto">
+                      
+                          <div class="dropdown">
+                            <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fe fe-more-vertical"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <a href="#" class="dropdown-item" data-dz-remove>
+                                Remove
+                              </a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Form -->
+                    <form class="mt-1">
+                      <textarea class="form-control form-control-flush" data-toggle="autosize" rows="1" placeholder="Leave a comment"></textarea>
+                    </form>
+
+                  </div>
+                  <div class="col-auto align-self-end">
+
+                    <!-- Icons -->
+                    <div class="text-muted mb-2">
+                      <a href="#!" class="text-reset mr-3">
+                        <i class="fe fe-camera"></i>
+                      </a>
+                      <a href="#!" class="text-reset mr-3">
+                        <i class="fe fe-paperclip"></i>
+                      </a>
+                      <a href="#!" class="text-reset">
+                        <i class="fe fe-mic"></i>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION
+    ================================================== -->
+    
+      
+        <nav class="navbar navbar-vertical fixed-left navbar-expand-md " id="sidebar">
+          <div class="container-fluid">
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="index-2.html">
+              <img src="assets/img/logo.svg" class="navbar-brand-img 
+              mx-auto" alt="...">
+            </a>
+
+            <!-- User (xs) -->
+            <div class="navbar-user d-md-none">
+
+              <!-- Dropdown -->
+              <div class="dropdown">
+        
+                <!-- Toggle -->
+                <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="avatar avatar-sm avatar-online">
+                    <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                  </div>
+                </a>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarIcon">
+                  <a href="profile-posts.html" class="dropdown-item">Profile</a>
+                  <a href="settings.html" class="dropdown-item">Settings</a>
+                  <hr class="dropdown-divider">
+                  <a href="sign-in.html" class="dropdown-item">Logout</a>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidebarCollapse">
+
+              <!-- Form -->
+              <form class="mt-4 mb-3 d-md-none">
+                <div class="input-group input-group-rounded input-group-merge">
+                  <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <span class="fe fe-search"></span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+      
+              <!-- Navigation -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#sidebarDashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <i class="fe fe-home"></i> Dashboards
+                  </a>
+                
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="sidebarPages">
+                    <i class="fe fe-file"></i> Pages
+                  </a>
+                  <div class="collapse show" id="sidebarPages">
+                    <ul class="nav nav-sm flex-column">
+                   
+                
+                   
+                      <li class="nav-item">
+                        <a href="#sidebarFeed" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarFeed">
+                          Feed
+                        </a>
+                        <div class="collapse " id="sidebarFeed">
+                          <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                              <a href="feed.html" class="nav-link ">
+                                Platform
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="social-feed.html" class="nav-link ">
+                                Social <span class="badge badge-soft-success ml-auto">New</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li class="nav-item">
+                        <a href="kanban.html" class="nav-link ">
+                          Kanban <span class="badge badge-soft-success ml-auto">New</span>
+                        </a>
+                      </li>
+                    
+                    </ul>
+                  </div>
+                </li>
+                
+                <li class="nav-item d-md-none">
+                  <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
+                   <span class="fe fe-bell"></span> Notifications
+                  </a>
+                </li>
+              </ul>
+
+              <!-- Divider -->
+              <hr class="navbar-divider my-3">
+
+              <!-- Heading -->
+          
+
+              <!-- Navigation -->
+           
+              <!-- Customize -->
+              <a href="#modalDemo" class="btn btn-block btn-primary mb-4" data-toggle="modal">
+                <i class="fe fe-sliders mr-2"></i> Customize
+              </a>
+              
+      
+              
+              <!-- User (md) -->
+              <div class="navbar-user d-none d-md-flex" id="sidebarUser">
+        
+                <!-- Icon -->
+                <a href="#sidebarModalActivity" class="navbar-user-link" data-toggle="modal">
+                  <span class="icon">
+                    <i class="fe fe-bell"></i>
+                  </span>
+                </a>
+
+                <!-- Dropup -->
+                <div class="dropup">
+          
+                  <!-- Toggle -->
+                  <a href="#" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                      <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                    </div>
+                  </a>
+
+                  <!-- Menu -->
+                  <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
+                    <a href="profile-posts.html" class="dropdown-item">Profile</a>
+                    <a href="settings.html" class="dropdown-item">Settings</a>
+                    <hr class="dropdown-divider">
+                    <a href="sign-in.html" class="dropdown-item">Logout</a>
+                  </div>
+
+                </div>
+
+                <!-- Icon -->
+                <a href="#sidebarModalSearch" class="navbar-user-link" data-toggle="modal">
+                  <span class="icon">
+                    <i class="fe fe-search"></i>
+                  </span>
+                </a>
+
+              </div>
+              
+
+            </div> <!-- / .navbar-collapse -->
+
+          </div>
+        </nav>
+      
+      
+        <nav class="navbar navbar-vertical navbar-vertical-sm fixed-left navbar-expand-md " id="sidebarSmall">
+          <div class="container-fluid">
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarSmallCollapse" aria-controls="sidebarSmallCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="index-2.html">
+              <img src="assets/img/logo.svg" class="navbar-brand-img 
+              mx-auto" alt="...">
+            </a>
+
+            <!-- User (xs) -->
+            <div class="navbar-user d-md-none">
+
+              <!-- Dropdown -->
+              <div class="dropdown">
+        
+                <!-- Toggle -->
+                <a href="#" id="sidebarSmallIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="avatar avatar-sm avatar-online">
+                    <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                  </div>
+                </a>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarSmallIcon">
+                  <a href="profile-posts.html" class="dropdown-item">Profile</a>
+                  <a href="settings.html" class="dropdown-item">Settings</a>
+                  <hr class="dropdown-divider">
+                  <a href="sign-in.html" class="dropdown-item">Logout</a>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidebarSmallCollapse">
+
+              <!-- Form -->
+              <form class="mt-4 mb-3 d-md-none">
+                <div class="input-group input-group-rounded input-group-merge">
+                  <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <span class="fe fe-search"></span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Divider -->
+              <hr class="navbar-divider d-none d-md-block mt-0 mb-3">
+      
+              <!-- Navigation -->
+              <ul class="navbar-nav">
+                <li class="nav-item dropright">
+                  <a class="nav-link dropdown-toggle " id="sidebarSmallDashboards" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Dashboards">
+                    <i class="fe fe-home"></i> <span class="d-md-none">Dashboards</span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="sidebarSmallDashboards">
+                    <li class="dropdown-header d-none d-md-block">
+                      <h6 class="text-uppercase mb-0">Dashboards</h6>
+                    </li>
+                    <li>
+                      <a class="dropdown-item " href="index-2.html">
+                        Default
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item " href="dashboard-alt.html">
+                        Alternative
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropright">
+                  <a class="nav-link dropdown-toggle active" id="sidebarSmallPages" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fe fe-file"></i> <span class="d-md-none">Pages</span>
+                  </a>
+               
+                </li>
+           
+                <li class="nav-item d-md-none">
+                  <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
+                   <span class="fe fe-bell"></span> Notifications
+                  </a>
+                </li>
+              </ul>
+
+              <!-- Divider -->
+              <hr class="navbar-divider my-3">
+
+              <!-- Navigation -->
+              <ul class="navbar-nav mb-md-4">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Getting started">
+                  <a class="nav-link " href="getting-started.html">
+                    <i class="fe fe-clipboard"></i> <span class="d-md-none">Getting started</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="components.html" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Components">
+                    <i class="fe fe-book-open"></i> <span class="d-md-none">Components</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="changelog.html" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Changelog">
+                    <i class="fe fe-git-branch"></i> <span class="d-md-none">Changelog</span> <span class="badge badge-primary ml-auto d-md-none">v1.4.2</span>
+                  </a>
+                </li>
+              </ul>
+      
+              <!-- Push content down -->
+              <div class="mt-auto"></div>
+      
+              
+              <!-- Customize -->
+              <div class="mb-4" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Customize">
+                <a href="#modalDemo" class="btn btn-block btn-primary" data-toggle="modal">
+                  <i class="fe fe-sliders"></i> <span class="d-md-none ml-2">Customize</span>
+                </a>
+              </div>
+              
+      
+              
+              <!-- User (md) -->
+              <div class="navbar-user d-none d-md-flex flex-column" id="sidebarSmallUser">
+
+                <!-- Icon -->
+                <a href="#sidebarModalSearch" class="navbar-user-link mb-3" data-toggle="modal">
+                  <span class="icon">
+                    <i class="fe fe-search"></i>
+                  </span>
+                </a>
+        
+                <!-- Icon -->
+                <a href="#sidebarModalActivity" class="navbar-user-link mb-3" data-toggle="modal">
+                  <span class="icon">
+                    <i class="fe fe-bell"></i>
+                  </span>
+                </a>
+
+                <!-- Dropup -->
+                <div class="dropright">
+          
+                  <!-- Toggle -->
+                  <a href="#" id="sidebarSmallIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                      <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                    </div>
+                  </a>
+
+                  <!-- Menu -->
+                  <div class="dropdown-menu" aria-labelledby="sidebarSmallIconCopy">
+                    <a href="profile-posts.html" class="dropdown-item">Profile</a>
+                    <a href="settings.html" class="dropdown-item">Settings</a>
+                    <hr class="dropdown-divider">
+                    <a href="sign-in.html" class="dropdown-item">Logout</a>
+                  </div>
+
+                </div>
+
+              </div>
+              
+
+            </div> <!-- / .navbar-collapse -->
+
+          </div>
+        </nav>
+      
+    
+    
+      <nav class="navbar navbar-expand-lg " id="topnav">
+        <div class="container">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Brand -->
+          <a class="navbar-brand mr-auto" href="index-2.html">
+            <img src="assets/img/logo.svg" alt="..." class="navbar-brand-img">
+          </a>
+
+          <!-- Form -->
+          <form class="form-inline mr-4 d-none d-lg-flex">
+            <div class="input-group input-group-rounded input-group-merge" data-toggle="lists" data-options='{"valueNames": ["name"]}'>
+
+              <!-- Input -->
+              <input type="search" class="form-control form-control-prepended  dropdown-toggle search" data-toggle="dropdown" placeholder="Search" aria-label="Search">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fe fe-search"></i>
+                </div>
+              </div>
+
+              <!-- Menu -->
+              <div class="dropdown-menu dropdown-menu-card">
+                <div class="card-body">
+
+                  <!-- List group -->
+                  <div class="list-group list-group-flush list my-n3">
+                    <a href="team-overview.html" class="list-group-item px-0">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar">
+                            <img src="assets/img/avatars/teams/team-logo-1.jpg" alt="..." class="avatar-img rounded">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+
+                          <!-- Title -->
+                          <h4 class="text-body mb-1 name">
+                            Airbnb
+                          </h4>
+
+                          <!-- Time -->
+                          <p class="small text-muted mb-0">
+                            <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                          </p>
+                    
+                        </div>
+                      </div> <!-- / .row -->
+                    </a>
+                    <a href="team-overview.html" class="list-group-item px-0">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar">
+                            <img src="assets/img/avatars/teams/team-logo-2.jpg" alt="..." class="avatar-img rounded">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+
+                          <!-- Title -->
+                          <h4 class="text-body mb-1 name">
+                            Medium Corporation
+                          </h4>
+
+                          <!-- Time -->
+                          <p class="small text-muted mb-0">
+                            <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                          </p>
+                    
+                        </div>
+                      </div> <!-- / .row -->
+                    </a>
+                    <a href="project-overview.html" class="list-group-item px-0">
+
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-4by3">
+                            <img src="assets/img/avatars/projects/project-1.jpg" alt="..." class="avatar-img rounded">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+
+                          <!-- Title -->
+                          <h4 class="text-body mb-1 name">
+                            Homepage Redesign
+                          </h4>
+
+                          <!-- Time -->
+                          <p class="small text-muted mb-0">
+                            <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                          </p>
+                    
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a href="project-overview.html" class="list-group-item px-0">
+
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-4by3">
+                            <img src="assets/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+
+                          <!-- Title -->
+                          <h4 class="text-body mb-1 name">
+                            Travels & Time
+                          </h4>
+
+                          <!-- Time -->
+                          <p class="small text-muted mb-0">
+                            <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                          </p>
+                    
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a href="project-overview.html" class="list-group-item px-0">
+
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-4by3">
+                            <img src="assets/img/avatars/projects/project-3.jpg" alt="..." class="avatar-img rounded">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+
+                          <!-- Title -->
+                          <h4 class="text-body mb-1 name">
+                            Safari Exploration
+                          </h4>
+
+                          <!-- Time -->
+                          <p class="small text-muted mb-0">
+                            <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                          </p>
+                    
+                        </div>
+                      </div> <!-- / .row -->
+              
+                    </a>
+                    <a href="profile-posts.html" class="list-group-item px-0">
+              
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar">
+                            <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Title -->
+                          <h4 class="text-body mb-1 name">
+                            Dianna Smiley
+                          </h4>
+
+                          <!-- Status -->
+                          <p class="text-body small mb-0">
+                            <span class="text-success">●</span> Online
+                          </p>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a href="profile-posts.html" class="list-group-item px-0">
+
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar">
+                            <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Title -->
+                          <h4 class="text-body mb-1 name">
+                            Ab Hadley
+                          </h4>
+
+                          <!-- Status -->
+                          <p class="text-body small mb-0">
+                            <span class="text-danger">●</span> Offline
+                          </p>
+
+                        </div>
+                      </div> <!-- / .row -->
+              
+                    </a>
+                  </div>
+          
+                </div>
+              </div> <!-- / .dropdown-menu -->
+
+            </div>
+          </form>
+
+          <!-- User -->
+          <div class="navbar-user">
+      
+            <!-- Dropdown -->
+            <div class="dropdown mr-4 d-none d-lg-flex">
+        
+              <!-- Toggle -->
+              <a href="#" class="navbar-user-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="icon active">
+                  <i class="fe fe-bell"></i>
+                </span>
+              </a>
+
+              <!-- Menu -->
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-card">
+                <div class="card-header">
+                  <div class="row align-items-center">
+                    <div class="col">
+                
+                      <!-- Title -->
+                      <h5 class="card-header-title">
+                        Notifications
+                      </h5>
+
+                    </div>
+                    <div class="col-auto">
+                
+                      <!-- Link -->
+                      <a href="#!" class="small">
+                        View all
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div> <!-- / .card-header -->
+                <div class="card-body">
+
+                  <!-- List group -->
+                  <div class="list-group list-group-flush my-n3">
+                    <a class="list-group-item text-reset px-0" href="#!">
+              
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Dianna Smiley</strong> shared your post with Ab Hadley, Adolfo Hess, and 3 others.
+                          </div>
+
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a class="list-group-item text-reset px-0" href="#!">
+
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Ab Hadley</strong> reacted to your post with a 😍
+                          </div>
+                    
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a class="list-group-item text-reset px-0" href="#!">
+
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Adolfo Hess</strong> commented <blockquote class="mb-0">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                          </div>
+
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a class="list-group-item text-reset px-0" href="#!">
+
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Daniela Dewitt</strong> subscribed to you.
+                          </div>
+
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a class="list-group-item text-reset px-0" href="#!">
+
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Miyah Myles</strong> shared your post with Ryu Duke, Glen Rouse, and 3 others.
+                          </div>
+
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a class="list-group-item text-reset px-0" href="#!">
+
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-6.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Ryu Duke</strong> reacted to your post with a 😍
+                          </div>
+
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a class="list-group-item text-reset px-0" href="#!">
+
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-7.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Glen Rouse</strong> commented <blockquote class="mb-0">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                          </div>
+
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                    <a class="list-group-item text-reset px-0" href="#!">
+
+                      <div class="row">
+                        <div class="col-auto">
+                    
+                          <!-- Avatar -->
+                          <div class="avatar avatar-sm">
+                            <img src="assets/img/avatars/profiles/avatar-8.jpg" alt="..." class="avatar-img rounded-circle">
+                          </div>
+
+                        </div>
+                        <div class="col ml-n2">
+                    
+                          <!-- Content -->
+                          <div class="small">
+                            <strong>Grace Gross</strong> subscribed to you.
+                          </div>
+
+                          <!-- Time -->
+                          <small class="text-muted">
+                            2m ago
+                          </small>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                    </a>
+                  </div>
+            
+                </div>
+              </div> <!-- / .dropdown-menu -->
+
+            </div>
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+        
+              <!-- Toggle -->
+              <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+              </a>
+
+              <!-- Menu -->
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="profile-posts.html" class="dropdown-item">Profile</a>
+                <a href="settings.html" class="dropdown-item">Settings</a>
+                <hr class="dropdown-divider">
+                <a href="sign-in.html" class="dropdown-item">Logout</a>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Collapse -->
+          <div class="collapse navbar-collapse mr-auto order-lg-first" id="navbar">
+
+            <!-- Form -->
+            <form class="mt-4 mb-3 d-md-none">
+              <input type="search" class="form-control form-control-rounded" placeholder="Search" aria-label="Search">
+            </form>
+
+            <!-- Navigation -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="topnavDashboards" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dashboard                </a>
+             
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" id="topnavPages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pages
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="topnavPages">
+                  <li class="dropright">
+                    <a class="dropdown-item dropdown-toggle active" href="#" id="topnavProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="topnavProfile">
+                      <a class="dropdown-item active" href="profile-posts.html">
+                        Posts
+                      </a>
+                      <a class="dropdown-item " href="profile-groups.html">
+                        Groups
+                      </a>
+                      <a class="dropdown-item " href="profile-projects.html">
+                        Projects
+                      </a>
+                      <a class="dropdown-item " href="profile-files.html">
+                        Files
+                      </a>
+                      <a class="dropdown-item " href="profile-subscribers.html">
+                        Subscribers
+                      </a>
+                    </div>
+                  </li>
+               
+                  <li>
+                    <a class="dropdown-item " href="kanban.html">
+                      Kanban
+                    </a>
+                  </li>
+                 
+                </ul>
+              </li>
+           
+           
+              <li class="nav-item">
+                <a class="nav-link" href="#modalDemo" data-toggle="modal">
+                  Customize
+                </a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div> <!-- / .container -->
+      </nav>
+    
+
+    <!-- MAIN CONTENT
+    ================================================== -->
+    <div class="main-content">
+
+      
+        <nav class="navbar navbar-expand-md navbar-light d-none d-md-flex" id="topbar">
+          <div class="container-fluid">
+
+            <!-- Form -->
+            <form class="form-inline mr-4 d-none d-md-flex">
+              <div class="input-group input-group-flush input-group-merge" data-toggle="lists" data-options='{"valueNames": ["name"]}'>
+
+                <!-- Input -->
+                <input type="search" class="form-control form-control-prepended dropdown-toggle search" data-toggle="dropdown" placeholder="Search" aria-label="Search">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fe fe-search"></i>
+                  </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-card">
+                  <div class="card-body">
+
+                    <!-- List group -->
+                    <div class="list-group list-group-flush list my-n3">
+                      <a href="team-overview.html" class="list-group-item px-0">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="assets/img/avatars/teams/team-logo-1.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Airbnb
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+                      </a>
+                      <a href="team-overview.html" class="list-group-item px-0">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="assets/img/avatars/teams/team-logo-2.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Medium Corporation
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 2hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+                      </a>
+                      <a href="project-overview.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-4by3">
+                              <img src="assets/img/avatars/projects/project-1.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Homepage Redesign
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a href="project-overview.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-4by3">
+                              <img src="assets/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Travels & Time
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a href="project-overview.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-4by3">
+                              <img src="assets/img/avatars/projects/project-3.jpg" alt="..." class="avatar-img rounded">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Safari Exploration
+                            </h4>
+
+                            <!-- Time -->
+                            <p class="small text-muted mb-0">
+                              <span class="fe fe-clock"></span> <time datetime="2018-05-24">Updated 4hr ago</time>
+                            </p>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+              
+                      </a>
+                      <a href="profile-posts.html" class="list-group-item px-0">
+              
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Dianna Smiley
+                            </h4>
+
+                            <!-- Status -->
+                            <p class="text-body small mb-0">
+                              <span class="text-success">●</span> Online
+                            </p>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a href="profile-posts.html" class="list-group-item px-0">
+
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar">
+                              <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Title -->
+                            <h4 class="text-body mb-1 name">
+                              Ab Hadley
+                            </h4>
+
+                            <!-- Status -->
+                            <p class="text-body small mb-0">
+                              <span class="text-danger">●</span> Offline
+                            </p>
+
+                          </div>
+                        </div> <!-- / .row -->
+              
+                      </a>
+                    </div>
+          
+                  </div>
+                </div> <!-- / .dropdown-menu -->
+
+              </div>
+            </form>
+
+            <!-- User -->
+            <div class="navbar-user">
+      
+              <!-- Dropdown -->
+              <div class="dropdown mr-4 d-none d-md-flex">
+        
+                <!-- Toggle -->
+                <a href="#" class="navbar-user-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="icon active">
+                    <i class="fe fe-bell"></i>
+                  </span>
+                </a>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-card">
+                  <div class="card-header">
+                    <div class="row align-items-center">
+                      <div class="col">
+                
+                        <!-- Title -->
+                        <h5 class="card-header-title">
+                          Notifications
+                        </h5>
+
+                      </div>
+                      <div class="col-auto">
+                
+                        <!-- Link -->
+                        <a href="#!" class="small">
+                          View all
+                        </a>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div> <!-- / .card-header -->
+                  <div class="card-body">
+
+                    <!-- List group -->
+                    <div class="list-group list-group-flush my-n3">
+                      <a class="list-group-item px-0" href="#!">
+              
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Dianna Smiley</strong> shared your post with <strong class="text-body">Ab Hadley</strong>, <strong class="text-body">Adolfo Hess</strong>, and <strong class="text-body">3 others</strong>.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Ab Hadley</strong> reacted to your post with a 😍
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Adolfo Hess</strong> commented <blockquote class="text-body">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Daniela Dewitt</strong> subscribed to you.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Miyah Myles</strong> shared your post with <strong class="text-body">Ryu Duke</strong>, <strong class="text-body">Glen Rouse</strong>, and <strong class="text-body">3 others</strong>.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-6.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Ryu Duke</strong> reacted to your post with a 😍
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-7.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Glen Rouse</strong> commented <blockquote class="text-body">“I don’t think this really makes sense to do without approval from Johnathan since he’s the one...” </blockquote>
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                      <a class="list-group-item px-0" href="#!">
+
+                        <div class="row">
+                          <div class="col-auto">
+                    
+                            <!-- Avatar -->
+                            <div class="avatar avatar-sm">
+                              <img src="assets/img/avatars/profiles/avatar-8.jpg" alt="..." class="avatar-img rounded-circle">
+                            </div>
+
+                          </div>
+                          <div class="col ml-n2">
+                    
+                            <!-- Content -->
+                            <div class="small text-muted">
+                              <strong class="text-body">Grace Gross</strong> subscribed to you.
+                            </div>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <small class="text-muted">
+                              2m
+                            </small>
+                    
+                          </div>
+                        </div> <!-- / .row -->
+
+                      </a>
+                    </div>
+            
+                  </div>
+                </div> <!-- / .dropdown-menu -->
+
+              </div>
+
+              <!-- Dropdown -->
+              <div class="dropdown">
+        
+                <!-- Toggle -->
+                <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                </a>
+
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a href="profile-posts.html" class="dropdown-item">Profile</a>
+                  <a href="settings.html" class="dropdown-item">Settings</a>
+                  <hr class="dropdown-divider">
+                  <a href="sign-in.html" class="dropdown-item">Logout</a>
+                </div>
+
+              </div>
+
+            </div>
+  
+          </div>
+        </nav>
+      
+
+      <!-- HEADER -->
+      <div class="header">
+
+        <!-- Image -->
+        <img src="img/bg-img/croppy.jpg" class="header-img-top" alt="...">
+        
+        <div class="container-fluid">
+
+          <!-- Body -->
+          <div class="header-body mt-n5 mt-md-n6">
+            <div class="row align-items-end">
+              <div class="col-auto">
+                
+                <!-- Avatar -->
+                <div class="avatar avatar-xxl header-avatar-top">
+                  <img src="{{$user->profile->profileimage()}}" alt="..." class="avatar-img rounded-circle border border-4 border-body">
+                </div>
+
+              </div>
+              <div class="col mb-3 ml-n3 ml-md-n2">
+                
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">
+                  Lecturer
+                </h6>
+
+                <!-- Title -->
+                <h1 class="header-title">
+                {{$user->username}}
+                </h1>
+
+              </div>
+              <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
+                
+                <!-- Button -->
+            
+                <button class="btn btn-primary d-block d-md-inline-block lift action-follow" data-id="{{ $user->id }}"><strong>
+            @if(auth()->user()->isFollowing($user))
+                UnFollow
+            @else
+                Follow
+            @endif
+            </strong></button>
+          
+              </div>
+            </div> <!-- / .row -->
+            <div class="row align-items-center">
+              <div class="col">
+                
+                <!-- Nav -->
+                <ul class="nav nav-tabs nav-overflow header-tabs">
+                  <li class="nav-item">
+                    <a href="profile-posts.html" class="nav-link active">
+                      Posts
+                    </a>
+                  </li>
+                 
+                  <li class="nav-item">
+                    <a href="/courses" class="nav-link">
+                      Courses
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="profile-files.html" class="nav-link">
+                      My Students
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="profile-files.html" class="nav-link">
+                    Events
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="profile-subscribers.html" class="nav-link">
+                      Subscribers
+                    </a>
+                  </li>
+               
+                </ul>
+
+              </div>
+            </div>
+          </div> <!-- / .header-body -->
+
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="container-fluid">
+        <div class="row">
 
 
-<!-- Mirrored from demo.webpixels.io/purpose-website-ui-kit-v2.0.1/pages/account/account-profile-public.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 11:39:11 GMT -->
+          <div class="col-12 col-xl-8">
+            
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+                
+                <!-- Header -->
+                <div class="mb-3">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      
+                      <!-- Avatar -->
+                      <a href="#!" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="card-title mb-1">
+                        Dianna Smiley
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="card-text small text-muted">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">4hr ago</time>
+                      </p>
+                      
+                    </div>
+                    <div class="col-auto">
+                      
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a href="/addpost" class="dropdown-item">
+                            Add new
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                           Delete Post
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                           Update Post
+                          </a>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Text -->
+                <p class="mb-3">
+                  I've been working on shipping the latest version of Launchday. The story I'm trying to focus on is something like "You're launching soon and need to be 100% focused on your product. Don't lose precious days designing, coding, and testing a product site. Instead, build one in minutes."
+                </p>
+                
+                <p class="mb-4">
+                    What do you y'all think? Would love some feedback from <a href="#!" class="badge badge-soft-primary">@Ab</a> or <a href="#!" class="badge badge-soft-primary">@Adolfo</a>?
+                </p>
+
+                <!-- Image -->
+                <p class="text-center mb-3">
+                  <img src="assets/img/posts/post-1.jpg" alt="..." class="img-fluid rounded">
+                </p>
+
+                <!-- Buttons -->
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col">
+
+                      <a href="#!" class="btn btn-sm btn-white">
+                        😬 1
+                      </a>
+                      <a href="#!" class="btn btn-sm btn-white">
+                        👍 2
+                      </a>
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add Reaction
+                      </a>
+
+                    </div>
+                    <div class="col-auto mr-n3">
+
+                      <div class="avatar-group d-none d-sm-flex">
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Ab Hadley">
+                          <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Adolfo Hess">
+                          <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Daniela Dewitt">
+                          <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Miyah Myles">
+                          <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Share
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Comments -->
+
+                <div class="comment mb-3">
+                  <div class="row">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a class="avatar" href="profile-posts.html">
+                        <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+                      
+                      <!-- Body -->
+                      <div class="comment-body">
+
+                        <div class="row">
+                          <div class="col">
+
+                            <!-- Title -->
+                            <h5 class="comment-title">
+                              Ab Hadley
+                            </h5>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <!-- Time -->
+                            <time class="comment-time">
+                              11:12
+                            </time>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Text -->
+                        <p class="comment-text">
+                          Looking good Dianna! I like the image grid on the left, but it feels like a lot to process and doesn't really <em>show</em> me what the product does? I think using a short looping video or something similar demo'ing the product might be better?
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <div class="comment mb-3">
+                  <div class="row">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a class="avatar" href="profile-posts.html">
+                        <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+                      
+                      <!-- Body -->
+                      <div class="comment-body">
+
+                        <div class="row">
+                          <div class="col">
+
+                            <!-- Title -->
+                            <h5 class="comment-title">
+                              Adolfo Hess
+                            </h5>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <!-- Time -->
+                            <time class="comment-time">
+                              11:12
+                            </time>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Text -->
+                        <p class="comment-text">
+                          Any chance you're going to link the grid up to a public gallery of sites built with Launchday?
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Form -->
+                <div class="row">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Input -->
+                    <form class="mt-1">
+                      <label class="sr-only">Leave a comment...</label>
+                      <textarea class="form-control form-control-flush" data-toggle="autosize" rows="1" placeholder="Leave a comment"></textarea>
+                    </form>
+
+                  </div>
+                  <div class="col-auto align-self-end">
+                    
+                    <!-- Icons -->
+                    <div class="text-muted mb-2">
+                      <a class="text-reset mr-3" href="#!" data-toggle="tooltip" title="Add photo">
+                        <i class="fe fe-camera"></i>
+                      </a>
+                      <a class="text-reset mr-3" href="#!" data-toggle="tooltip" title="Attach file">
+                        <i class="fe fe-paperclip"></i>
+                      </a>
+                      <a class="text-reset" href="#!" data-toggle="tooltip" title="Record audio">
+                        <i class="fe fe-mic"></i>
+                      </a>
+                    </div>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+            <!-- Card -->
+         
+
+          </div>
+          <div class="col-12 col-xl-4">
+            
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Title -->
+                    <h5 class="mb-0">
+                      Birthday
+                    </h5>
+
+                  </div>
+                  <div class="col-auto">
+                    
+                    <time class="small text-muted" datetime="1988-10-24">
+                      10/24/88
+                    </time>
+
+                  </div>
+                </div> <!-- / .row -->
+
+                <!-- Divider -->
+                <hr>
+
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Title -->
+                    <h5 class="mb-0">
+                      Joined
+                    </h5>
+
+                  </div>
+                  <div class="col-auto">
+                    
+                    <time class="small text-muted" datetime="2018-10-28">
+                    {{date('M j, Y',strtotime($user->created_at))}}
+                    </time>
+
+                  </div>
+                </div> <!-- / .row -->
+
+                <!-- Divider -->
+                <hr>
+
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Title -->
+                    <h5 class="mb-0">
+                      Location
+                    </h5>
+
+                  </div>
+                  <div class="col-auto">
+                    
+                    <small class="text-muted">
+                      Los Angeles, CA
+                    </small>
+
+                  </div>
+                </div> <!-- / .row -->
+
+                <!-- Divider -->
+                <hr>
+
+                <div class="row align-items-center">
+                  <div class="col">
+                    
+                    <!-- Title -->
+                    <h5 class="mb-0">
+                      Website
+                    </h5>
+
+                  </div>
+                  <div class="col-auto">
+                    
+                    <a href="#!" class="small">
+                      themes.getbootstrap.com
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+            <!-- Weekly Hours -->
+         
+          </div>
+        
+          
+
+
+        </div> <!-- / .row -->
+      </div>
+
+
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="{{ asset('js/custom.js') }}" defer></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/%40shopify/draggable/lib/es5/draggable.bundle.legacy.js"></script>
+    <script src="assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="assets/libs/highlightjs/highlight.pack.min.js"></script>
+    <script src="assets/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="assets/libs/list.js/dist/list.min.js"></script>
+    <script src="assets/libs/quill/dist/quill.min.js"></script>
+    <script src="assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="assets/libs/chart.js/Chart.extension.min.js"></script>
+
+    <!-- Map -->
+    <script src='../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+    <!-- Theme JS -->
+    <script src="assets/js/theme.min.js"></script>
+
+  </body>
+
+<!-- Mirrored from dashkit.goodthemes.co/profile-posts.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 13:14:09 GMT -->
 </html>

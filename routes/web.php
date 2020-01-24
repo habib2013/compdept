@@ -1,6 +1,5 @@
 <?php
-use App\User;
-use Illuminate\Http\Request;
+use \App\Course;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,74 +18,35 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/testmodal', function () {
-    $links = Link::all();
-    return view('testingmodal')->with('links', $links);
-});
-
-
-//--CREATE a link--//
-Route::post('/users', function (Request $request) {
-    $user = User::create($request->all());
-    return Response::json($user);
-});
- 
-
-Route::get('/users/{user_id?}', function ($user_id) {
-    $user = User::find($user_id);
-    return Response::json($user);
-});
-
-//--GET LINK TO EDIT--//
-// Route::get('/links/{link_id?}', function ($link_id) {
-//     $link = Link::find($link_id);
-//     return Response::json($link);
-// });
- 
-//--UPDATE a link--//
-Route::put('/users/{user_id?}', function (Request $request,User $user_id) {
-    $user = User::find($user_id);
-    $user->name = $request->name;
-    $user->username = $request->username;
-    $user->email = $request->email;
-  
-    $user->save();
-    return Response::json($user);
-});
- 
-//--DELETE a link--//
-Route::delete('/users/{user_id?}', function (User $user_id) {
-    $user = User::destroy($user_id);
-    return Response::json($user);
-});
-
-
-
-
-
-
-
-Route::get('/autocomplete', 'AutocompleteController@index');
-Route::get('/verify','AdminsController@verify');
-//Route::get('/users/{user_id?}','AdminsController@showModal');
-
-
-Route::post('/autocomplete/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
-Route::post('follow/{user}','FollowsController@store');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/faqs','FaqsController@faqs');
-Route::get('/posts/create', 'PostsController@create')->name('posts.create');
-Route::get('posts/{slug}',['as'=>'post.single','uses'=>'PostsController@getSingle'])->where('slug','[\w\d\-\_]+');
+Route::get('/welcomenote','ForDummie@welcomenote')->name('about');
+Route::get('/history','ForDummie@history')->name('history');
+Route::get('/mission','ForDummie@mission')->name('mission');
+Route::get('/mycourse','ProfilesController@course')->name('course');
+Route::post('follow', 'ProfilesController@follwUserRequest')->name('follow');
+// Route::get('/courses/{username}',['as'=>'profile.single','uses'=>'ProfilesController@course'])->where('username','[\w\d\-\_]+');
+Route::post('/courses','ProfilesController@createcourse')->name('createcourse');
+Route::post('/editcourse','ProfilesController@editcourse');
+
+Route::post('/deletecourse','ProfilesController@deletecourse');
+
+
+
+Route::get('/cvdownload/{file}',['as'=>'download.single','uses'=>'ProfilesController@download']);
+
+
 Route::get('/{username}',['as'=>'profile.single','uses'=>'ProfilesController@user'])->where('username','[\w\d\-\_]+');
+
 Route::get('/settings/{username}',['as'=>'profile.single','uses'=>'ProfilesController@settings'])->where('username','[\w\d\-\_]+');
 Route::get('/usersettings/{username}',['as'=>'users.update','uses'=>'UserSettings@show'])->where('username','[\w\d\-\_]+');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
-Route::patch('/users/{user}', 'UserSettings@update')->name('users.update');
-Route::post('/storepost','PostsController@store');
 
 
 
-
+Route::get('/course/{course_id?}', function ($course_id) {
+    $course = Course::find($course_id);
+    return Response::json($course);
+});
 
 
 
