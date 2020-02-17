@@ -261,6 +261,7 @@ public function updatepost(Request $request){
           if($result){
                 return response()->json(['success'=>'done']);
 
+                
               }
               else{
                 return response()->json(['error'=>$validator->errors()->all()]);   

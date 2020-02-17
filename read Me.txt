@@ -1,0 +1,13 @@
+READ ME FILE 
+
+After successful download
+
+
+ if you have laravel installed on your system Use Method 1
+
+ If you dont have laravel installed try install composer first (provided you have xampp working on your system)----> then proceed with method 1
+
+METHOD 1
+https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/
+
+
