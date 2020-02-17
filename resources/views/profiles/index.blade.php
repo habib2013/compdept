@@ -26,8 +26,7 @@
 
     <style>body { display: none; }</style>
     
-
-    <title>Dashkit</title>
+    @section('','{{$user->username}}')
   </head>
   <body id="app">
 
@@ -159,7 +158,7 @@
 
                   <!-- Title -->
                   <h4 class="card-header-title" id="exampleModalCenterTitle">
-                    Add a member
+                    Add a new Post
                   </h4>
               
                 </div>
@@ -173,166 +172,24 @@
                 </div>
               </div> <!-- / .row -->
             </div>
-            <div class="card-header">
-          
-              <!-- Form -->
-              <form>
-                <div class="input-group input-group-flush input-group-merge">
-                  <input type="search" class="form-control form-control-prepended search" placeholder="Search">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <span class="fe fe-search"></span>
-                    </div>
-                  </div>
-                </div>
-              </form>
-
-            </div>
+         
             <div class="card-body">
 
               <!-- List group -->
-              <ul class="list-group list-group-flush list my-n3">
-                <li class="list-group-item px-0">
-              
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                  
-                      <!-- Avatar -->
-                      <a href="profile-posts.html" class="avatar">
-                        <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
-                      </a>
+<form action="/addpost" method="post" enctype="multipart/form-data">
+@csrf
 
-                    </div>
-                    <div class="col ml-n2">
+              <input type="text" class="form-control form-control-rounded" placeholder="Enter title" name="title" id="title">
+           <br>
+              <textarea class="form-control" data-toggle="autosize" rows="3" placeholder="Post Body"  name="body" id="body"></textarea>
+<br>
+<input type="hidden" name="slug" value="21891289">
 
-                      <!-- Title -->
-                      <h4 class="mb-1 name">
-                        <a href="profile-posts.html">Miyah Myles</a>
-                      </h4>
-
-                      <!-- Time -->
-                      <p class="small mb-0">
-                        <span class="text-success">●</span> Online
-                      </p>
-                  
-                    </div>
-                    <div class="col-auto">
-                  
-                      <!-- Button -->
-                      <a href="#!" class="btn btn-sm btn-white">
-                        Add
-                      </a>
-
-                    </div>
-                  </div> <!-- / .row -->
-
-                </li>
-                <li class="list-group-item px-0">
-              
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                  
-                      <!-- Avatar -->
-                      <a href="profile-posts.html" class="avatar">
-                        <img src="assets/img/avatars/profiles/avatar-6.jpg" alt="..." class="avatar-img rounded-circle">
-                      </a>
-
-                    </div>
-                    <div class="col ml-n2">
-
-                      <!-- Title -->
-                      <h4 class="mb-1 name">
-                        <a href="profile-posts.html">Ryu Duke</a>
-                      </h4>
-
-                      <!-- Time -->
-                      <p class="small mb-0">
-                        <span class="text-success">●</span> Online
-                      </p>
-                  
-                    </div>
-                    <div class="col-auto">
-                  
-                      <!-- Button -->
-                      <a href="#!" class="btn btn-sm btn-white">
-                        Add
-                      </a>
-
-                    </div>
-                  </div> <!-- / .row -->
-
-                </li>
-                <li class="list-group-item px-0">
-              
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                  
-                      <!-- Avatar -->
-                      <a href="profile-posts.html" class="avatar">
-                        <img src="assets/img/avatars/profiles/avatar-7.jpg" alt="..." class="avatar-img rounded-circle">
-                      </a>
-
-                    </div>
-                    <div class="col ml-n2">
-
-                      <!-- Title -->
-                      <h4 class="mb-1 name">
-                        <a href="profile-posts.html">Glen Rouse</a>
-                      </h4>
-
-                      <!-- Time -->
-                      <p class="small mb-0">
-                        <span class="text-warning">●</span> Busy
-                      </p>
-                  
-                    </div>
-                    <div class="col-auto">
-                  
-                      <!-- Button -->
-                      <a href="#!" class="btn btn-sm btn-white">
-                        Add
-                      </a>
-
-                    </div>
-                  </div> <!-- / .row -->
-
-                </li>
-                <li class="list-group-item px-0">
-              
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                  
-                      <!-- Avatar -->
-                      <a href="profile-posts.html" class="avatar">
-                        <img src="assets/img/avatars/profiles/avatar-8.jpg" alt="..." class="avatar-img rounded-circle">
-                      </a>
-
-                    </div>
-                    <div class="col ml-n2">
-
-                      <!-- Title -->
-                      <h4 class="mb-1 name">
-                        <a href="profile-posts.html">Grace Gross</a>
-                      </h4>
-
-                      <!-- Time -->
-                      <p class="small mb-0">
-                        <span class="text-danger">●</span> Offline
-                      </p>
-                  
-                    </div>
-                    <div class="col-auto">
-                  
-                      <!-- Button -->
-                      <a href="#!" class="btn btn-sm btn-white">
-                        Add
-                      </a>
-
-                    </div>
-                  </div> <!-- / .row -->
-
-                </li>
-              </ul>
+<input type="file" name="post_image" id="post_image" class="form-control">
+<input type="hidden" value="{{auth()->user()->id}}" id="user_id" name="user_id">
+<br>
+              <button type="submit" class="btn btn-success add_post" name="addpost">ADD POST</button>
+              </form>
 
             </div>
           </div>
@@ -340,6 +197,65 @@
       </div>
     </div>
 
+
+
+<!-- Update starts -->
+  <!-- Modal: Members -->
+  <div class="modal fade" id="UpdatemodalMembers" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-card card" data-toggle="lists" data-options='{"valueNames": ["name"]}'>
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col">
+
+                  <!-- Title -->
+                  <h4 class="card-header-title" id="exampleModalCenterTitle">
+                    Update Post
+                  </h4>
+              
+                </div>
+                <div class="col-auto">
+
+                  <!-- Close -->
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              
+                </div>
+              </div> <!-- / .row -->
+            </div>
+         
+            <div class="card-body">
+
+              <!-- List group -->
+<form action="/updatepost" method="post" enctype="multipart/form-data">
+@csrf
+
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+              <input type="text" class="form-control form-control-rounded" placeholder="Enter title" name="utitle" id="utitle" >
+           <br>
+              <textarea class="form-control" data-toggle="autosize" rows="3" placeholder="Post Body"  name="ubody" id="ubody"></textarea>
+<br>
+<input type="hidden" name="slug" value="21891289">
+
+<input type="file" name="upost_image" id="upost_image" class="form-control">
+<input type="hidden" value="{{auth()->user()->id}}" id="user_id" name="user_id">
+<br>
+<input type="text" id="blog_id" name="blog_id" value="0">
+
+   
+              <button type="submit" id="btn-save" class="btn btn-success updatepost" name="updatepost">UPDATE POST</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- update end -->
     <!-- Modal: Search -->
     <div class="modal fade" id="sidebarModalSearch" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-vertical" role="document">
@@ -840,48 +756,7 @@
             <hr class="my-4">
 
             <!-- Buttons -->
-            <div class="mb-4">
-              <div class="row">
-                <div class="col">
-
-                  <a href="#!" class="btn btn-sm btn-white">
-                    😬 1
-                  </a>
-                  <a href="#!" class="btn btn-sm btn-white">
-                    👍 2
-                  </a>
-                  <a href="#!" class="btn btn-sm btn-white">
-                    Add Reaction
-                  </a>
-
-                </div>
-                <div class="col-auto mr-n3">
-
-                  <div class="avatar-group d-none d-sm-flex">
-                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Ab Hadley">
-                      <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
-                    </a>
-                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Adolfo Hess">
-                      <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
-                    </a>
-                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Daniela Dewitt">
-                      <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
-                    </a>
-                    <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Miyah Myles">
-                      <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
-                    </a>
-                  </div>
-
-                </div>
-                <div class="col-auto">
-
-                  <a href="#!" class="btn btn-sm btn-white">
-                    Share
-                  </a>
-
-                </div>
-              </div> <!-- / .row -->
-            </div>
+      
 
             <!-- Card -->
             <div class="card">
@@ -937,9 +812,7 @@
                         <i class="fe fe-more-vertical"></i>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="/addpost" class="dropdown-item">
-                        Add new
-                        </a>
+                    
                         <a href="#!" class="dropdown-item">
                          Delete Post
                         </a>
@@ -2828,7 +2701,7 @@
       <div class="header">
 
         <!-- Image -->
-        <img src="img/bg-img/croppy.jpg" class="header-img-top" alt="...">
+        <img src="img/bg-img/newcroppy.png" class="header-img-top" alt="...">
         
         <div class="container-fluid">
 
@@ -2856,6 +2729,10 @@
                 </h1>
 
               </div>
+
+<a href="#modalMembers" class="btn btn-lg btn-rounded-circle btn-white lift mb-2" data-toggle="modal">
+                  +
+                </a>
               <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
                 
                 <!-- Button -->
@@ -2882,15 +2759,11 @@
                   </li>
                  
                   <li class="nav-item">
-                    <a href="/courses" class="nav-link">
+                    <a href="/mycourse" class="nav-link">
                       Courses
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="profile-files.html" class="nav-link">
-                      My Students
-                    </a>
-                  </li>
+               
                   <li class="nav-item">
                     <a href="profile-files.html" class="nav-link">
                     Events
@@ -2912,13 +2785,14 @@
       </div>
 
       <!-- CONTENT -->
+
       <div class="container-fluid">
         <div class="row">
 
 
           <div class="col-12 col-xl-8">
-            
-            <!-- Card -->
+    
+                @foreach($user->blog as $blogs)
             <div class="card">
               <div class="card-body">
                 
@@ -2929,7 +2803,7 @@
                       
                       <!-- Avatar -->
                       <a href="#!" class="avatar">
-                        <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{$user->profile->profileimage()}}" alt="..." class="avatar-img rounded-circle">
                       </a>
 
                     </div>
@@ -2937,12 +2811,12 @@
 
                       <!-- Title -->
                       <h4 class="card-title mb-1">
-                        Dianna Smiley
+                      {{$user->username}}
                       </h4>
 
                       <!-- Time -->
                       <p class="card-text small text-muted">
-                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">4hr ago</time>
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">{{date('M j, Y h:ia',strtotime($blogs->created_at))}}  ago</time>
                       </p>
                       
                     </div>
@@ -2950,20 +2824,27 @@
                       
                       <!-- Dropdown -->
                       <div class="dropdown">
+                      @if(Auth::user()->id == $blogs->user_id)
+                      
                         <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fe fe-more-vertical"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a href="/addpost" class="dropdown-item">
-                            Add new
-                          </a>
+                       <div class="dropdown-menu dropdown-menu-right">
+                        
                           <a href="#!" class="dropdown-item">
                            Delete Post
                           </a>
-                          <a href="#!" class="dropdown-item">
-                           Update Post
+                      
+                          <a href="#UpdatemodalMembers" class="dropdown-item" data-toggle="modal">
+                          <button class="btn btn-primary open-modal"  value="{{$blogs->id}}">View
+                            </button> 
                           </a>
+
+                          @else
+@endif
                         </div>
+                      
+
                       </div>
                       
                     </div>
@@ -2972,204 +2853,23 @@
 
                 <!-- Text -->
                 <p class="mb-3">
-                  I've been working on shipping the latest version of Launchday. The story I'm trying to focus on is something like "You're launching soon and need to be 100% focused on your product. Don't lose precious days designing, coding, and testing a product site. Instead, build one in minutes."
-                </p>
+             {{$blogs->body}}
+                   </p>
                 
-                <p class="mb-4">
-                    What do you y'all think? Would love some feedback from <a href="#!" class="badge badge-soft-primary">@Ab</a> or <a href="#!" class="badge badge-soft-primary">@Adolfo</a>?
-                </p>
+               
 
                 <!-- Image -->
                 <p class="text-center mb-3">
-                  <img src="assets/img/posts/post-1.jpg" alt="..." class="img-fluid rounded">
+                  <img src="images/{{$blogs->post_image}}" alt="..." class="img-fluid rounded">
                 </p>
-
-                <!-- Buttons -->
-                <div class="mb-3">
-                  <div class="row">
-                    <div class="col">
-
-                      <a href="#!" class="btn btn-sm btn-white">
-                        😬 1
-                      </a>
-                      <a href="#!" class="btn btn-sm btn-white">
-                        👍 2
-                      </a>
-                      <a href="#!" class="btn btn-sm btn-white">
-                        Add Reaction
-                      </a>
-
-                    </div>
-                    <div class="col-auto mr-n3">
-
-                      <div class="avatar-group d-none d-sm-flex">
-                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Ab Hadley">
-                          <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
-                        </a>
-                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Adolfo Hess">
-                          <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
-                        </a>
-                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Daniela Dewitt">
-                          <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
-                        </a>
-                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Miyah Myles">
-                          <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
-                        </a>
-                      </div>
-
-                    </div>
-                    <div class="col-auto">
-
-                      <a href="#!" class="btn btn-sm btn-white">
-                        Share
-                      </a>
-
-                    </div>
-                  </div> <!-- / .row -->
-                </div>
-
-                <!-- Divider -->
                 <hr>
-
-                <!-- Comments -->
-
-                <div class="comment mb-3">
-                  <div class="row">
-                    <div class="col-auto">
-
-                      <!-- Avatar -->
-                      <a class="avatar" href="profile-posts.html">
-                        <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
-                      </a>
-
-                    </div>
-                    <div class="col ml-n2">
-                      
-                      <!-- Body -->
-                      <div class="comment-body">
-
-                        <div class="row">
-                          <div class="col">
-
-                            <!-- Title -->
-                            <h5 class="comment-title">
-                              Ab Hadley
-                            </h5>
-
-                          </div>
-                          <div class="col-auto">
-
-                            <!-- Time -->
-                            <time class="comment-time">
-                              11:12
-                            </time>
-
-                          </div>
-                        </div> <!-- / .row -->
-
-                        <!-- Text -->
-                        <p class="comment-text">
-                          Looking good Dianna! I like the image grid on the left, but it feels like a lot to process and doesn't really <em>show</em> me what the product does? I think using a short looping video or something similar demo'ing the product might be better?
-                        </p>
-
-                      </div>
-
-                    </div>
-                  </div> <!-- / .row -->
-                </div>
-
-                <div class="comment mb-3">
-                  <div class="row">
-                    <div class="col-auto">
-
-                      <!-- Avatar -->
-                      <a class="avatar" href="profile-posts.html">
-                        <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
-                      </a>
-
-                    </div>
-                    <div class="col ml-n2">
-                      
-                      <!-- Body -->
-                      <div class="comment-body">
-
-                        <div class="row">
-                          <div class="col">
-
-                            <!-- Title -->
-                            <h5 class="comment-title">
-                              Adolfo Hess
-                            </h5>
-
-                          </div>
-                          <div class="col-auto">
-
-                            <!-- Time -->
-                            <time class="comment-time">
-                              11:12
-                            </time>
-
-                          </div>
-                        </div> <!-- / .row -->
-
-                        <!-- Text -->
-                        <p class="comment-text">
-                          Any chance you're going to link the grid up to a public gallery of sites built with Launchday?
-                        </p>
-
-                      </div>
-
-                    </div>
-                  </div> <!-- / .row -->
-                </div>
-
-                <!-- Divider -->
-                <hr>
-
-                <!-- Form -->
-                <div class="row">
-                  <div class="col-auto">
-
-                    <!-- Avatar -->
-                    <div class="avatar avatar-sm">
-                      <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                    </div>
-
-                  </div>
-                  <div class="col ml-n2">
-
-                    <!-- Input -->
-                    <form class="mt-1">
-                      <label class="sr-only">Leave a comment...</label>
-                      <textarea class="form-control form-control-flush" data-toggle="autosize" rows="1" placeholder="Leave a comment"></textarea>
-                    </form>
-
-                  </div>
-                  <div class="col-auto align-self-end">
-                    
-                    <!-- Icons -->
-                    <div class="text-muted mb-2">
-                      <a class="text-reset mr-3" href="#!" data-toggle="tooltip" title="Add photo">
-                        <i class="fe fe-camera"></i>
-                      </a>
-                      <a class="text-reset mr-3" href="#!" data-toggle="tooltip" title="Attach file">
-                        <i class="fe fe-paperclip"></i>
-                      </a>
-                      <a class="text-reset" href="#!" data-toggle="tooltip" title="Record audio">
-                        <i class="fe fe-mic"></i>
-                      </a>
-                    </div>
-
-                  </div>
-                </div> <!-- / .row -->
-
               </div>
             </div>
-
-            <!-- Card -->
-         
+     @endforeach
 
           </div>
+
+
           <div class="col-12 col-xl-4">
             
             <!-- Card -->
@@ -3290,12 +2990,86 @@
     <script src="assets/libs/quill/dist/quill.min.js"></script>
     <script src="assets/libs/select2/dist/js/select2.min.js"></script>
     <script src="assets/libs/chart.js/Chart.extension.min.js"></script>
-
+    <script src="{{asset('js/holders.js')}}"></script>
     <!-- Map -->
     <script src='../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
     <!-- Theme JS -->
     <script src="assets/js/theme.min.js"></script>
+
+
+    <script type="text/javascript">
+  $("body").on("click",".add_post",function(e){
+    $(this).parents("form").ajaxForm(options);
+  });
+
+  var options = { 
+    complete: function(response) 
+    {
+    	if($.isEmptyObject(response.responseJSON.error)){
+     
+    		alert('Post Added Successfully.');
+    	}else{
+    		printErrorMsg(response.responseJSON.error);
+    	}
+    }
+  };
+
+
+  function printErrorMsg (msg) {
+	$(".print-error-msg").find("ul").html('');
+	$(".print-error-msg").css('display','block');
+	$.each( msg, function( key, value ) {
+		$(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+	});
+  }
+</script>
+
+
+
+<script type="text/javascript">
+ jQuery('body').on('click', '.open-modal', function () {
+        var blog_id = $(this).val();
+         $.get('blog/' + blog_id, function (data) {
+            jQuery('#utitle').val(data.title);
+            jQuery('#blog_id').val(data.id);
+            jQuery('#ubody').val(data.body);
+            jQuery('#btn-save').val("update");
+            jQuery('#linkEditorModal').modal('show');
+        })
+    });
+ 
+
+
+
+
+
+  $("body").on("click",".updatepost",function(e){
+    $(this).parents("form").ajaxForm(ourupdate);
+  });
+
+  var ourupdate = { 
+    complete: function(response) 
+    {
+    	if($.isEmptyObject(response.responseJSON.error)){
+     
+    		alert('Post Updated Successfully.');
+    	}else{
+    		printErrorMsg(response.responseJSON.error);
+    	}
+    }
+  };
+
+
+  function printErrorMsg (msg) {
+	$(".print-error-msg").find("ul").html('');
+	$(".print-error-msg").css('display','block');
+	$.each( msg, function( key, value ) {
+		$(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+	});
+  }
+</script>
+
 
   </body>
 

@@ -117,6 +117,8 @@
                                 </div>
                                 <div class="userthumb">
                                     <img src="{{ Auth::user()->profile->profileimage()}}" alt="No Img">
+
+                                   
                                 </div>
                             </div>
 @endguest
@@ -132,7 +134,7 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Hero Area Start ##### -->
-    <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(img/bg-img/noise2.jpg);">
+    <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(img/bg-img/bgimage.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">

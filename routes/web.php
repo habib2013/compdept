@@ -1,5 +1,6 @@
 <?php
 use \App\Course;
+use \App\Blog;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,9 +28,11 @@ Route::post('follow', 'ProfilesController@follwUserRequest')->name('follow');
 // Route::get('/courses/{username}',['as'=>'profile.single','uses'=>'ProfilesController@course'])->where('username','[\w\d\-\_]+');
 Route::post('/courses','ProfilesController@createcourse')->name('createcourse');
 Route::post('/editcourse','ProfilesController@editcourse');
+Route::post('/updatepost','ProfilesController@updatepost');
+
 
 Route::post('/deletecourse','ProfilesController@deletecourse');
-
+Route::post('/addpost','ProfilesController@addpost');
 
 
 Route::get('/cvdownload/{file}',['as'=>'download.single','uses'=>'ProfilesController@download']);
@@ -46,6 +49,12 @@ Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upda
 Route::get('/course/{course_id?}', function ($course_id) {
     $course = Course::find($course_id);
     return Response::json($course);
+});
+
+
+Route::get('/blog/{blog_id?}', function ($blog_id) {
+    $blog = Blog::find($blog_id);
+    return Response::json($blog);
 });
 
 

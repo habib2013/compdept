@@ -57,8 +57,12 @@ class User extends Authenticatable
     }
 
     public function course(){
-        return $this->hasMany(course::class)->orderBy('created_at','DESC');
+        return $this->hasMany(Course::class)->orderBy('created_at','DESC');
     }
+    public function blog(){
+        return $this->hasMany(Blog::class)->orderBy('created_at','DESC');
+    }
+
     public function following(){
         return $this->belongsToMany(Profile::class);
     }

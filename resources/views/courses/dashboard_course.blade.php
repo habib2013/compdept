@@ -27,8 +27,7 @@
 
     <style>body { display: none; }</style>
     
-
-    <title>Dashkit</title>
+    @section('','{{$user->username}}')
   </head>
   <body>
 
@@ -1596,7 +1595,7 @@
                             </li>
                             <li class="nav-item">
                               <a href="profile-groups.html" class="nav-link ">
-                                Groups
+                                Groups 
                               </a>
                             </li>
                             <li class="nav-item">
@@ -2158,7 +2157,8 @@
                           Posts
                         </a>
                         <a class="dropdown-item " href="profile-groups.html">
-                          Groups
+                          Groups 
+
                         </a>
                         <a class="dropdown-item " href="profile-projects.html">
                           Projects
@@ -2956,13 +2956,14 @@
                         Posts
                       </a>
                       <a class="dropdown-item " href="profile-groups.html">
-                        Groups
+                        Groups 
+                        
                       </a>
                       <a class="dropdown-item " href="profile-projects.html">
                         Projects
                       </a>
                       <a class="dropdown-item active" href="profile-files.html">
-                        Files
+                        Files edited
                       </a>
                       <a class="dropdown-item " href="profile-subscribers.html">
                         Subscribers
@@ -3715,28 +3716,25 @@
               </div>
             </div> <!-- / .row -->
             <div class="row align-items-center">
-              <div class="col">
+            <div class="col">
                 
                 <!-- Nav -->
                 <ul class="nav nav-tabs nav-overflow header-tabs">
                   <li class="nav-item">
-                    <a href="profile-posts.html" class="nav-link">
+                    <a href="{{ Auth::user()->username}}" class="nav-link ">
                       Posts
                     </a>
                   </li>
+                 
                   <li class="nav-item">
-                    <a href="profile-groups.html" class="nav-link">
-                      Groups
+                    <a href="/mycourse" class="nav-link active">
+                      Courses
                     </a>
                   </li>
+               
                   <li class="nav-item">
-                    <a href="profile-projects.html" class="nav-link">
-                      Projects
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="profile-files.html" class="nav-link active">
-                      Files
+                    <a href="profile-files.html" class="nav-link">
+                    Events
                     </a>
                   </li>
                   <li class="nav-item">
@@ -3744,6 +3742,7 @@
                       Subscribers
                     </a>
                   </li>
+               
                 </ul>
 
               </div>

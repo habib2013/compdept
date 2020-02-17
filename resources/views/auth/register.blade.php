@@ -1,136 +1,207 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
+  
+<!-- Mirrored from dashkit.goodthemes.co/sign-up-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 13:14:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-<meta charset="UTF-8">
-<meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Com_sci- Kwasu</title>
-    <link rel="icon" href="img/core-img/favicon.ico">
-    <link rel="stylesheet" href="style.css">
-        @laravelPWA
-    </head>
-<body>
-<div id="preloader">
-        <div class="spinner"></div>
-    </div>
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
 
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/fonts/feather/feather.min.css">
+    <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/libs/quill/dist/quill.core.css">
+    <link rel="stylesheet" href="assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="assets/libs/highlight.js/styles/vs2015.css">
 
-    <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(img/bg-img/ssecurity.jpg);height:100vh;padding-top:50px">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <!-- Hero Content -->
-                    <div class="row justify-content-center">
-                <!-- Post A Comment -->
-                <div class="col-12 col-lg-6">
-                    <div class="post-a-comments mb-70">
-             
-                    <form role="form" method="POST" action="{{ route('register') }}">
+    <!-- Map -->
+    <link href='../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Theme CSS -->
+      
+    <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
+
+    <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
+
+    <style>body { display: none; }</style>
+    
+
+    <title>Dashkit</title>
+  </head>
+  <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6 my-5">
+              
+          <!-- Heading -->
+          <h1 class="display-4 text-center mb-3">
+            Sign up
+          </h1>
+          
+          <!-- Subheading -->
+       
+          <!-- Form -->
+          <form role="form" method="POST" action="{{ route('register') }}">
                   @csrf
-                            <div class="row">
-                            <div class="col-12">  
-                            <div class="form-group">                   
-<h2 style="color:#ffffff">Register </h2><br>
-</div>
-                </div>               
-                                <div class="col-12">
-                                    <div class="form-group">
-                                    <input id="input-email" placeholder="Oladosu Tayo" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <!-- Email address -->
+            <div class="form-group">
+
+              <!-- Label -->
+              <label>
+               Full Name
+              </label>
+
+              <!-- Input -->
+              <input id="input-email" placeholder="Oladosu Tayo" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
 @error('name')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
     </span>
 @enderror
-                                
-                                </div>
-                                </div>
+            </div>
 
-                                <div class="col-12">
-                                    <div class="form-group">
-                                    <input id="input-email" placeholder="Habib2020" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+            <div class="form-group">
+
+<!-- Label -->
+<label>
+ Username
+</label>
+
+<!-- Input -->
+<input id="input-email" placeholder="Habib2020" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
 @error('username')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
     </span>
 @enderror
-                                
-                                </div>
-                                </div>
+</div>
 
-                                <div class="col-12">
-                                    <div class="form-group">
-                             
-                                    <input id="email" id="input-email" type="email" placeholder="name@example.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+<div class="form-group">
+
+<!-- Label -->
+<label>
+ Email-Address
+</label>
+
+<!-- Input -->
+<input id="email" id="input-email" type="email" placeholder="name@example.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
 @error('email')
 <span class="invalid-feedback" role="alert">
 <strong>{{ $message }}</strong>
 </span>
 @enderror
-                                </div>
-                                </div>
+</div>
 
+            <!-- Password -->
+            <div class="form-group">
 
+              <!-- Label -->
+              <label>
+                Password
+              </label>
 
-                                
-                                <div class="col-12">
-                                    <div class="form-group">
-         
-                                <input id="input-password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+              <!-- Input group -->
+              <div class="input-group input-group-merge">
+
+                <!-- Input -->
+                <input id="input-password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
 @error('password')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
     </span>
 @enderror
-                                </div>
-                                </div>
+                <!-- Icon -->
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fe fe-eye"></i>
+                  </span>
+                </div>
+
+              </div>
+            </div>
 
 
-                                <div class="col-12">
-                                    <div class="form-group">
-         
-                                    <input  id="input-password-confirm" placeholder="Confirm password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+
+            <div class="form-group">
+
+<!-- Label -->
+<label>
+  Confirm Password
+</label>
+
+<!-- Input group -->
+<div class="input-group input-group-merge">
+
+  <!-- Input -->
+  <input  id="input-password-confirm" placeholder="Confirm password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                        
-                                </div>
-                                </div>
+  <!-- Icon -->
+  <div class="input-group-append">
+    <span class="input-group-text">
+      <i class="fe fe-eye"></i>
+    </span>
+  </div>
 
-                         
+</div>
+</div>
 
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn clever-btn w-100" style="background-color:#3ec576">Create account</button>
-                                    
-                                </div>
-                          
-                            </div>
-                        </form>
-                        
-                    </div>
+            <!-- Submit -->
+            <button type="submit" class="btn btn-lg btn-block btn-primary mb-3">
+              Sign up
+            </button>
 
-                    
-                </div>
+            <!-- Link -->
+            <div class="text-center">
+              <small class="text-muted text-center">
+                Already have an account? <a href="/login">Log in</a>.
+              </small>
             </div>
-                </div>
-            </div>
+
+          </form>
+
         </div>
-    </section>
-    
+        <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+          
+          <!-- Image -->
+          <div class="bg-cover vh-100 mt-n1 mr-n3" style="background-image: url(img/bg-img/ssecurity.jpg);"></div>
 
-    <script src="{{asset('js/jquery/jquery-2.2.4.min.js')}}"></script>
-    <!-- Popper js -->
-    <script src="{{asset('js/bootstrap/popper.min.js')}}"></script>
-    <!-- Bootstrap js -->
-    <script src="{{asset('js/bootstrap/bootstrap.min.js')}}"></script>
-    <!-- All Plugins js -->
-    <script src="{{asset('js/plugins/plugins.js')}}"></script>
-    <!-- Active js -->
-    <script src="{{asset('js/active.js')}}"></script>
-</body>
+        </div>
+      </div> <!-- / .row -->
+    </div>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/%40shopify/draggable/lib/es5/draggable.bundle.legacy.js"></script>
+    <script src="assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="assets/libs/highlightjs/highlight.pack.min.js"></script>
+    <script src="assets/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="assets/libs/list.js/dist/list.min.js"></script>
+    <script src="assets/libs/quill/dist/quill.min.js"></script>
+    <script src="assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="assets/libs/chart.js/Chart.extension.min.js"></script>
+
+    <!-- Map -->
+    <script src='../api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+    <!-- Theme JS -->
+    <script src="assets/js/theme.min.js"></script>
+
+  </body>
+
+<!-- Mirrored from dashkit.goodthemes.co/sign-up-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 13:14:25 GMT -->
 </html>

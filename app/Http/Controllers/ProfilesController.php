@@ -8,6 +8,7 @@ use App\Profile;
 use Auth;       
 use Intervention\Image\Facades\Image;
 use App\Course;
+use App\Blog;
 use Illuminate\Database\Eloquent\Collection;
 use Webpatser\Uuid\Uuid;
 
@@ -149,7 +150,7 @@ public function editcourse(Request $request){
         
 
               $input = $request->all();
-             // dd($input);
+           //   dd($input);
              $description = $input['udescription'];
              $duration = $input['uduration'];
              $lectures = $input['ulectures'];
@@ -178,13 +179,7 @@ public function editcourse(Request $request){
               }
 
                                 }
-
-         
-          
-             
-
-
-              
+      
           $result2 = DB::update(DB::raw("update courses set description=:description,lectures=:lectures,quiz=:quiz,percentage=:percentage,coursecode=:coursecode,coursename=:coursename,status=:status where id=:id"),array('description'=>$description,'lectures'=>$lectures,'id'=>$id,'quiz'=>$quiz,'percentage'=>$percentage,'coursecode'=>$coursecode,'coursename'=>$coursename,'status'=>$status));
          
                         
@@ -195,11 +190,6 @@ public function editcourse(Request $request){
           else{
             return response()->json(['error'=>$validator->errors()->all()]);   
           }
-         
-        
-             
-
-
 }
 
 public function deletecourse(Request $request){
@@ -220,4 +210,74 @@ public function deletecourse(Request $request){
        
       
 }
+
+public function addpost(Request $request){
+      $validator = Validator::make($request->all(), [
+        'body'=>'required',
+        'title'=>'required',
+        'post_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'slug'=>'required'
+      ]);
+
+      if ($validator->passes()) {
+      $input = $request->all();
+
+      $input['post_image'] = time().'.'.$request->post_image->extension();
+      $request->post_image->move(public_path('images'), $input['post_image']);
+      Blog::create($input);
+         return response()->json(['success'=>'done']);
+
+      }
+      else{
+        return response()->json(['error'=>$validator->errors()->all()]);   
+      }
+
+}
+
+public function updatepost(Request $request){
+
+        $validator = Validator::make($request->all(), [
+                'utitle'=>'required',
+                'ubody'=>'required',
+                'blog_id'=>'',
+                'upost_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+              ]);
+        
+
+              $input = $request->all();
+           //  dd($input);
+             $title = $input['utitle'];
+             $body = $input['ubody'];
+          $id = $input['blog_id'];
+
+
+         $cv = $input['upost_image'] ?? '';
+                                if($input['upost_image'] != ''){    
+                                        $post_image = $input['upost_image'];                                
+                                        $post_image = time().'.'.$request->upost_image->extension();
+          $request->upost_image->move(public_path('images'), $post_image);
+          $result = DB::update(DB::raw("update blogs set title=:title,body=:body,post_image=:post_image where id=:id"),array('title'=>$title,'body'=>$body,'id'=>$id,'post_image'=>$post_image));
+
+          if($result){
+                return response()->json(['success'=>'done']);
+
+              }
+              else{
+                return response()->json(['error'=>$validator->errors()->all()]);   
+              }
+
+                                }
+      
+                                $result2 = DB::update(DB::raw("update blogs set title=:title,body=:body where id=:id"),array('title'=>$title,'body'=>$body,'id'=>$id));
+
+                                if($result2){
+                                      return response()->json(['success'=>'done']);
+                      
+                                    }
+                                    else{
+                                      return response()->json(['error'=>$validator->errors()->all()]);   
+                                    }
+                      
+}
+
 }
