@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Course;
+use App\Blog;
 
 
 class HomeController extends Controller
@@ -28,8 +29,13 @@ class HomeController extends Controller
     public function index()
     {
         $allcourse = new Course();
-        $course = $allcourse->all();    
-     return view('home',['course'=>$course]);
+        $course = $allcourse->all()->take(3); 
+
+        $allblog = new Blog();
+        $blog = $allblog ->all()->take(2);
+        
+        
+     return view('home',compact('course','blog'));
         // return view('home');
     }
 

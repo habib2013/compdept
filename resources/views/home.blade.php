@@ -159,7 +159,7 @@
                         <div class="icon">
                             <img src="img/core-img/docs.png" alt="">
                         </div>
-                        <h2><span class="counter">5</span></h2>
+                        <h2><span class="counter">{{count($blog)}}</span></h2>
                         <h5>Articles Posted</h5>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                         <div class="icon">
                             <img src="img/core-img/star.png" alt="">
                         </div>
-                        <h2><span class="counter">6</span></h2>
+                        <h2><span class="counter">11</span></h2>
                         <h5>Dedicated Tutors</h5>
                     </div>
                 </div>
@@ -214,39 +214,46 @@
            
             <div class="row">
                 <!-- Single Popular Course -->
-@foreach($course as $cour)
+@if(count($course) == 0)
+<h3>NO COURSE AVAILABLE</h3>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="250ms">
-                        <img src="images/{{$cour->cv}}" alt="" style="height:180px">
-                        <!-- Course Content -->
-                        <div class="course-content">
-                            <h4>{{$cour->coursename}}</h4>
-                            <div class="meta d-flex align-items-center">
-                                <a href="/{{$cour->user->username}}">{{$cour->user->username}}</a>
-                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
-                                <a href="#">{{$cour->coursecode}}</a>
-                            </div>
-                          <p>{{$cour->description}}</p>
-                            </div>
-                        <!-- Seat Rating Fee -->
-                        <div class="seat-rating-fee d-flex justify-content-between">
-                            <div class="seat-rating h-100 d-flex align-items-center">
-                                <div class="seat">
-                                    <i class="fa fa-user" aria-hidden="true"></i> 10
-                                </div>
-                                <div class="rating">
-                                    <i class="fa fa-star" aria-hidden="true"></i> 4.5
-                                </div>
-                            </div>
-                            <div class="course-fee h-100">
-                                <a href="#" class="free">DETAILS</a>
-                            </div>
-                        </div>
-                    </div>
+@else 
+
+    @foreach($course as $cour)
+
+<div class="col-12 col-md-6 col-lg-4">
+    <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="250ms">
+       <a href="/courses/{{$cour->courseslug}}"><img src="images/1581799236.jpeg" alt="" style="height:180px"></a> 
+        <!-- Course Content -->
+        <div class="course-content">
+            <h4>{{$cour->coursename}}</h4>
+            <div class="meta d-flex align-items-center">
+                <a href="/{{$cour->user->username}}">{{$cour->user->username}}</a>
+                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                <a href="/courses/{{$cour->courseslug}}">{{$cour->coursecode}}</a>
+            </div>
+          <p>{{$cour->description}}</p>
+            </div>
+        <!-- Seat Rating Fee -->
+        <div class="seat-rating-fee d-flex justify-content-between">
+            <div class="seat-rating h-100 d-flex align-items-center">
+                <div class="seat">
+                    <i class="fa fa-user" aria-hidden="true"></i> 10
                 </div>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i> 4.5
+                </div>
+            </div>
+            <div class="course-fee h-100">
+                <a href="/courses/{{$cour->courseslug}}" class="free">DETAILS</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endforeach
+
+@endif
                 
             </div>
             <div class="hero-content text-center">
@@ -603,26 +610,34 @@
 
             <div class="row">
                 <!-- Single Blog Area -->
+             @if(count($blog) == 0)
+<h3>No blog post</h3>
              
-
-                <!-- Single Blog Area -->
-                <div class="col-12 col-md-6">
+             @endif
+             @if(count($blog) != 0)
+                @foreach($blog as $home_blog)
+                <div class="col-12 col-md-6" style="">
                     <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <img src="img/blog-img/2.jpg" alt="">
+                       <a href="/blog/{{$home_blog->slug}}"> <img src="images/{{$home_blog->post_image}}" alt="" style="height:244px"></a>
                         <!-- Blog Content -->
                         <div class="blog-content">
                             <a href="#" class="blog-headline">
-                                <h4>English Grammer</h4>
+                                <h4>{{$home_blog->title}}</h4>
                             </a>
                             <div class="meta d-flex align-items-center">
-                                <a href="#">Sarah Parker</a>
+                                <a href="/blog/{{$home_blog->slug}}">{{$home_blog->user->username}}</a>
                                 <span><i class="fa fa-circle" aria-hidden="true"></i></span>
-                                <a href="#">Art &amp; Design</a>
+                            
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis</p>
-                        </div>
+                         <p>{{$home_blog->body}}</p>
+                          </div>
                     </div>
                 </div>
+@endforeach
+             
+@endif
+                <!-- Single Blog Area -->
+     
             </div>
             <div class="hero-content text-center">
                     

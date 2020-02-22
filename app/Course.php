@@ -9,7 +9,7 @@ class Course extends Model
 {
 
     
-    protected $fillable = ['description', 'duration','quiz','lectures','percentage','coursecode','coursename','user_id','status','unit','cv'];
+    protected $fillable = ['description', 'duration','quiz','lectures','percentage','coursecode','coursename','user_id','status','unit','cv','courseslug'];
 
     public function user(){
         return $this->belongsTo(User::class);

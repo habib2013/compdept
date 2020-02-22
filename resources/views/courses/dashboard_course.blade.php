@@ -341,7 +341,7 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <textarea class="form-control" data-toggle="autosize" rows="3" placeholder="Course Description" id="description" name="description" id="description"></textarea>
-
+<input type="hidden" name="courseslug" id="courseslug">
 <br>
 
 <div class="input-group input-group-merge mb-3">
@@ -3834,7 +3834,10 @@
                         
                         <!-- Avatar -->
                         <a href="#!" class="avatar avatar-lg">
-                          <img src="images/{{$cour->cv}}" alt="..." class="avatar-img rounded">
+           
+                          <img src="/images/document.png" alt="..." class="avatar-img rounded">
+
+
                         </a>
 
                       </div>

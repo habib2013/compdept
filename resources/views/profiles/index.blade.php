@@ -183,10 +183,17 @@
            <br>
               <textarea class="form-control" data-toggle="autosize" rows="3" placeholder="Post Body"  name="body" id="body"></textarea>
 <br>
-<input type="hidden" name="slug" value="21891289">
+<input type="hidden" name="slug">
 
 <input type="file" name="post_image" id="post_image" class="form-control">
 <input type="hidden" value="{{auth()->user()->id}}" id="user_id" name="user_id">
+<br>
+<select name="post_type" id="" class="form-control">
+<option value="programming">programming</option>
+<option value="Artificial Intelligence">Artificial Intelligence</option>
+<option value="E-Learning">E-Learning</option>
+<option value="Cyber security">Cyber security</option>
+</select>
 <br>
               <button type="submit" class="btn btn-success add_post" name="addpost">ADD POST</button>
               </form>
@@ -238,12 +245,12 @@
            <br>
               <textarea class="form-control" data-toggle="autosize" rows="3" placeholder="Post Body"  name="ubody" id="ubody"></textarea>
 <br>
-<input type="hidden" name="slug" value="21891289">
+<input type="hidden" name="slug" >
 
 <input type="file" name="upost_image" id="upost_image" class="form-control">
 <input type="hidden" value="{{auth()->user()->id}}" id="user_id" name="user_id">
 <br>
-<input type="text" id="blog_id" name="blog_id" value="0">
+<input type="hidden" id="blog_id" name="blog_id" value="0">
 
    
               <button type="submit" id="btn-save" class="btn btn-success updatepost" name="updatepost">UPDATE POST</button>

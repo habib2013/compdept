@@ -29,19 +29,12 @@ class ProfilesController extends Controller
                      
                             
                 $user = User::where('username','=',$username)->firstorFail();
-               
-              //  $follows =(auth()->user())? auth()->user()->following->contains($user->id):false;
-               // dd($follows);
-
-              //  return view('profiles.index')->withUser($user,$follows);
+            
                 return view('profiles.index',compact('user'));
 
-               // $user = User::where('username','=','$username')->first();
-        // $user = User::findOrFail($user);
-        // return view('profiles.index',['user'=>$user]);
-
-
         }
+
+    
 
         public function settings($username){
 
@@ -106,13 +99,14 @@ public function createcourse(Request $request){
                 'user_id'=>'required',
                 'status'=>'required',
                 'unit'=>'required',
-                'cv' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'cv' => 'required|mimes:pdf,doc,jpeg,png,jpg,gif,svg|max:6144',
               ]);
         
         
           if ($validator->passes()) {
 
                 $input = $request->all();
+                $input['courseslug'] = time().rand(10,10000);
                 $input['cv'] = time().'.'.$request->cv->extension();
         $request->cv->move(public_path('images'), $input['cv']);
 
@@ -215,13 +209,14 @@ public function addpost(Request $request){
       $validator = Validator::make($request->all(), [
         'body'=>'required',
         'title'=>'required',
+        'post_type'=>'required',
         'post_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'slug'=>'required'
+        'slug'=>''
       ]);
 
       if ($validator->passes()) {
       $input = $request->all();
-
+      $input['slug'] = time().rand(10,10000);
       $input['post_image'] = time().'.'.$request->post_image->extension();
       $request->post_image->move(public_path('images'), $input['post_image']);
       Blog::create($input);

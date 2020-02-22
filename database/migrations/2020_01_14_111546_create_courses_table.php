@@ -27,6 +27,7 @@ class CreateCoursesTable extends Migration
             $table->text('status');
             $table->text('unit');
             $table->text('cv');
+            $table->text('courseslug');
             $table->timestamps();
 
             // $table->index('user_id');

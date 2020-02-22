@@ -20,10 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/welcomenote','ForDummie@welcomenote')->name('about');
 Route::get('/history','ForDummie@history')->name('history');
 Route::get('/mission','ForDummie@mission')->name('mission');
 Route::get('/mycourse','ProfilesController@course')->name('course');
+Route::get('/allblog','BlogController@allblog');
 Route::post('follow', 'ProfilesController@follwUserRequest')->name('follow');
 // Route::get('/courses/{username}',['as'=>'profile.single','uses'=>'ProfilesController@course'])->where('username','[\w\d\-\_]+');
 Route::post('/courses','ProfilesController@createcourse')->name('createcourse');
@@ -41,6 +43,12 @@ Route::get('/cvdownload/{file}',['as'=>'download.single','uses'=>'ProfilesContro
 Route::get('/{username}',['as'=>'profile.single','uses'=>'ProfilesController@user'])->where('username','[\w\d\-\_]+');
 
 Route::get('/settings/{username}',['as'=>'profile.single','uses'=>'ProfilesController@settings'])->where('username','[\w\d\-\_]+');
+Route::get('/courses/{courseslug}',['as'=>'course.single','uses'=>'BlogController@mycourseslug'])->where('courseslug','[\w\d\-\_]+');
+
+Route::get('/blog/{slug}',['as'=>'blog.single','uses'=>'BlogController@myblogslug'])->where('blogslug','[\w\d\-\_]+');
+
+
+
 Route::get('/usersettings/{username}',['as'=>'users.update','uses'=>'UserSettings@show'])->where('username','[\w\d\-\_]+');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
